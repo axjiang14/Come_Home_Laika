@@ -1,9 +1,9 @@
 var mainState = {
 preload: function()
 {
-	game.load.image('background', 'assets/background.png');
+	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
-	game.load.image('alien', 'assets/alien.png');
+	game.load.image('alien', 'assets/Alien.png');
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 25, 32);
     game.load.image('bullet', 'assets/star.png'); // we will use firstaid for now since we don't have bullet photo.

@@ -2,11 +2,11 @@
 <html lang="en"> 
 <head> 
 	<meta charset="UTF-8" />
-	<title>Masterppt</title>
-	<script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+	<title>No Pain, No Game</title>
+	<script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
     <script src = "solarSystem.js"></script>
     <script src = "gameOverState.js"></script>
-    <script src = "mainState.js"></script>
+    <script src = "plutoState.js"></script>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -38,22 +38,28 @@ var spawnTicksText;
 var gameOverText;
 
 var aliens;
+var alienBullets;
 var diamonds;
 var bullets; 
 var weapon; // this is barrel that follows the pointer
 
-var bulletSpeed = 200;
+var bulletSpeed = 1000;
 var nextFire = 0;
-var fireRate = 200;
+var fireRate = 500;
 
-game.state.add('solarSystem', solarSystem);
-game.state.add('mainState', mainState);
-game.state.add('gameOverState', gameOverState);
-game.state.start('mainState'); // set start until add change state funciton
+game.state.add('solarSystem', solarSystem); //starting state 
+game.state.add('plutoState', plutoState);
+game.state.add('gameOverState', gameOverState); // need restart button that returns solar System.
+game.state.start('plutoState'); // set start until add change state funciton
 
 function collectAlien(player, alien){
 	game.state.start('gameOverState');
 	alien.kill();
+}
+
+function killPlayer(player, alienBullet){
+	alienBullet.destroy();
+	console.log('Player got shot!');
 }
 
 function collectDiamond(player, diamond){
@@ -64,8 +70,12 @@ function collectDiamond(player, diamond){
     
 function killaliens(bullet, alien){ // kill aliens with bullet
     score += 2;
-    alien.kill();
+    alien.destroy();
     bullet.kill();
+}
+
+function killBullet(bullet, platform) {
+	bullet.kill();
 }
 
 function displayPlanetInfo(){
@@ -73,9 +83,26 @@ function displayPlanetInfo(){
     // display enter button
 }    
 function enterPlanet(){
-    game.state.start('mainState');
+    game.state.start('plutoState');
     // we need to enter planet when we click that enter button
     // change state() 
+}
+
+function handle_alien(player, alien, alien_bullets) {
+	px = player.body.x;
+	py = player.body.y;
+	ax = alien.body.x;
+	ay = alien.body.y;
+	
+	var distance = Phaser.Math.distance(px, py, ax, ay);
+	if(distance <= 200 && --alien.shoot_ticks <= 0) {
+		alien.shoot_ticks = 100;
+			
+		var bullet = alien_bullets.create(ax + 16, ay, 'bullet');
+		game.physics.arcade.moveToXY(bullet, px + 20, py + 20, bulletSpeed / 5);
+		bullet.rotation = game.physics.arcade.angleToXY(bullet, px, py, game.world);
+	}
+	--alien.shoot_ticks;
 }
     
 </script>

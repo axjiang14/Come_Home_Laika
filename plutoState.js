@@ -1,9 +1,10 @@
 var plutoState = {
 preload: function()
 {
-	game.load.image('background', 'assets/background.png');
+	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
-	game.load.image('alien', 'assets/alien.png');
+	game.load.image('platform_tile', 'assets/platform_tile.png');
+	game.load.image('alien', 'assets/Alien.png');
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 25, 32);
     game.load.image('bullet', 'assets/star.png'); // we will use firstaid for now since we don't have bullet photo.
@@ -27,7 +28,6 @@ create: function()
 	//  We will enable physics for any object that is created in this group
 	platforms.enableBody = true;
 
-	// Here we create the ground.
 	var ground = platforms.create(0, game.world.height - 10, 'ground');
     
 	//  Scale it to fit the width of the game (the original sprite is 400x32 in size)
@@ -53,6 +53,71 @@ create: function()
 		r_wall.tint = 0xff00ff;
 	}
 	
+	// Make the actual map
+	for(var i = 0; i < 20; ++i)
+	{
+		var tile = platforms.create(i * 32, 500, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(500 + i * 32, 420, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(i * 32, 420, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(i * 32, 340, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(100 + i * 32, 260, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(i * 32, 180, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(240 + i * 32, 180, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(240, 180 + i * 32, 'platform_tile');
+		tile.scale.setTo(0.5, 1);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(500 + i * 32, 220, 'platform_tile');
+		tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	
     
     bullets = game.add.group();// bullets shuld be first because it should be behind the player
     bullets.enableBody = true;
@@ -64,7 +129,7 @@ create: function()
     
     
     
-	player = game.add.sprite(100, game.world.height - 150, 'laika');
+	player = game.add.sprite(100, game.world.height - 50, 'laika');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1800;
@@ -82,7 +147,6 @@ create: function()
     
 	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
 	ticksText = game.add.text(600, 16, 'Ticks: ', {fontSize: '32px'});
-	spawnTicksText = game.add.text(600, 64, 'spawnTicks: ', {fontSize: '32px'});
 	
 	cursors = game.input.keyboard.createCursorKeys();
     //wasd
@@ -94,6 +158,17 @@ create: function()
 	aliens = game.add.group();
 	aliens.enableBody = true;
 	
+	alienBullets = game.add.group()
+	alienBullets.enableBody = true;
+    alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    alienBullets.setAll('checkWorldBounds', true);
+    alienBullets.setAll('outOfBoundsKill', true);
+	
+	// Add enemies
+	var enemy = aliens.create(500, game.world.height - 50, 'alien');
+	enemy.body.gravity.y = 1800;
+	enemy.shoot_ticks = 0
+	
 	diamonds = game.add.group();
 	diamonds.enableBody = true;
     
@@ -104,8 +179,10 @@ update: function()
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(diamonds, platforms);
+	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, diamonds, collectDiamond, null, this);
+	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
 	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
     
     
@@ -134,7 +211,14 @@ update: function()
 	++ticks;
 	ticksText.text = 'Ticks: ' +  ticks;
 	
-	if(--spawnTicks <= 0)
+	for(var i = 0; i < aliens.length; ++i)
+	{
+		var enemy = aliens.getChildAt(i);
+		handle_alien(player, enemy, alienBullets);
+	}
+	
+	
+	/*if(--spawnTicks <= 0)
 	{
 		for(var i = 0; i < 1; ++i)
 		{
@@ -156,9 +240,9 @@ update: function()
 			--alien.waitTicks;
 		if(alien.waitTicks <= 0)
 			alien.kill()
-	}
+	}*/
 	
-	if(ticks % 400 == 50 && ticks > 50)
+	/*if(ticks % 400 == 50 && ticks > 50)
 	{
 		var diamond = diamonds.create(10 + Math.random() * 780, 0, 'diamond');
 		diamond.body.velocity.y = 50;
@@ -175,7 +259,7 @@ update: function()
 			--diamond.waitTicks;
 		if(diamond.waitTicks <= 0)
 			diamond.kill()
-	}
+	}*/
 	
     weapon.rotation = game.physics.arcade.angleToPointer(weapon);
     if (game.input.activePointer.isDown) {
@@ -187,12 +271,11 @@ update: function()
     
     
 	scoreText.text = 'Score: ' + score;
-	spawnTicksText.text = 'spawnTicks: ' + (Math.floor(45 * Math.pow(Math.E, -1 * ticks / 5000)) + 5);
 },// update function
 
 fire: function() {
     if (game.time.now > nextFire) {
-        nextFire = game.time.now +fireRate;
+        nextFire = game.time.now + fireRate;
         console.log('firing');
         var bullet = bullets.getFirstDead();
         bullet.reset(player.x, player.y);

@@ -6,6 +6,8 @@ var gameOverState = {
 		game.load.image('alien', 'assets/alien.png');
 		game.load.image('diamond', 'assets/diamond.png');
 		game.load.spritesheet('laika', 'assets/laika.png', 25, 32);
+        game.load.image('restartButton', 'assets/restartButton.png');
+        game.load.audio('buttonBGM', 'assets/backGroundMusic/buttonBGM.mp3');
 	},
 	
 	create: function()
@@ -44,8 +46,15 @@ var gameOverState = {
 		player.animations.add('left', [0, 1, 2, 3], 10, true);
 		player.animations.add('right', [5, 6, 7, 8], 10, true);
 		
-		scoreText = game.add.text(64, 16, 'Score: ' + score, {fontSize: '32px', fill: '#ffffff'});
+		
+        var restartButton = game.add.button(game.world.centerX - 50, game.world.centerY + 25, 'restartButton', function(){ });// go back to solarSystem.
+        restartButton.onInputDown.add(this.tint, restartButton);
+        restartButton.onInputUp.add(this.unTint, restartButton);
+        
+        
+        scoreText = game.add.text(16, 16, 'Score: ' + score, {fontSize: '32px', fill: '#ffffff'});
 		gameOverText = game.add.text(255, game.world.centerY - 50, 'Game Over', {font: '72px Arial', fill: '#ffffff', align: 'center'});
+        
 	},
 	
 	update: function()
@@ -72,5 +81,14 @@ var gameOverState = {
 		{
 			player.body.velocity.y = -600;
 		}
-	}
+	},
+    
+    tint: function(){
+        this.tint = 0xbbbbbb;
+        buttonBGM.play('click');
+    },
+    
+    unTint: function(){
+        this.tint = 0xFFFFFF;
+    },
 }; //game overState
