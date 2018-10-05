@@ -1,0 +1,84 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Masterppt</title>
+	<script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <script src = "solarSystem.js"></script>
+    <script src = "gameOverState.js"></script>
+    <script src = "plutoState.js"></script>
+	<style type="text/css">
+		body {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '');//, {preload: preload, create: create, update: update});
+
+var cursors;
+var platforms;
+var spaceBGM;
+var buttonBGM;
+var player;
+
+var score = 0;
+var scoreText;
+
+var ticks = 0;
+var ticksText;
+
+var spawnTicks = 100;
+var spawnTicksText;
+
+var gameOverText;
+
+var aliens;
+var diamonds;
+var bullets; 
+var weapon; // this is barrel that follows the pointer
+
+var bulletSpeed = 200;
+var nextFire = 0;
+var fireRate = 200;
+
+game.state.add('solarSystem', solarSystem); //starting state 
+game.state.add('plutoState', plutoState);
+game.state.add('gameOverState', gameOverState); // need restart button that returns solar System.
+game.state.start('plutoState'); // set start until add change state funciton
+
+function collectAlien(player, alien){
+	game.state.start('gameOverState');
+	alien.kill();
+}
+
+function collectDiamond(player, diamond){
+	score += 1;
+    game.state.start('solarSystem'); // test purpose
+	diamond.kill();
+}
+    
+function killaliens(bullet, alien){ // kill aliens with bullet
+    score += 2;
+    alien.kill();
+    bullet.kill();
+}
+
+function displayPlanetInfo(){
+    // we need to display planet info when it is clicked once.
+    // display enter button
+}    
+function enterPlanet(){
+    game.state.start('plutoState');
+    // we need to enter planet when we click that enter button
+    // change state() 
+}
+    
+</script>
+
+</body>
+</html>
