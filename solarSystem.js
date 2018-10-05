@@ -1,19 +1,19 @@
 var solarSystem = {
     
     preload: function(){
-        game.load.image('spaceBackground', 'assets/spaceTypeable.png');
-        game.load.image('sun', 'assets/planets/sun.png');
+        game.load.image('spaceBackground', 'assets/SpaceTypeable.png');
+        game.load.image('sun', 'assets/planets/Sun.png');
         game.load.image('mercury', 'assets/planets/mercury.png')
-        game.load.image('venus', 'assets/planets/venus.png')
+        game.load.image('venus', 'assets/planets/Venus.png')
         game.load.image('earth', 'assets/planets/Earth.png')
         game.load.image('mars', 'assets/planets/mars.png')
-        game.load.image('jupiter', 'assets/planets/jupiter.png')
-        game.load.image('saturn', 'assets/planets/saturn.png')
+        game.load.image('jupiter', 'assets/planets/Jupiter.png')
+        game.load.image('saturn', 'assets/planets/Saturn.png')
         game.load.image('uranus', 'assets/planets/uranus.png')
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
-        game.load.audio('spaceBGM', 'assets/backGroundMusic/spaceBGM.mp3');
-        game.load.audio('buttonBGM', 'assets/backGroundMusic/buttonBGM.mp3');
+        game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
+        game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
     },
     
     create: function(){

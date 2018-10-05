@@ -47,7 +47,7 @@ var gameOverState = {
 		player.animations.add('right', [5, 6, 7, 8], 10, true);
 		
 		
-        var restartButton = game.add.button(game.world.centerX - 50, game.world.centerY + 25, 'restartButton', function(){ });// go back to solarSystem.
+        var restartButton = game.add.button(game.world.centerX - 50, game.world.centerY + 25, 'restartButton', function(){game.state.start('solarSystem')});// go back to solarSystem.
         restartButton.onInputDown.add(this.tint, restartButton);
         restartButton.onInputUp.add(this.unTint, restartButton);
         
@@ -85,7 +85,7 @@ var gameOverState = {
     
     tint: function(){
         this.tint = 0xbbbbbb;
-        buttonBGM.play('click');
+        //buttonBGM.play('click');
     },
     
     unTint: function(){
