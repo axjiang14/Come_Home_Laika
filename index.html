@@ -25,6 +25,7 @@ var platforms;
 var spaceBGM;
 var buttonBGM;
 var player;
+var hp;
 
 var score = 0;
 var scoreText;
@@ -60,6 +61,7 @@ function collectAlien(player, alien){
 function killPlayer(player, alienBullet){
 	alienBullet.destroy();
 	console.log('Player got shot!');
+	plutoState.onPlayerHit();
 }
 
 function collectDiamond(player, diamond){

@@ -134,6 +134,10 @@ create: function()
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1800;
 	
+	player.hp = 10;
+	hp = game.add.sprite(400, 50, 'platform_tile');
+	hp.scale.setTo(10, 1);
+	
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 	
@@ -276,13 +280,20 @@ update: function()
 fire: function() {
     if (game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
-        console.log('firing');
+        console.log('firing');/*
         var bullet = bullets.getFirstDead();
         bullet.reset(player.x, player.y);
 
         game.physics.arcade.moveToPointer(bullet, bulletSpeed); //we should use same velocity for all planets
-        bullet.rotation = game.physics.arcade.angleToPointer(bullet);
+        bullet.rotation = game.physics.arcade.angleToPointer(bullet);*/
+        var bullet = bullets.create(player.x, player.y, 'bullet');
+        game.physics.arcade.moveToPointer(bullet, bulletSpeed);
     }
+},
+
+onPlayerHit: function() {
+	console.log('player hp is now:' + --player.hp);
+	hp.scale.setTo(player.hp, 1);
 }
 
 }// main state
