@@ -8,6 +8,55 @@ function fire() {
     }
 }
 
+function handle_alien(player, alien, alienBullets) {
+	px = player.body.x;
+	py = player.body.y;
+	ax = alien.body.x;
+	ay = alien.body.y;
+	
+	var distance = Phaser.Math.distance(px, py, ax, ay);
+	if(distance <= 250 && alien.shoot_ticks <= 0) {
+		alien.shoot_ticks = 100;
+			
+		var bullet = alienBullets.create(ax + 16, ay, 'bullet');
+		bullet.liveTicks = 30;
+		game.physics.arcade.moveToXY(bullet, px + 20, py + 20, bulletSpeed / 2);
+		bullet.rotation = game.physics.arcade.angleToXY(bullet, px, py, game.world);
+		alien.grounded = 100;
+	}
+	else {
+		if(alien.grounded <= 0) {
+			alien.grounded = 200 + Math.random() * 100;
+			console.log('Alien wants to move in:', alien.grounded, 'ticks.');
+			alien.move = 100;
+			alien.body.velocity.x = 75 + 50 * Math.random();
+			// Flip a coin to go right/left
+			direction = Math.random() > 0.5 ? -1 : 1;
+			if(alien.body.wasTouching.right) {
+				console.log('Alien has to move left.');
+				direction = -1;
+			}
+			if(alien.body.wasTouching.left) {
+				direction = 1;
+			}
+			alien.body.velocity.x *= direction;
+		}
+	}
+	if(--alien.move <= 0)
+		alien.body.velocity.x = 0;
+	
+	--alien.shoot_ticks;
+	--alien.grounded;
+}
+
+function handleAlienBullets(alienBullets) {
+	alienBullets.forEach(function(bullet) {
+		if(--bullet.liveTicks <= 0){
+			bullet.destroy();
+		}
+	});
+}
+
 function onPlayerHit() {
 	--player.hp;
 	//console.log('player hp is now:' + player.hp);

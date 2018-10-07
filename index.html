@@ -28,7 +28,6 @@ var buttonBGM;
 var player;
 
 var spaceship;
-var spaceshipGroup;
 var planetsUnlocked = 0;
 var hp;
 
@@ -87,23 +86,6 @@ function enterPlanet(){
     game.state.start('plutoState');
     // we need to enter planet when we click that enter button
     // change state() 
-}
-
-function handle_alien(player, alien, alien_bullets) {
-	px = player.body.x;
-	py = player.body.y;
-	ax = alien.body.x;
-	ay = alien.body.y;
-	
-	var distance = Phaser.Math.distance(px, py, ax, ay);
-	if(distance <= 200 && --alien.shoot_ticks <= 0) {
-		alien.shoot_ticks = 100;
-			
-		var bullet = alien_bullets.create(ax + 16, ay, 'bullet');
-		game.physics.arcade.moveToXY(bullet, px + 20, py + 20, bulletSpeed / 5);
-		bullet.rotation = game.physics.arcade.angleToXY(bullet, px, py, game.world);
-	}
-	--alien.shoot_ticks;
 }
     
 </script>

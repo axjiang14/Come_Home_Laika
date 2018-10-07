@@ -167,13 +167,12 @@ create: function() {
 	var enemy = aliens.create(500, game.world.height - 70, 'alien');
 	enemy.body.gravity.y = 1800;
 	enemy.shoot_ticks = 0;
+	enemy.grounded = 0;
 	
 	// Add spaceship exit
-	spaceshipGroup = game.add.group();
-	spaceshipGroup.enableBody = true;
-	var spaceship = spaceshipGroup.create(800 - 64, 220 - 64, 'spaceship');
-	//spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
-	//spaceship.enableBody = true;
+	spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
+	game.physics.arcade.enable(spaceship);
+	spaceship.enableBody = true;
 },
 
 update: function()
@@ -181,11 +180,12 @@ update: function()
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(diamonds, platforms);
-	game.physics.arcade.overlap(player, spaceshipGroup, this.spaceshipLeave, null, this);
+	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
 	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
+	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
     
 	player.body.velocity.x = 0;
@@ -223,6 +223,8 @@ update: function()
     if (game.input.activePointer.isDown) {
         fire();
     }
+    
+    handleAlienBullets(alienBullets);
     
 	scoreText.text = 'Score: ' + score;
 },
