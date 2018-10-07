@@ -7,7 +7,7 @@ preload: function() {
 	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/Platform_Dark.png');
-	game.load.image('alien', 'assets/Alien.png');
+	game.load.image('alien', 'assets/Alien2.png', 32, 44);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.PNG');
@@ -157,6 +157,7 @@ create: function() {
 	aliens = game.add.group();
 	aliens.enableBody = true;
 	
+    
 	alienBullets = game.add.group();
 	alienBullets.enableBody = true;
     alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -168,7 +169,9 @@ create: function() {
 	enemy.body.gravity.y = 1800;
 	enemy.shoot_ticks = 0;
 	enemy.grounded = 0;
-	
+	enemy.animations.add('left', [0, 1], 10, true);
+    enemy.animations.add('right', [2, 3], 10, true);
+    
 	// Add spaceship exit
 	spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
 	game.physics.arcade.enable(spaceship);
