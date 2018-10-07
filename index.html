@@ -7,6 +7,7 @@
     <script src = "solarSystem.js"></script>
     <script src = "gameOverState.js"></script>
     <script src = "plutoState.js"></script>
+    <script src = "main.js"></script>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -60,8 +61,8 @@ function collectAlien(player, alien){
 
 function killPlayer(player, alienBullet){
 	alienBullet.destroy();
-	console.log('Player got shot!');
-	plutoState.onPlayerHit();
+	//console.log('Player got shot!');
+	onPlayerHit();
 }
 
 function collectDiamond(player, diamond){

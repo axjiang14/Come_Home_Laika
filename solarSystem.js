@@ -24,7 +24,7 @@ var solarSystem = {
         
         
         
-        var p1 = game.add.button(190, 0, 'mercury'); // we will need state change function
+        var p1 = game.add.button(190, 0, 'mercury');
         var p2 = game.add.button(300, 15, 'venus');
         var p3 = game.add.button(420, 30, 'earth');
         var p4 = game.add.button(550, 40, 'mars');
@@ -43,12 +43,10 @@ var solarSystem = {
         p7.onInputDown.add(this.tint, p7);
         p8.onInputDown.add(this.tint, p8);
         p9.onInputDown.add(this.tint, p9);
-        
-        
-        
-        
-        
-        
+		
+		
+		
+		
         p1.onInputUp.add(this.unTint, p1);
         p2.onInputUp.add(this.unTint, p2);
         p3.onInputUp.add(this.unTint, p3);

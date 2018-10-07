@@ -1,39 +1,31 @@
+var main = document.createElement('script');
+main.src = 'main.js';
+document.head.appendChild(main);
+
 var plutoState = {
-preload: function()
-{
+preload: function() {
 	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
-	game.load.image('platform_tile', 'assets/platform_dark.png');
+	game.load.image('platform_tile', 'assets/Platform_Dark.png');
 	game.load.image('alien', 'assets/Alien.png');
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
-    game.load.image('bullet', 'assets/laser.png'); // we will use firstaid for now since we don't have bullet photo.
+    game.load.image('bullet', 'assets/Laser.PNG');
     game.load.image('weapon', 'assets/firstaid.png');  // lets use my robot as barrel.
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
-
+	game.load.image('white_tile', 'assets/white_rect.png');
 },
 
-create: function()
-{  
-
-    //  We're going to be using physics, so enable the Arcade Physics system
+create: function() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
-
-	//  A simple background for our game
+	
 	game.add.sprite(0, 0, 'background');
 
-	//  The platforms group contains the ground and the 2 ledges we can jump on
 	platforms = game.add.group();
-
-	//  We will enable physics for any object that is created in this group
 	platforms.enableBody = true;
 
 	var ground = platforms.create(0, game.world.height - 10, 'ground');
-    
-	//  Scale it to fit the width of the game (the original sprite is 400x32 in size)
 	ground.scale.setTo(2, 2);
-
-	//  This stops it from falling away when you jump on it
 	ground.body.immovable = true;
 	ground.tint = 0xff00ff;
     
@@ -57,7 +49,7 @@ create: function()
 	for(var i = 0; i < 20; ++i)
 	{
 		var tile = platforms.create(i * 24, 500, 'platform_tile');
-		tile.scale.setTo(1, 1);
+		//tile.scale.setTo(1, 1);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
@@ -119,14 +111,14 @@ create: function()
 	}
 	
     
-    bullets = game.add.group();// bullets shuld be first because it should be behind the player
+    bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
     bullets.createMultiple(300, 'bullet'); // NUMBER OF BULLETS ALLOWED;
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true); // if bullets leave the bounds, don't cound them. (THIS HAS TO DISAPPEAR WHEN WE LIMIT THE BULLET COUNTS)
 
-    
+   
     
     
 	player = game.add.sprite(100, game.world.height - 70, 'laika');
@@ -134,9 +126,11 @@ create: function()
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1800;
 	
+	// HP
 	player.hp = 10;
-	hp = game.add.sprite(400, 50, 'platform_tile');
-	hp.scale.setTo(10, 1);
+	player.hpBox = game.add.sprite(300, 16, 'white_tile');
+	player.hpBox.scale.setTo(10, 1);
+	player.hpBox.tint = 0x20ff00;
 	
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -162,7 +156,7 @@ create: function()
 	aliens = game.add.group();
 	aliens.enableBody = true;
 	
-	alienBullets = game.add.group()
+	alienBullets = game.add.group();
 	alienBullets.enableBody = true;
     alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
     alienBullets.setAll('checkWorldBounds', true);
@@ -171,11 +165,7 @@ create: function()
 	// Add enemies
 	var enemy = aliens.create(500, game.world.height - 70, 'alien');
 	enemy.body.gravity.y = 1800;
-	enemy.shoot_ticks = 0
-	
-	diamonds = game.add.group();
-	diamonds.enableBody = true;
-    
+	enemy.shoot_ticks = 0;
 },
 
 update: function()
@@ -221,79 +211,12 @@ update: function()
 		handle_alien(player, enemy, alienBullets);
 	}
 	
-	
-	/*if(--spawnTicks <= 0)
-	{
-		for(var i = 0; i < 1; ++i)
-		{
-			var alien = aliens.create(10 + Math.random() * 780, 0, 'alien');
-			alien.body.velocity.y = 100 + ticks / 100;
-			alien.body.gravity.y = 100 + ticks / 100;
-			alien.falling = true;
-			alien.waitTicks = 35;
-		}
-		
-		spawnTicks = Math.floor(45 * Math.pow(Math.E, -1 * ticks / 5000)) + 5;
-	}
-	for(var i = 0; i < aliens.length; ++i)
-	{
-		alien = aliens.getChildAt(i);
-		if(alien.body.velocity.y == 0)
-			alien.falling = false;
-		if(alien.falling == false)
-			--alien.waitTicks;
-		if(alien.waitTicks <= 0)
-			alien.kill()
-	}*/
-	
-	/*if(ticks % 400 == 50 && ticks > 50)
-	{
-		var diamond = diamonds.create(10 + Math.random() * 780, 0, 'diamond');
-		diamond.body.velocity.y = 50;
-		diamond.body.gravity.y = 100;
-		diamond.falling = true;
-		diamond.waitTicks = 150;
-	}
-	for(var i = 0; i < diamonds.length; ++i)
-	{
-		diamond = diamonds.getChildAt(i);
-		if(diamond.body.velocity.y == 0)
-			diamond.falling = false;
-		if(diamond.falling == false)
-			--diamond.waitTicks;
-		if(diamond.waitTicks <= 0)
-			diamond.kill()
-	}*/
-	
     weapon.rotation = game.physics.arcade.angleToPointer(weapon);
     if (game.input.activePointer.isDown) {
-        this.fire();
+        fire();
     }
-
-    
-    
-    
     
 	scoreText.text = 'Score: ' + score;
-},// update function
-
-fire: function() {
-    if (game.time.now > nextFire) {
-        nextFire = game.time.now + fireRate;
-        console.log('firing');/*
-        var bullet = bullets.getFirstDead();
-        bullet.reset(player.x, player.y);
-
-        game.physics.arcade.moveToPointer(bullet, bulletSpeed); //we should use same velocity for all planets
-        bullet.rotation = game.physics.arcade.angleToPointer(bullet);*/
-        var bullet = bullets.create(player.x, player.y, 'bullet');
-        game.physics.arcade.moveToPointer(bullet, bulletSpeed);
-    }
-},
-
-onPlayerHit: function() {
-	console.log('player hp is now:' + --player.hp);
-	hp.scale.setTo(player.hp, 1);
 }
 
 }// main state
