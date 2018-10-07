@@ -10,7 +10,7 @@ preload: function() {
 	game.load.image('alien', 'assets/Alien.png');
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
-    game.load.image('bullet', 'assets/Laser.PNG');
+    game.load.image('bullet', 'assets/Beam-Pink.PNG');
     game.load.image('weapon', 'assets/firstaid.png');  // lets use my robot as barrel.
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
