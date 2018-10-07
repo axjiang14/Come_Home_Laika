@@ -26,6 +26,10 @@ var platforms;
 var spaceBGM;
 var buttonBGM;
 var player;
+
+var spaceship;
+var spaceshipGroup;
+var planetsUnlocked = 0;
 var hp;
 
 var score = 0;
@@ -63,12 +67,6 @@ function killPlayer(player, alienBullet){
 	alienBullet.destroy();
 	//console.log('Player got shot!');
 	onPlayerHit();
-}
-
-function collectDiamond(player, diamond){
-	score += 1;
-    game.state.start('solarSystem'); // test purpose
-	diamond.kill();
 }
     
 function killaliens(bullet, alien){ // kill aliens with bullet

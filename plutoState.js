@@ -14,6 +14,7 @@ preload: function() {
     game.load.image('weapon', 'assets/firstaid.png');  // lets use my robot as barrel.
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
+	game.load.image('spaceship', 'assets/Spaceship.PNG')
 },
 
 create: function() {
@@ -166,6 +167,13 @@ create: function() {
 	var enemy = aliens.create(500, game.world.height - 70, 'alien');
 	enemy.body.gravity.y = 1800;
 	enemy.shoot_ticks = 0;
+	
+	// Add spaceship exit
+	spaceshipGroup = game.add.group();
+	spaceshipGroup.enableBody = true;
+	var spaceship = spaceshipGroup.create(800 - 64, 220 - 64, 'spaceship');
+	//spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
+	//spaceship.enableBody = true;
 },
 
 update: function()
@@ -173,9 +181,9 @@ update: function()
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(diamonds, platforms);
+	game.physics.arcade.overlap(player, spaceshipGroup, this.spaceshipLeave, null, this);
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
-	game.physics.arcade.overlap(player, diamonds, collectDiamond, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
 	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
     
@@ -217,6 +225,12 @@ update: function()
     }
     
 	scoreText.text = 'Score: ' + score;
+},
+
+spaceshipLeave: function() {
+	console.log('Got to spaceship!');
+	planets_unlocked = Math.max(planetsUnlocked, 1);
+	game.state.start('solarSystem');
 }
 
 }// main state

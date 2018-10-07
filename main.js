@@ -9,12 +9,13 @@ function fire() {
 }
 
 function onPlayerHit() {
-	console.log('player hp is now:' + --player.hp);
+	--player.hp;
+	//console.log('player hp is now:' + player.hp);
 	player.hpBox.scale.setTo(player.hp, 1);
 	
 	// Do pretty hp box coloring
 	var red = Math.max(0x42, Math.min(0xff - 0xff * (5 - player.hp) / 10, 0xff));
-	console.log('red:', (red).toString(16));
+	//console.log('red:', (red).toString(16));
 	red <<= 16;
 	var green = 0xff * player.hp / 10;
 	//console.log('green:', (green).toString(16));

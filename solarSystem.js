@@ -43,6 +43,7 @@ var solarSystem = {
         p7.onInputDown.add(this.tint, p7);
         p8.onInputDown.add(this.tint, p8);
         p9.onInputDown.add(this.tint, p9);
+        p9.onInputDown.add(this.changePluto, p9);
 		
 		
 		
@@ -78,6 +79,11 @@ var solarSystem = {
     
     unTint: function(){
         this.tint = 0xFFFFFF;
+    },
+    
+    changePluto: function() {
+    	if(planetsUnlocked >= 0)
+    		game.state.start('plutoState');
     },
     
     update: function(){
