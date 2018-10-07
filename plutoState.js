@@ -3,11 +3,11 @@ preload: function()
 {
 	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
-	game.load.image('platform_tile', 'assets/platform_tile.png');
+	game.load.image('platform_tile', 'assets/platform_dark.png');
 	game.load.image('alien', 'assets/Alien.png');
 	game.load.image('diamond', 'assets/diamond.png');
-	game.load.spritesheet('laika', 'assets/laika.png', 25, 32);
-    game.load.image('bullet', 'assets/star.png'); // we will use firstaid for now since we don't have bullet photo.
+	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
+    game.load.image('bullet', 'assets/laser.png'); // we will use firstaid for now since we don't have bullet photo.
     game.load.image('weapon', 'assets/firstaid.png');  // lets use my robot as barrel.
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 
@@ -56,64 +56,64 @@ create: function()
 	// Make the actual map
 	for(var i = 0; i < 20; ++i)
 	{
-		var tile = platforms.create(i * 32, 500, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
+		var tile = platforms.create(i * 24, 500, 'platform_tile');
+		tile.scale.setTo(1, 1);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 12; ++i)
+	{
+		var tile = platforms.create(512 + i * 24, 420, 'platform_tile');
+		tile.scale.setTo(1, 1);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
 	for(var i = 0; i < 10; ++i)
 	{
-		var tile = platforms.create(500 + i * 32, 420, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
+		var tile = platforms.create(i * 24, 420, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(i * 24, 340, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(120 + i * 24, 252, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(i * 24, 180, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
 	for(var i = 0; i < 10; ++i)
 	{
-		var tile = platforms.create(i * 32, 420, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
+		var tile = platforms.create(240 + i * 24, 180, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 5; ++i)
+	for(var i = 0; i < 6; ++i)
 	{
-		var tile = platforms.create(i * 32, 340, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-	}
-	for(var i = 0; i < 5; ++i)
-	{
-		var tile = platforms.create(100 + i * 32, 260, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-	}
-	for(var i = 0; i < 5; ++i)
-	{
-		var tile = platforms.create(i * 32, 180, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
+		var tile = platforms.create(216, 180 + i * 24, 'platform_tile');
+		//tile.scale.setTo(0.5, 1);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
 	for(var i = 0; i < 10; ++i)
 	{
-		var tile = platforms.create(240 + i * 32, 180, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-	}
-	for(var i = 0; i < 5; ++i)
-	{
-		var tile = platforms.create(240, 180 + i * 32, 'platform_tile');
-		tile.scale.setTo(0.5, 1);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-	}
-	for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create(500 + i * 32, 220, 'platform_tile');
-		tile.scale.setTo(1, 0.25);
+		var tile = platforms.create(560 + i * 24, 220, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
@@ -129,7 +129,7 @@ create: function()
     
     
     
-	player = game.add.sprite(100, game.world.height - 50, 'laika');
+	player = game.add.sprite(100, game.world.height - 70, 'laika');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1800;
@@ -169,7 +169,7 @@ create: function()
     alienBullets.setAll('outOfBoundsKill', true);
 	
 	// Add enemies
-	var enemy = aliens.create(500, game.world.height - 50, 'alien');
+	var enemy = aliens.create(500, game.world.height - 70, 'alien');
 	enemy.body.gravity.y = 1800;
 	enemy.shoot_ticks = 0
 	
