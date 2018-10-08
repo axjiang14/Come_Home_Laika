@@ -6,7 +6,7 @@ var plutoState = {
 preload: function() {
 	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
-	game.load.image('platform_tile', 'assets/Platform_Dark.png');
+	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('alien', 'assets/Alien2.png', 32, 44);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
