@@ -11,7 +11,7 @@ preload: function() {
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.PNG');
-    game.load.image('weapon', 'assets/firstaid.png');  // lets use my robot as barrel.
+//    game.load.image('weapon', 'assets/firstaid.png');  
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
 	game.load.image('spaceship', 'assets/Spaceship.PNG')
@@ -140,8 +140,8 @@ create: function() {
 	
     
     weapon = game.add.sprite(player.x, player.y, 'weapon');
-    weapon.scale.setTo(0.8);
-    weapon.anchor.setTo(0.3, 0.5); // spawn weapon
+    weapon.scale.setTo(.8);
+    weapon.anchor.setTo(player.x, player.y); // spawn weapon
     weapon.reset(player.x,player.y);
     
     
