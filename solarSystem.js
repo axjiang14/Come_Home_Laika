@@ -3,6 +3,7 @@ var solarSystem = {
     preload: function(){
         game.load.image('spaceBackground', 'assets/SpaceTypeable.png');
         game.load.image('sun', 'assets/planets/Sun.png');
+        
         game.load.image('mercury', 'assets/planets/mercury.png')
         game.load.image('venus', 'assets/planets/Venus.png')
         game.load.image('earth', 'assets/planets/Earth.png')
@@ -12,6 +13,11 @@ var solarSystem = {
         game.load.image('uranus', 'assets/planets/uranus.png')
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
+        game.load.image('plutoInfoSheet', 'assets/plutoInfoSheet.png')
+        
+        
+        game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
+        
         game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
         game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
     },
@@ -23,7 +29,6 @@ var solarSystem = {
         game.add.sprite(0, 0, 'sun'); // background
         
         
-        
         var p1 = game.add.button(190, 0, 'mercury');
         var p2 = game.add.button(300, 15, 'venus');
         var p3 = game.add.button(420, 30, 'earth');
@@ -33,6 +38,8 @@ var solarSystem = {
         var p7 = game.add.button(550, 260, 'uranus');
         var p8 = game.add.button(420, 290, 'neptune');
         var p9 = game.add.button(310, 320, 'pluto');
+        
+//        game.add.sprite(190, 460, 'plutoInfoSheet')
         
         p1.onInputDown.add(this.tint, p1);
         p2.onInputDown.add(this.tint, p2);
@@ -59,7 +66,6 @@ var solarSystem = {
         p9.onInputUp.add(this.unTint, p9);
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.stage.backgroundColor = '#800080';
         console.log('solarSystem');
         
         spaceBGM = game.add.audio('spaceBGM'); //has to be last for some reason

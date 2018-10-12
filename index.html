@@ -66,6 +66,10 @@ function killPlayer(player, alienBullet){
 	alienBullet.destroy();
 	//console.log('Player got shot!');
 	onPlayerHit();
+    if (player.hp == 0 ){
+        game.state.start('gameOverState');
+    }
+        
 }
     
 function killaliens(bullet, alien){ // kill aliens with bullet

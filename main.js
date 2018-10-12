@@ -18,7 +18,7 @@ function handle_alien(player, alien, alienBullets) {
 	if(distance <= 250 && alien.shoot_ticks <= 0) {
 		alien.shoot_ticks = 100;
 			
-		var bullet = alienBullets.create(ax + 16, ay, 'bullet');
+		var bullet = alienBullets.create(ax + 16, ay + 16, 'bullet');
 		bullet.liveTicks = 30;
 		game.physics.arcade.moveToXY(bullet, px + 20, py + 20, bulletSpeed / 2);
 		bullet.rotation = game.physics.arcade.angleToXY(bullet, px, py, game.world);

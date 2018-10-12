@@ -7,7 +7,7 @@ preload: function() {
 	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
-	game.load.image('alien', 'assets/Alien2.png', 32, 44);
+	game.load.spritesheet('alien', 'assets/Alien2.png', 32, 44);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.PNG');
@@ -122,11 +122,13 @@ create: function() {
    
     
     
-	player = game.add.sprite(100, game.world.height - 70, 'laika');
+	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1800;
 	
+    
+    
 	// HP
 	player.hp = 10;
 	player.hpBox = game.add.sprite(300, 16, 'white_tile');
