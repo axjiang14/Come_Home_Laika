@@ -31,15 +31,24 @@ function handle_alien(player, alien, alienBullets) {
 			alien.move = 100;
 			alien.body.velocity.x = 75 + 50 * Math.random();
 			// Flip a coin to go right/left
-			direction = Math.random() > 0.5 ? -1 : 1;
-			if(alien.body.wasTouching.right) {
-				console.log('Alien has to move left.');
-				direction = -1;
-			}
-			if(alien.body.wasTouching.left) {
-				direction = 1;
-			}
+			direction = Math.random() > 0.5 ? -1 : 1
+            alien.animations.add('left', [0, 1, 2, 3], 10, true);
+            alien.animations.add('right', [5, 6, 7, 8], 10, true);
+            console.log(direction)
+//			if(alien.body.wasTouching.right) {
+//				console.log('Alien has to move left.');
+//				direction = -1;
+//			}
+//			if(alien.body.wasTouching.left) {
+//				direction = 1;
+//			}
 			alien.body.velocity.x *= direction;
+            if (direction == 1){
+                alien.animations.play('right')
+            }
+            else {
+                alien.animations.play('left')
+            }
 		}
 	}
 	if(--alien.move <= 0)

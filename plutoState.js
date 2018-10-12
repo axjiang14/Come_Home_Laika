@@ -7,7 +7,7 @@ preload: function() {
 	game.load.image('background', 'assets/Background.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
-	game.load.spritesheet('alien', 'assets/Alien2.png', 32, 44);
+	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.PNG');
@@ -130,7 +130,7 @@ create: function() {
     
     
 	// HP
-	player.hp = 10;
+	player.hp = 10; // for the next stage we want to start from the old HP
 	player.hpBox = game.add.sprite(300, 16, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
@@ -171,8 +171,22 @@ create: function() {
 	enemy.body.gravity.y = 1800;
 	enemy.shoot_ticks = 0;
 	enemy.grounded = 0;
-	enemy.animations.add('left', [0, 1], 10, true);
-    enemy.animations.add('right', [2, 3], 10, true);
+	enemy.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy1 = aliens.create(250, game.world.height - 250, 'alien');
+	enemy1.body.gravity.y = 1800;
+	enemy1.shoot_ticks = 0;
+	enemy1.grounded = 0;
+	enemy1.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy1.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy2 = aliens.create(250, game.world.height - 500, 'alien');
+	enemy2.body.gravity.y = 1800;
+	enemy2.shoot_ticks = 0;
+	enemy2.grounded = 0;
+	enemy2.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy2.animations.add('right', [5, 6, 7, 8], 10, true);
     
 	// Add spaceship exit
 	spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
@@ -197,12 +211,12 @@ update: function()
 	
 	if(leftKey.isDown)
 	{
-		player.body.velocity.x = -300;
+		player.body.velocity.x = -300; // can be gravity
 		player.animations.play('left');
 	}
 	else if(rightKey.isDown)
 	{
-		player.body.velocity.x = 300;
+		player.body.velocity.x = 300; // can be gravity
 		player.animations.play('right');
 	}
 	else
@@ -212,7 +226,7 @@ update: function()
 	}
 	if(upKey.isDown && player.body.touching.down)
 	{
-		player.body.velocity.y = -600;
+		player.body.velocity.y = -600; //some what like gravitiy
 	}
 	
 	++ticks;

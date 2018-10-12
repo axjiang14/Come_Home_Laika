@@ -3,7 +3,6 @@ var gameOverState = {
 	{
 		game.load.image('background', 'assets/background.png');
 		game.load.image('ground', 'assets/platform.png');
-		game.load.image('alien', 'assets/alien.png');
 		game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
         game.load.image('restartButton', 'assets/restartButton.png');
         game.load.audio('buttonBGM', 'assets/backGroundMusic/buttonBGM.mp3');
