@@ -181,12 +181,41 @@ create: function() {
 	enemy1.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy1.animations.add('right', [5, 6, 7, 8], 10, true);
     
-    var enemy2 = aliens.create(250, game.world.height - 500, 'alien');
+    var enemy2 = aliens.create(300, game.world.height - 500, 'alien');
 	enemy2.body.gravity.y = 1800;
 	enemy2.shoot_ticks = 0;
 	enemy2.grounded = 0;
 	enemy2.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy2.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy3 = aliens.create(450, game.world.height - 500, 'alien');
+	enemy3.body.gravity.y = 1800;
+	enemy3.shoot_ticks = 0;
+	enemy3.grounded = 0;
+	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy4 = aliens.create(500, game.world.height - 500, 'alien');
+	enemy4.body.gravity.y = 1800;
+	enemy4.shoot_ticks = 0;
+	enemy4.grounded = 0;
+	enemy4.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy4.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy5 = aliens.create(500, game.world.height - 300, 'alien');
+	enemy5.body.gravity.y = 1800;
+	enemy5.shoot_ticks = 0;
+	enemy5.grounded = 0;
+	enemy5.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy5.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy6 = aliens.create(600, game.world.height - 300, 'alien');
+	enemy6.body.gravity.y = 1800;
+	enemy6.shoot_ticks = 0;
+	enemy6.grounded = 0;
+	enemy6.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy6.animations.add('right', [5, 6, 7, 8], 10, true);
+    
     
 	// Add spaceship exit
 	spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
@@ -226,7 +255,7 @@ update: function()
 	}
 	if(upKey.isDown && player.body.touching.down)
 	{
-		player.body.velocity.y = -600; //some what like gravitiy
+		player.body.velocity.y = - 600; //some what like gravitiy
 	}
 	
 	++ticks;
