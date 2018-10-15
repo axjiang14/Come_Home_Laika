@@ -5,9 +5,9 @@ document.head.appendChild(main);
 var neptuneState = {
 
 preload: function() {
-	game.load.image('background', 'assets/Background.png');
+	game.load.image('background', 'assets/NeptuneBackground.png');
 	game.load.image('ground', 'assets/platform.png');
-	game.load.image('platform_tile', 'assets/DPlatformS.png');
+	game.load.image('platform_tile', 'assets/LPlatformS.png');
 	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
@@ -62,10 +62,84 @@ create: function() {
 	// Make the actual map
 	for(var i = 0; i < 20; ++i)
 	{
-		var tile = platforms.create(300 + i * 24, 500, 'platform_tile');
+		var tile = platforms.create(348 + i * 24, 500, 'platform_tile');
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
+    
+    /*for(var i = 0; i < 20; ++i)
+	{
+		var tile = platforms.create(536+ i * 24, 500, 'platform_tile');
+		//tile.scale.setTo(1, 1);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}*/
+	for(var i = 0; i < 12; ++i)
+	{
+		var tile = platforms.create(i * 24, 420, 'platform_tile');
+		tile.scale.setTo(1, 1);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(540+ i * 24, 420, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(296+ i * 24, 322, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(416 + i * 24, 252, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 5; ++i)
+	{
+		var tile = platforms.create(i * 24, 100, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create(512 + i * 24, 180, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 6; ++i)
+	{
+		var tile = platforms.create(512, 180 + i * 24, 'platform_tile');
+		//tile.scale.setTo(0.5, 1);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+	for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24, 220, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+	}
+    
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.createMultiple(300, 'bullet'); // NUMBER OF BULLETS ALLOWED;
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true); // if bullets leave the bounds, don't cound them. (THIS HAS TO DISAPPEAR WHEN WE LIMIT THE BULLET COUNTS)
+
+   
+
 
 },
 
