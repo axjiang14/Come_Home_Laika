@@ -7,6 +7,7 @@
     <script src = "solarSystem.js"></script>
     <script src = "gameOverState.js"></script>
     <script src = "plutoState.js"></script>
+    <script src = "neptuneState.js"></script>
     <script src = "main.js"></script>
 	<style type="text/css">
 		body {
@@ -55,6 +56,7 @@ var fireRate = 500;
 game.state.add('solarSystem', solarSystem); //starting state 
 game.state.add('plutoState', plutoState);
 game.state.add('gameOverState', gameOverState); // need restart button that returns solar System.
+game.state.add('neptuneState', neptuneState);
 game.state.start('plutoState'); // set start until add change state funciton
 
 function collectAlien(player, alien){
@@ -85,7 +87,8 @@ function killBullet(bullet, platform) {
 function displayPlanetInfo(){
     // we need to display planet info when it is clicked once.
     // display enter button
-}    
+}
+
 function enterPlanet(){
     game.state.start('plutoState');
     // we need to enter planet when we click that enter button

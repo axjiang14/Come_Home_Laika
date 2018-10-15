@@ -10,7 +10,7 @@ preload: function() {
 	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
-    game.load.image('bullet', 'assets/Beam-Pink.PNG');
+    game.load.image('bullet', 'assets/Beam-Pink.png');
 //    game.load.image('weapon', 'assets/firstaid.png');  
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
@@ -250,7 +250,8 @@ update: function()
 
 spaceshipLeave: function() {
 	console.log('Got to spaceship!');
-	planets_unlocked = Math.max(planetsUnlocked, 1);
+	planetsUnlocked = Math.max(planetsUnlocked, 1);
+	console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
 }
 

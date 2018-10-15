@@ -52,7 +52,10 @@ function handle_alien(player, alien, alienBullets) {
 		}
 	}
 	if(--alien.move <= 0)
+	{
 		alien.body.velocity.x = 0;
+		alien.animations.stop();
+	}
 	
 	--alien.shoot_ticks;
 	--alien.grounded;
@@ -68,6 +71,14 @@ function handleAlienBullets(alienBullets) {
 
 function onPlayerHit() {
 	--player.hp;
+	
+	if(player.hp == 0)
+	{
+		game.state.start('solarSystem');
+		player.hp = 10;
+		//return;
+	}
+	
 	//console.log('player hp is now:' + player.hp);
 	player.hpBox.scale.setTo(player.hp, 1);
 	

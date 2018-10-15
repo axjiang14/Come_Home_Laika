@@ -49,6 +49,7 @@ var solarSystem = {
         p6.onInputDown.add(this.tint, p6);
         p7.onInputDown.add(this.tint, p7);
         p8.onInputDown.add(this.tint, p8);
+        p8.onInputDown.add(this.changeNeptune, p8);
         p9.onInputDown.add(this.tint, p9);
         p9.onInputDown.add(this.changePluto, p9);
 		
@@ -90,6 +91,12 @@ var solarSystem = {
     changePluto: function() {
     	if(planetsUnlocked >= 0)
     		game.state.start('plutoState');
+    },
+    
+    changeNeptune: function() {
+    	console.log('trying to change to neptune w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 1)
+    		game.state.start('neptuneState');
     },
     
     update: function(){
