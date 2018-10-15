@@ -70,16 +70,14 @@ function handleAlienBullets(alienBullets) {
 }
 
 function onPlayerHit() {
-	--player.hp;
+    --player.hp;
+    if(player.hp >= 10){
+        
+        player.hpBox.tint = 0x20ff00;
+        player.hp = 10;
+    }
 	
-	if(player.hp == 0)
-	{
-		game.state.start('solarSystem');
-		player.hp = 10;
-		//return;
-	}
-	
-	//console.log('player hp is now:' + player.hp);
+	console.log('player hp is now:' + player.hp);
 	player.hpBox.scale.setTo(player.hp, 1);
 	
 	// Do pretty hp box coloring
@@ -92,4 +90,9 @@ function onPlayerHit() {
 	var blue = 0x000000;
 	//console.log('set color to:', (red | green | blue).toString(16));
 	player.hpBox.tint = red | green | blue;
+	if(player.hp >= 10){
+        
+        player.hpBox.tint = 0x20ff00;
+        player.hp = 10;
+    }
 }

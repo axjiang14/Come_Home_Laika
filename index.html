@@ -46,7 +46,8 @@ var gameOverText;
 var aliens;
 var alienBullets;
 var diamonds;
-var bullets; 
+var bullets;
+var healthKits;
 var weapon; // this is barrel that follows the pointer
 
 var bulletSpeed = 1000;
@@ -84,6 +85,12 @@ function killBullet(bullet, platform) {
 	bullet.kill();
 }
 
+function healthRestore(player, heatlhKit){
+    player.hp += 3; // hp + 3
+    onPlayerHit(); // hp -1 ends with hp + 2
+    heatlhKit.kill();
+//    console.log('player hp is now:' + player.hp);
+}
 function displayPlanetInfo(){
     // we need to display planet info when it is clicked once.
     // display enter button

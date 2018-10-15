@@ -11,7 +11,7 @@ preload: function() {
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.png');
-//    game.load.image('weapon', 'assets/firstaid.png');  
+    game.load.image('healthKit', 'assets/firstaid.png');  
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
 	game.load.image('spaceship', 'assets/Spaceship.PNG')
@@ -159,6 +159,8 @@ create: function() {
 	aliens = game.add.group();
 	aliens.enableBody = true;
 	
+    healthKits = game.add.group();
+    healthKits.enableBody = true;
     
 	alienBullets = game.add.group();
 	alienBullets.enableBody = true;
@@ -166,6 +168,8 @@ create: function() {
     alienBullets.setAll('checkWorldBounds', true);
     alienBullets.setAll('outOfBoundsKill', true);
 	
+    
+    
 	// Add enemies
 	var enemy = aliens.create(500, game.world.height - 70, 'alien');
 	enemy.body.gravity.y = 1800;
@@ -215,6 +219,12 @@ create: function() {
 	enemy6.grounded = 0;
 	enemy6.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy6.animations.add('right', [5, 6, 7, 8], 10, true);
+    // Add health
+    
+    var healthKit1 = healthKits.create(700, 330, 'healthKit')
+    healthKit1.body.gravity.y = 1800;
+    var healthKit2 = healthKits.create(700, 110, 'healthKit')
+    healthKit2.body.gravity.y = 1800;
     
     
 	// Add spaceship exit
@@ -227,14 +237,14 @@ update: function()
 {
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
-	game.physics.arcade.collide(diamonds, platforms);
+	game.physics.arcade.collide(healthKits, platforms);
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
+    game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
 	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
-    
     
 	player.body.velocity.x = 0;
 	
