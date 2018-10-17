@@ -1,10 +1,12 @@
 function fire() {
-    if (game.time.now > nextFire) {
+	//console.log('game is:', game);
+	//console.log('bullets is:', bullets);
+    if(this.game != null && game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
-        console.log('firing');
-        
-        var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
-        game.physics.arcade.moveToPointer(bullet, bulletSpeed);
+        //console.log('firing2');
+    	var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
+    	game.physics.arcade.moveToPointer(bullet, bulletSpeed);
+        //console.log('here2');
     }
 }
 
@@ -16,7 +18,7 @@ function handle_alien(player, alien, alienBullets) {
 	
 	var distance = Phaser.Math.distance(px, py, ax, ay);
 	if(distance <= 250 && alien.shoot_ticks <= 0) {
-		alien.shoot_ticks = 100;
+		alien.shoot_ticks = 300;
 			
 		var bullet = alienBullets.create(ax + 16, ay + 16, 'bullet');
 		bullet.liveTicks = 30;
@@ -27,21 +29,19 @@ function handle_alien(player, alien, alienBullets) {
 	else {
 		if(alien.grounded <= 0) {
 			alien.grounded = 200 + Math.random() * 100;
+			
 			console.log('Alien wants to move in:', alien.grounded, 'ticks.');
+			
 			alien.move = 100;
 			alien.body.velocity.x = 75 + 50 * Math.random();
+			
 			// Flip a coin to go right/left
 			direction = Math.random() > 0.5 ? -1 : 1
             alien.animations.add('left', [0, 1, 2, 3], 10, true);
             alien.animations.add('right', [5, 6, 7, 8], 10, true);
-            console.log(direction)
-//			if(alien.body.wasTouching.right) {
-//				console.log('Alien has to move left.');
-//				direction = -1;
-//			}
-//			if(alien.body.wasTouching.left) {
-//				direction = 1;
-//			}
+            
+            console.log(direction);
+            
 			alien.body.velocity.x *= direction;
             if (direction == 1){
                 alien.animations.play('right')
@@ -91,7 +91,6 @@ function onPlayerHit() {
 	//console.log('set color to:', (red | green | blue).toString(16));
 	player.hpBox.tint = red | green | blue;
 	if(player.hp >= 10){
-        
         player.hpBox.tint = 0x20ff00;
         player.hp = 10;
     }

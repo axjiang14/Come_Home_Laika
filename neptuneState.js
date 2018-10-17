@@ -35,6 +35,13 @@ create: function() {
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1800;
+	
+	bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.createMultiple(300, 'bullet'); // NUMBER OF BULLETS ALLOWED;
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true); // if bullets leave the bounds, don't cound them. (THIS HAS TO DISAPPEAR WHEN WE LIMIT THE BULLET COUNTS)
     
 	// HP
 	player.hp = 10; // for the next stage we want to start from the old HP
@@ -129,7 +136,7 @@ create: function() {
 
 update: function()
 {
-	/*game.physics.arcade.collide(player, platforms);
+	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(diamonds, platforms);
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
@@ -173,12 +180,13 @@ update: function()
 	
     weapon.rotation = game.physics.arcade.angleToPointer(weapon);
     if (game.input.activePointer.isDown) {
+    	//console.log('calling fire');
         fire();
     }
     
     handleAlienBullets(alienBullets);
     
-	scoreText.text = 'Score: ' + score;*/
+	scoreText.text = 'Score: ' + score;
 },
 
 spaceshipLeave: function() {

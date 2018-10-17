@@ -154,6 +154,7 @@ create: function() {
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     
 	
 	aliens = game.add.group();
@@ -247,6 +248,11 @@ update: function()
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
 	player.body.velocity.x = 0;
+	
+	if(qKey.isDown) {
+		console.log('q key pressed');
+		loadState('assets/Space.png', null, null);
+	}
 	
 	if(leftKey.isDown)
 	{
