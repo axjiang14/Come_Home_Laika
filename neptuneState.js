@@ -5,11 +5,10 @@ document.head.appendChild(main);
 var neptuneState = {
 
 preload: function() {
-	game.load.image('background', 'assets/NeptuneBackground.png');
+	game.load.image('background', 'assets/NeptuneBackground_test.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/LPlatformS.png');
 	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
-	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
@@ -18,24 +17,37 @@ preload: function() {
 },
 
 create: function() {
+    
 	console.log('creating neptune state');
 	game.physics.startSystem(Phaser.Physics.ARCADE);
+    
+    game.world.setBounds(0 , 0, 2400, 600); //has to match with background siz...?
+    game.scale.scaleMode =Phaser.ScaleManager.SHOW_ALL;
 	
 	game.add.sprite(0, 0, 'background');
 
 	platforms = game.add.group();
 	platforms.enableBody = true;
-
-	var ground = platforms.create(0, game.world.height - 10, 'ground');
-	ground.scale.setTo(2, 2);
-	ground.body.immovable = true;
-	ground.tint = 0xff00ff;
+    
+    for(var i = 0; i < 3; ++i)
+	{
+        var ground = platforms.create(0 + i * 800, game.world.height - 10, 'ground');
+        ground.scale.setTo(2, 2);
+        ground.body.immovable = true;
+        ground.tint = 0xff00ff;
+	}
     
     player = game.add.sprite(20, game.world.height - 70, 'laika');
 	game.physics.arcade.enable(player);
-	player.body.bounce.y = 0;
-	player.body.gravity.y = 1800;
+    
+    game.physics.enable(player);
+    player.body.collideWorldBounds= true;
+	game.camera.follow(player);
 	
+    player.body.bounce.y = 0;
+	player.body.gravity.y = 1800;
+//    game.camera.deadzone = new Phaser.Rectangle(centerX - 300, 600, 1000)
+    
 	bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -60,7 +72,7 @@ create: function() {
 		l_wall.body.immovable = true;
 		l_wall.tint = 0xff00ff;
 		
-		var r_wall = platforms.create(800, i * 30, 'ground');
+		var r_wall = platforms.create(2400, i * 30, 'ground');
 		r_wall.enableBody = true;
 		r_wall.body.immovable = true;
 		r_wall.tint = 0xff00ff;
@@ -105,7 +117,7 @@ create: function() {
 	}
 	for(var i = 0; i < 5; ++i)
 	{
-		var tile = platforms.create(i * 24, 100, 'platform_tile');
+		var tile = platforms.create(i * 24, 130, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
@@ -126,7 +138,7 @@ create: function() {
 	}
 	for(var i = 0; i < 10; ++i)
 	{
-		var tile = platforms.create( i * 24, 220, 'platform_tile');
+		var tile = platforms.create( i * 24, 230, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
