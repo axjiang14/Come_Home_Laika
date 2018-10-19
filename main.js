@@ -95,3 +95,42 @@ function onPlayerHit() {
         player.hp = 10;
     }
 }
+
+function stateLoadAux(platforms, aliens) {
+}
+
+function stateLoad(filename, platforms, aliens) {
+	console.log('loading from:', filename);
+	var rawFile = new XMLHttpRequest();
+	var allText;
+	rawFile.open("GET", filename, false);
+	rawFile.onreadystatechange = function ()
+	{
+		if(rawFile.readyState === 4)
+		{
+			if(rawFile.status === 200 || rawFile.status == 0)
+			{
+				allText = rawFile.responseText;
+				//alert(allText);
+			}
+		}
+	}
+	rawFile.send(null);
+	
+	console.log('all text is:', allText);
+	var data = JSON.parse(allText);
+	
+	var i = 0;
+	data.aliens.forEach(function(){
+		
+	});
+	
+	data.tiles.forEach(function(tile){
+		console.log('got p as:', tile);
+		console.log('creating:', tile.sprite, 'at:', tile.x * 24, tile.y * 24); 
+		var platform = platforms.create(tile.x * 24, tile.y * 24, tile.sprite);
+		platform.enableBody = true;
+		platform.body.immovable = true;
+	});
+}
+

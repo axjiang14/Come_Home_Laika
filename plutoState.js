@@ -251,7 +251,8 @@ update: function()
 	
 	if(qKey.isDown) {
 		console.log('q key pressed');
-		loadState('assets/Space.png', null, null);
+		//stateLoad('assets/state_test.json', null, null);
+		game.state.start('uranusState');
 	}
 	
 	if(leftKey.isDown)
