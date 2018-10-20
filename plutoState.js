@@ -239,6 +239,7 @@ update: function()
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(healthKits, platforms);
+	game.physics.arcade.collide(aliens, aliens);
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);

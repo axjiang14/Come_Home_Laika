@@ -59,6 +59,16 @@ function handle_alien(player, alien, alienBullets) {
 	
 	--alien.shoot_ticks;
 	--alien.grounded;
+	
+	//console.log('ax is:', ax);
+	//console.log('alien.min_x is:', alien.min_x);
+	if(ax <= alien.min_x) {
+		//console.log('Alien got away!');
+		alien.body.velocity.x = Math.max(0, alien.body.velocity.x);
+	}
+	if(ax >= alien.max_x) {
+		alien.body.velocity.x = Math.min(0, alien.body.velocity.x);
+	}
 }
 
 function handleAlienBullets(alienBullets) {
@@ -121,13 +131,21 @@ function stateLoad(filename, platforms, aliens) {
 	var data = JSON.parse(allText);
 	
 	var i = 0;
-	data.aliens.forEach(function(){
+	data.aliens.forEach(function(a){
+		var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
+		alien.body.gravity.y = 1800;
+		alien.shoot_ticks = 0;
+		alien.grounded = 0;
+		alien.animations.add('left', [0, 1, 2, 3], 10, true);
+		alien.animations.add('right', [5, 6, 7, 8], 10, true);
 		
+		alien.min_x = a.min_x * 24;
+		alien.max_x = a.max_x * 24;
 	});
 	
 	data.tiles.forEach(function(tile){
-		console.log('got p as:', tile);
-		console.log('creating:', tile.sprite, 'at:', tile.x * 24, tile.y * 24); 
+		//console.log('got p as:', tile);
+		//console.log('creating:', tile.sprite, 'at:', tile.x * 24, tile.y * 24); 
 		var platform = platforms.create(tile.x * 24, tile.y * 24, tile.sprite);
 		platform.enableBody = true;
 		platform.body.immovable = true;

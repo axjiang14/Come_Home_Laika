@@ -20,7 +20,8 @@ preload: function() {
 
 create: function() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
-	
+	game.world.setBounds(0 , 0, 2400, 600); //has to match with background siz...?
+    game.scale.scaleMode =Phaser.ScaleManager.SHOW_ALL;
 	game.add.sprite(0, 0, 'background');
 
 	platforms = game.add.group();
@@ -52,6 +53,7 @@ create: function() {
 	
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
+	game.camera.follow(player);
 	
     weapon = game.add.sprite(player.x, player.y, 'weapon');
     weapon.scale.setTo(.8);
@@ -83,6 +85,11 @@ create: function() {
     alienBullets.setAll('outOfBoundsKill', true);
 	
     stateLoad('assets/state_test.json', platforms, aliens);
+    
+    aliens.forEach(function(a){
+    	console.log('made alien at:', a.body.x);
+    	console.log('alien has min x:', a.min_x);
+    });
      
 	// Add spaceship exit
 	spaceship = game.add.sprite(800 - 64, 220 - 64, 'spaceship');
