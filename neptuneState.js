@@ -63,6 +63,18 @@ create: function() {
 	
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
+	
+	aliens = game.add.group();
+	aliens.enableBody = true;
+	
+    healthKits = game.add.group();
+    healthKits.enableBody = true;
+    
+	alienBullets = game.add.group();
+	alienBullets.enableBody = true;
+    alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    alienBullets.setAll('checkWorldBounds', true);
+    alienBullets.setAll('outOfBoundsKill', true);
     
 	//  Walls
 	for(var i = 0; i < 20; ++i)
@@ -143,7 +155,32 @@ create: function() {
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-
+	
+	// Add spaceship exit
+	spaceship = game.add.sprite(600, 116, 'spaceship');
+	game.physics.arcade.enable(spaceship);
+	spaceship.enableBody = true;
+	
+	var enemy1 = aliens.create(250, game.world.height - 250, 'alien');
+	enemy1.body.gravity.y = 1800;
+	enemy1.shoot_ticks = 0;
+	enemy1.grounded = 0;
+	enemy1.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy1.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy2 = aliens.create(300, game.world.height - 500, 'alien');
+	enemy2.body.gravity.y = 1800;
+	enemy2.shoot_ticks = 0;
+	enemy2.grounded = 0;
+	enemy2.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy2.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy3 = aliens.create(450, game.world.height - 500, 'alien');
+	enemy3.body.gravity.y = 1800;
+	enemy3.shoot_ticks = 0;
+	enemy3.grounded = 0;
+	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
 },
 
 update: function()
