@@ -8,7 +8,7 @@ preload: function() {
 	game.load.image('background', 'assets/NeptuneBackground_test.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/LPlatformS.png');
-	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
+	game.load.spritesheet('alien', 'assets/LongAlien.png', 32, 48);
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
