@@ -125,7 +125,7 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
-	player.body.gravity.y = 1800;
+	player.body.gravity.y = 900;//
 	
     
     
@@ -147,7 +147,7 @@ create: function() {
     
     
 	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
-	ticksText = game.add.text(600, 16, 'Ticks: ', {fontSize: '32px'});
+	ticksText = game.add.text(600, 16, 'Time: ', {fontSize: '32px'});
 	
 	cursors = game.input.keyboard.createCursorKeys();
     //wasd
@@ -173,49 +173,49 @@ create: function() {
     
 	// Add enemies
 	var enemy = aliens.create(500, game.world.height - 70, 'alien');
-	enemy.body.gravity.y = 1800;
+	enemy.body.gravity.y = 900;
 	enemy.shoot_ticks = 0;
 	enemy.grounded = 0;
 	enemy.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy1 = aliens.create(250, game.world.height - 250, 'alien');
-	enemy1.body.gravity.y = 1800;
+	enemy1.body.gravity.y = 900;
 	enemy1.shoot_ticks = 0;
 	enemy1.grounded = 0;
 	enemy1.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy1.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy2 = aliens.create(300, game.world.height - 500, 'alien');
-	enemy2.body.gravity.y = 1800;
+	enemy2.body.gravity.y = 900;
 	enemy2.shoot_ticks = 0;
 	enemy2.grounded = 0;
 	enemy2.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy2.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy3 = aliens.create(450, game.world.height - 500, 'alien');
-	enemy3.body.gravity.y = 1800;
+	enemy3.body.gravity.y = 900;
 	enemy3.shoot_ticks = 0;
 	enemy3.grounded = 0;
 	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy4 = aliens.create(500, game.world.height - 500, 'alien');
-	enemy4.body.gravity.y = 1800;
+	enemy4.body.gravity.y = 900;
 	enemy4.shoot_ticks = 0;
 	enemy4.grounded = 0;
 	enemy4.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy4.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy5 = aliens.create(500, game.world.height - 300, 'alien');
-	enemy5.body.gravity.y = 1800;
+	enemy5.body.gravity.y = 900;
 	enemy5.shoot_ticks = 0;
 	enemy5.grounded = 0;
 	enemy5.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy5.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy6 = aliens.create(600, game.world.height - 300, 'alien');
-	enemy6.body.gravity.y = 1800;
+	enemy6.body.gravity.y = 900;
 	enemy6.shoot_ticks = 0;
 	enemy6.grounded = 0;
 	enemy6.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -223,9 +223,9 @@ create: function() {
     // Add health
     
     var healthKit1 = healthKits.create(700, 330, 'healthKit')
-    healthKit1.body.gravity.y = 1800;
+    healthKit1.body.gravity.y = 900;
     var healthKit2 = healthKits.create(700, 110, 'healthKit')
-    healthKit2.body.gravity.y = 1800;
+    healthKit2.body.gravity.y = 900;
     
     
 	// Add spaceship exit
@@ -277,7 +277,7 @@ update: function()
 	}
 	
 	++ticks;
-	ticksText.text = 'Ticks: ' +  ticks;
+	ticksText.text = 'Time: ' +  (ticks*60/3500);// into real time
 	
 	for(var i = 0; i < aliens.length; ++i)
 	{
