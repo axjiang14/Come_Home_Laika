@@ -65,15 +65,23 @@ game.state.add('uranusState', uranusState);
 game.state.start('gameStartState'); // set start until add change state funciton
 
 function collectAlien(player, alien){
-	game.state.start('gameOverState');
-	alien.kill();
+    score += 10;
+    onPlayerHit();
+    onPlayerHit();
+    onPlayerHit();
+    onPlayerHit();
+    onPlayerHit();
+    if (player.hp <= 0 ){
+        game.state.start('gameOverState');
+    }
+	alien.destroy();
 }
 
 function killPlayer(player, alienBullet){
 	alienBullet.destroy();
 	//console.log('Player got shot!');
 	onPlayerHit();
-    if (player.hp == 0 ){
+    if (player.hp <= 0 ){
         game.state.start('gameOverState');
     }
         

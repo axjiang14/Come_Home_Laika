@@ -35,7 +35,14 @@ create: function() {
         ground.scale.setTo(2, 2);
         ground.body.immovable = true;
         ground.tint = 0xff00ff;
-	}
+    }
+    for(var i = 0; i < 3; ++i)
+	{
+        var ground = platforms.create(0 + i * 800, -30, 'ground');
+        ground.scale.setTo(2, 1);
+        ground.body.immovable = true;
+        ground.tint = 0xff00ff;
+    }
     
     player = game.add.sprite(20, game.world.height - 70, 'laika');
 	game.physics.arcade.enable(player);
@@ -154,10 +161,50 @@ create: function() {
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
-	}
+    }
+    
+    //new wall
+    
+    for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24 + 2000, 230, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24 + 1500, 330, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24 + 1200, 130, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24 + 1000 , 100, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24 + 2000, 130, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }for(var i = 0; i < 10; ++i)
+	{
+		var tile = platforms.create( i * 24 + 1500, 150, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
 	
 	// Add spaceship exit
-	spaceship = game.add.sprite(600, 116, 'spaceship');
+	spaceship = game.add.sprite(2300, 116, 'spaceship');
 	game.physics.arcade.enable(spaceship);
 	spaceship.enableBody = true;
 	
@@ -181,6 +228,30 @@ create: function() {
 	enemy3.grounded = 0;
 	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
     enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy4 = aliens.create(1200, game.world.height - 500, 'alien');
+	enemy3.body.gravity.y = 1800;
+	enemy3.shoot_ticks = 0;
+	enemy3.grounded = 0;
+	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy5 = aliens.create(800, game.world.height - 500, 'alien');
+	enemy3.body.gravity.y = 1800;
+	enemy3.shoot_ticks = 0;
+	enemy3.grounded = 0;
+	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    var enemy6 = aliens.create(1500, game.world.height - 500, 'alien');
+	enemy3.body.gravity.y = 1800;
+	enemy3.shoot_ticks = 0;
+	enemy3.grounded = 0;
+	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+    
+    scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
 },
 
 update: function()
