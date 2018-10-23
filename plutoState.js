@@ -30,6 +30,11 @@ create: function() {
 	ground.body.immovable = true;
 	ground.tint = 0xff00ff;
     
+    var ceiling = platforms.create(0, -30, 'ground');
+	ceiling.scale.setTo(2, 1);
+	ceiling.body.immovable = true;
+	ceiling.tint = 0xff00ff;
+    
     
     
 	//  Walls
@@ -277,7 +282,7 @@ update: function()
 	}
 	
 	++ticks;
-	ticksText.text = 'Time: ' +  (ticks*60/3500);// into real time
+	ticksText.text = 'Time: ' +  (ticks*60/3500).toFixed(1);// into real time
 	
 	for(var i = 0; i < aliens.length; ++i)
 	{

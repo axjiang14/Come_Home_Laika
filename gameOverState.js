@@ -50,7 +50,7 @@ var gameOverState = {
         scoreText = game.add.text(16, 16, 'Score: ' + score, {fontSize: '32px', fill: '#ffffff'});
 		gameOverText = game.add.text(255, game.world.centerY - 50, 'Game Over', {font: '72px Arial', fill: '#ffffff', align: 'center'});
         
-        var restartButton = game.add.button(game.world.centerX - 50, game.world.centerY + 25, 'restartButton', function(){game.state.start('solarSystem')});// go back to solarSystem.
+        var restartButton = game.add.button(gameOverText.x + 100, gameOverText.y + 75, 'restartButton', function(){game.state.start('solarSystem')});// go back to solarSystem.
         restartButton.onInputDown.add(this.tint, restartButton);
         restartButton.onInputUp.add(this.unTint, restartButton);
         
@@ -78,7 +78,7 @@ var gameOverState = {
 		}
 		if(upKey.isDown && player.body.touching.down)
 		{
-			player.body.velocity.y = -600;
+			player.body.velocity.y = -1200;
 		}
 	},
     
