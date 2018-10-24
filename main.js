@@ -152,3 +152,73 @@ function stateLoad(filename, platforms, aliens) {
 	});
 }
 
+function everyPreload() {
+	game.load.image('background', 'assets/Background.png');
+	game.load.image('ground', 'assets/platform.png');
+	game.load.image('platform_tile', 'assets/DPlatformS.png');
+	game.load.image('tile_light', 'assets/LPlatformS.PNG');
+	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
+	game.load.image('diamond', 'assets/diamond.png');
+	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
+    game.load.image('bullet', 'assets/Beam-Pink.png');
+    game.load.image('healthKit', 'assets/firstaid.png');  
+    game.load.audio('bgm', 'assets/spaceBGM.mp3');
+	game.load.image('white_tile', 'assets/white_rect.png');
+	game.load.image('spaceship', 'assets/Spaceship.PNG');
+}
+
+function everyCreate() {
+	game.physics.startSystem(Phaser.Physics.ARCADE);
+
+	platforms = game.add.group();
+	platforms.enableBody = true;
+
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.createMultiple(300, 'bullet'); // NUMBER OF BULLETS ALLOWED;
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+
+	game.physics.arcade.enable(player);
+    player.body.collideWorldBounds= true;
+	game.camera.follow(player);
+	player.body.bounce.y = 0;
+	
+	// HP
+	player.hp = 10; // for the next stage we want to start from the old HP
+	player.hpBox = game.add.sprite(300, 16, 'white_tile');
+	player.hpBox.scale.setTo(10, 1);
+	player.hpBox.tint = 0x20ff00;
+	
+	player.animations.add('left', [0, 1, 2, 3], 10, true);
+	player.animations.add('right', [5, 6, 7, 8], 10, true);
+	
+    weapon = game.add.sprite(player.x, player.y, 'weapon');
+    weapon.scale.setTo(.8);
+    weapon.anchor.setTo(player.x, player.y); // spawn weapon
+    weapon.reset(player.x,player.y);
+    
+	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
+	
+	cursors = game.input.keyboard.createCursorKeys();
+    //wasd
+    leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
+    rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
+    upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    
+	
+	aliens = game.add.group();
+	aliens.enableBody = true;
+	
+    healthKits = game.add.group();
+    healthKits.enableBody = true;
+    
+	alienBullets = game.add.group();
+	alienBullets.enableBody = true;
+    alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    alienBullets.setAll('checkWorldBounds', true);
+    alienBullets.setAll('outOfBoundsKill', true);
+}
+

@@ -1,8 +1,8 @@
 var gameStartState = {
 	preload: function()
 	{
-		game.load.image('homeScreen', 'assets/homescreen.png');
-        game.load.image('startButton', 'assets/start.png');
+		game.load.image('homeScreen', 'assets/HomeScreen.png');
+        game.load.image('startButton', 'assets/Start.png');
         
 	},
 	
