@@ -154,6 +154,7 @@ function stateLoad(filename, platforms, aliens) {
 
 function everyPreload() {
 	game.load.image('background', 'assets/Background.png');
+	game.load.image('neptuneBackground', 'assets/NeptuneBackground_test.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
@@ -181,7 +182,7 @@ function everyCreate() {
     bullets.setAll('outOfBoundsKill', true);
 
 	game.physics.arcade.enable(player);
-    player.body.collideWorldBounds= true;
+    //player.body.collideWorldBounds= true;
 	game.camera.follow(player);
 	player.body.bounce.y = 0;
 	
@@ -220,5 +221,53 @@ function everyCreate() {
     alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
     alienBullets.setAll('checkWorldBounds', true);
     alienBullets.setAll('outOfBoundsKill', true);
+}
+
+function everyUpdate() {
+	game.physics.arcade.collide(player, platforms);
+	game.physics.arcade.collide(aliens, platforms);
+	game.physics.arcade.collide(healthKits, platforms);
+	game.physics.arcade.collide(aliens, aliens);
+	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
+	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
+	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
+    game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
+	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
+	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
+    
+	player.body.velocity.x = 0;
+	
+	if(leftKey.isDown)
+	{
+		player.body.velocity.x = -300; // can be gravity
+		player.animations.play('left');
+	}
+	else if(rightKey.isDown)
+	{
+		player.body.velocity.x = 300; // can be gravity
+		player.animations.play('right');
+	}
+	else
+	{
+		player.animations.stop();
+		player.frame = 4;
+	}
+	if(upKey.isDown && player.body.touching.down)
+	{
+		player.body.velocity.y = - 600; //some what like gravitiy
+	}
+	
+	aliens.forEach(function(enemy) {
+		handle_alien(player, enemy, alienBullets);
+	});
+	
+    weapon.rotation = game.physics.arcade.angleToPointer(weapon);
+    if (game.input.activePointer.isDown) {
+        fire();
+    }
+    
+    handleAlienBullets(alienBullets);
+    
+	scoreText.text = 'Score: ' + score;
 }
 
