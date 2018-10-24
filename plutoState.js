@@ -258,7 +258,7 @@ update: function()
 	if(qKey.isDown) {
 		console.log('q key pressed');
 		//stateLoad('assets/state_test.json', null, null);
-		game.state.start('uranusState');
+		game.state.start('neptuneState');
 	}
 	
 	if(leftKey.isDown)

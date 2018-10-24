@@ -10,6 +10,7 @@ preload: function() {
 	game.load.image('platform_tile', 'assets/LPlatformS.png');
 	game.load.spritesheet('alien', 'assets/LongAlien.png', 32, 48);
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
+    game.load.image('healthKit', 'assets/firstaid.png');
     game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
@@ -36,7 +37,7 @@ create: function() {
         ground.body.immovable = true;
         ground.tint = 0xff00ff;
     }
-    for(var i = 0; i < 3; ++i)
+    for(var i = 0; i < 3; ++i) // ceiling
 	{
         var ground = platforms.create(0 + i * 800, -30, 'ground');
         ground.scale.setTo(2, 1);
@@ -98,65 +99,54 @@ create: function() {
 	}
 	
 	// Make the actual map
-	for(var i = 0; i < 20; ++i)
-	{
+	for(var i = 0; i < 20; ++i){
 		var tile = platforms.create(348 + i * 24, 500, 'platform_tile');
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-    
-    
-	for(var i = 0; i < 12; ++i)
-	{
+	for(var i = 0; i < 12; ++i){
 		var tile = platforms.create(i * 24, 420, 'platform_tile');
 		tile.scale.setTo(1, 1);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 10; ++i)
-	{
+	for(var i = 0; i < 10; ++i){
 		var tile = platforms.create(540+ i * 24, 420, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 10; ++i)
-	{
+	for(var i = 0; i < 10; ++i){
 		var tile = platforms.create(296+ i * 24, 322, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 5; ++i)
-	{
+	for(var i = 0; i < 5; ++i){
 		var tile = platforms.create(416 + i * 24, 252, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 5; ++i)
-	{
-		var tile = platforms.create(i * 24, 130, 'platform_tile');
+	for(var i = 0; i < 5; ++i){
+		var tile = platforms.create(i * 24, 140, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
-	}
-	for(var i = 0; i < 10; ++i)
-	{
+	}// put healthKit
+	for(var i = 0; i < 10; ++i){
 		var tile = platforms.create(512 + i * 24, 180, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 6; ++i)
-	{
+	for(var i = 0; i < 6; ++i){
 		var tile = platforms.create(512, 180 + i * 24, 'platform_tile');
 		//tile.scale.setTo(0.5, 1);
 		tile.enableBody = true;
 		tile.body.immovable = true;
 	}
-	for(var i = 0; i < 10; ++i)
-	{
+    for(var i = 0; i < 10; ++i){
 		var tile = platforms.create( i * 24, 230, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
@@ -165,46 +155,84 @@ create: function() {
     
     //new wall
     
-    for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create( i * 24 + 2000, 230, 'platform_tile');
-		//tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-    }for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create( i * 24 + 1500, 330, 'platform_tile');
-		//tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-    }for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create( i * 24 + 1200, 130, 'platform_tile');
-		//tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-    }for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create( i * 24 + 1000 , 100, 'platform_tile');
-		//tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-    }for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create( i * 24 + 2000, 130, 'platform_tile');
-		//tile.scale.setTo(1, 0.25);
-		tile.enableBody = true;
-		tile.body.immovable = true;
-    }for(var i = 0; i < 10; ++i)
-	{
-		var tile = platforms.create( i * 24 + 1500, 150, 'platform_tile');
+    for(var i = 0; i < 10; ++i){
+		var tile = platforms.create( i * 24 + 900 , 410, 'platform_tile');
 		//tile.scale.setTo(1, 0.25);
 		tile.enableBody = true;
 		tile.body.immovable = true;
     }
-	
+    for(var i = 0; i < 10; ++i){
+		var tile = platforms.create( i * 24 + 1200, 500, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+    for(var i = 0; i < 10; ++i){ 
+		var tile = platforms.create( i * 24 + 1200 , 200, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    } // put healthKit
+    for(var i = 0; i < 10; ++i){
+		var tile = platforms.create( i * 24 + 1500, 500, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+    
+    for(var i = 0; i < 11; ++i){
+		var tile = platforms.create( i * 24 + 2000, 500, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+    for(var i = 0; i < 10; ++i){
+		var tile = platforms.create( i * 24 + 1500, 410, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }// put healthKit
+    for(var i = 0; i < 10; ++i){
+		var tile = platforms.create( i * 24 + 2000, 410, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+	for(var i = 0; i < 11; ++i){
+		var tile = platforms.create( i * 24 + 2000, 320, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+	for(var i = 0; i < 10; ++i){
+		var tile = platforms.create( i * 24 + 2000, 230, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+    for(var i = 0; i < 20; ++i){
+		var tile = platforms.create( i * 24 + 2000, 140, 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+	for(var i = 0; i < 21; ++i){
+		var tile = platforms.create( 1500, 24 * i , 'platform_tile');
+		//tile.scale.setTo(1, 0.25);
+		tile.enableBody = true;
+		tile.body.immovable = true;
+    }
+	//healthKits
+    var healthKit1 = healthKits.create(50, 100, 'healthKit')
+    healthKit1.body.gravity.y = 900;
+    var healthKit2 = healthKits.create(1300, 150, 'healthKit')
+    healthKit2.body.gravity.y = 900;
+    var healthKit3 = healthKits.create(1550, 350, 'healthKit')
+    healthKit3.body.gravity.y = 900;
+    
+    
 	// Add spaceship exit
-	spaceship = game.add.sprite(2300, 116, 'spaceship');
+	spaceship = game.add.sprite(2300, 75, 'spaceship');
 	game.physics.arcade.enable(spaceship);
 	spaceship.enableBody = true;
 	
@@ -230,25 +258,25 @@ create: function() {
     enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy4 = aliens.create(1200, game.world.height - 500, 'alien');
-	enemy3.body.gravity.y = 1800;
-	enemy3.shoot_ticks = 0;
-	enemy3.grounded = 0;
-	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
-    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+	enemy4.body.gravity.y = 1800;
+	enemy4.shoot_ticks = 0;
+	enemy4.grounded = 0;
+	enemy4.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy4.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy5 = aliens.create(800, game.world.height - 500, 'alien');
-	enemy3.body.gravity.y = 1800;
-	enemy3.shoot_ticks = 0;
-	enemy3.grounded = 0;
-	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
-    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+	enemy5.body.gravity.y = 1800;
+	enemy5.shoot_ticks = 0;
+	enemy5.grounded = 0;
+	enemy5.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy5.animations.add('right', [5, 6, 7, 8], 10, true);
     
     var enemy6 = aliens.create(1500, game.world.height - 500, 'alien');
-	enemy3.body.gravity.y = 1800;
-	enemy3.shoot_ticks = 0;
-	enemy3.grounded = 0;
-	enemy3.animations.add('left', [0, 1, 2, 3], 10, true);
-    enemy3.animations.add('right', [5, 6, 7, 8], 10, true);
+	enemy6.body.gravity.y = 1800;
+	enemy6.shoot_ticks = 0;
+	enemy6.grounded = 0;
+	enemy6.animations.add('left', [0, 1, 2, 3], 10, true);
+    enemy6.animations.add('right', [5, 6, 7, 8], 10, true);
     
     
     scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
@@ -258,17 +286,25 @@ update: function()
 {
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms);
-	game.physics.arcade.collide(diamonds, platforms);
+	game.physics.arcade.collide(healthKits, platforms);
+	game.physics.arcade.collide(aliens, aliens);
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
+    game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
 	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
     
 	player.body.velocity.x = 0;
-	
+	if(qKey.isDown) {
+		console.log('q key pressed');
+		//stateLoad('assets/state_test.json', null, null);
+		game.state.start('uranusState');
+	}
+    
+    
 	if(leftKey.isDown)
 	{
 		player.body.velocity.x = -300; // can be gravity
