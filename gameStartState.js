@@ -2,7 +2,7 @@ var gameStartState = {
 	preload: function()
 	{
 		game.load.image('homeScreen', 'assets/HomeScreen.png');
-        game.load.image('startButton', 'assets/Start.png');
+        game.load.image('startButton', 'assets/buttonStart.png');
         
 	},
 	
@@ -11,7 +11,7 @@ var gameStartState = {
         game.add.sprite(0, 0, 'homeScreen');
 		
 		
-        var startButton = game.add.button(game.world.centerX + 50, game.world.centerY + 125, 'startButton', function(){game.state.start('solarSystem')});// go to solarSystem.
+        var startButton = game.add.button(game.world.centerX + 50, game.world.centerY + 125, 'startButton', function(){game.state.start('solarSystem')});// go to solarSystem
         startButton.onInputDown.add(this.tint, startButton);
         startButton.onInputUp.add(this.unTint, startButton);        
         

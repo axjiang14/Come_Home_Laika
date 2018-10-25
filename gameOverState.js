@@ -1,16 +1,17 @@
 var gameOverState = {
 	preload: function()
 	{
-		game.load.image('background', 'assets/background.png');
+		game.load.image('homeScreen', 'assets/GameOverScreen.png');
 		game.load.image('ground', 'assets/platform.png');
 		game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
-        game.load.image('restartButton', 'assets/restartButton.png');
+        game.load.image('restartButton', 'assets/buttonRestart.png');
         game.load.audio('buttonBGM', 'assets/backGroundMusic/buttonBGM.mp3');
 	},
 	
 	create: function()
 	{
 		game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.add.sprite(0, 0, 'homeScreen');
 		platforms = game.add.group();
 		platforms.enableBody = true;
 		var ground = platforms.create(0, game.world.height - 10, 'ground');
@@ -34,7 +35,12 @@ var gameOverState = {
 			r_wall.enableBody = true;
 			r_wall.body.immovable = true;
 			r_wall.tint = 0xff00ff;
+            
 		}
+        
+        var restartPlatform = platforms.create(275,300, 'restartButton')
+        restartPlatform.enableBody = true;
+        restartPlatform.body.immovable = true;
 		
 		player = game.add.sprite(100, game.world.height - 150, 'laika');
 		game.physics.arcade.enable(player);
@@ -48,9 +54,9 @@ var gameOverState = {
         
         
         scoreText = game.add.text(16, 16, 'Score: ' + score, {fontSize: '32px', fill: '#ffffff'});
-		gameOverText = game.add.text(255, game.world.centerY - 50, 'Game Over', {font: '72px Arial', fill: '#ffffff', align: 'center'});
+		
         
-        var restartButton = game.add.button(gameOverText.x + 100, gameOverText.y + 75, 'restartButton', function(){game.state.start('solarSystem')});// go back to solarSystem.
+        var restartButton = game.add.button(275, 300, 'restartButton', function(){game.state.start('solarSystem')});// go back to solarSystem.
         restartButton.onInputDown.add(this.tint, restartButton);
         restartButton.onInputUp.add(this.unTint, restartButton);
         
