@@ -3,10 +3,8 @@ function fire() {
 	//console.log('bullets is:', bullets);
     if(this.game != null && game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
-        //console.log('firing2');
     	var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
-    	game.physics.arcade.moveToPointer(bullet, bulletSpeed);
-        //console.log('here2');
+    	game.physics.arcade.moveToXY(bullet, crosshair.x, crosshair.y, bulletSpeed);
     }
 }
 
@@ -166,9 +164,13 @@ function everyPreload() {
     game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
 	game.load.image('spaceship', 'assets/Spaceship.PNG');
+	game.load.image('crosshair', 'assets/crosshair.png');
 }
 
 function everyCreate() {
+	game.canvas.addEventListener('mousedown', requestLock);
+    game.input.addMoveCallback(moveCursor, this);
+
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	platforms = game.add.group();
@@ -181,7 +183,11 @@ function everyCreate() {
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
 
+	crosshair = game.add.sprite(400, 300, 'crosshair');
+	//crosshair.fixedToCamera = true;
+	
 	game.physics.arcade.enable(player);
+	game.physics.arcade.enable(crosshair);
     //player.body.collideWorldBounds= true;
 	game.camera.follow(player);
 	player.body.bounce.y = 0;
@@ -236,15 +242,18 @@ function everyUpdate() {
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
 	player.body.velocity.x = 0;
+	//crosshair.body.velocity.x = 0;
 	
 	if(leftKey.isDown)
 	{
 		player.body.velocity.x = -300; // can be gravity
+		//crosshair.body.velocity.x = -300;
 		player.animations.play('left');
 	}
 	else if(rightKey.isDown)
 	{
 		player.body.velocity.x = 300; // can be gravity
+		//crosshair.body.velocity.x = 300;
 		player.animations.play('right');
 	}
 	else
@@ -269,5 +278,24 @@ function everyUpdate() {
     handleAlienBullets(alienBullets);
     
 	scoreText.text = 'Score: ' + score;
+}
+
+function requestLock() {
+	game.input.mouse.requestPointerLock();
+}
+
+function moveCursor(pointer, x, y, click) {
+
+    //  If the cursor is locked to the game, and the callback was not fired from a 'click' event
+    //  (such as a mouse click or touch down) - as then it might contain incorrect movement values
+    //if (game.input.mouse.locked && !click)
+    {
+        crosshair.x += game.input.mouse.event.movementX;
+        crosshair.y += game.input.mouse.event.movementY;
+        //console.log('game.input.mouse:', x);
+        //crosshair.x = game.input.x;
+        //crosshair.y = game.input.y;
+    }
+
 }
 

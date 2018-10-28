@@ -31,7 +31,11 @@ create: function() {
 
 update: function()
 {
+	//console.log('sprite at:', selector.x, selector.y);
 	everyUpdate();
+	//selector.x = game.input.x;
+	//selector.y = game.input.y;
+	//console.log(game.input.x);
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
 },
 
