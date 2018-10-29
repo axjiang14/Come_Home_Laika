@@ -4,7 +4,7 @@ function fire() {
     if(this.game != null && game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
     	var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
-    	game.physics.arcade.moveToXY(bullet, crosshair.x, crosshair.y, bulletSpeed);
+    	game.physics.arcade.moveToXY(bullet, crosshair.x + 2, crosshair.y + 7, bulletSpeed); // +2 and + 7 seems to be the accurate rate
     }
 }
 
