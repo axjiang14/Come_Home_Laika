@@ -151,12 +151,15 @@ function stateLoad(filename, platforms, aliens) {
 }
 
 function everyPreload() {
-	game.load.image('background', 'assets/Background.png');
+	game.load.image('background', 'assets/BGPluto.png');
 	game.load.image('neptuneBackground', 'assets/NeptuneBackground_test.png');
+    game.load.image('uranusBackground', 'assets/BGUranus.png');
+    game.load.image('saturnBackground', 'assets/BGSaturn.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
 	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
+    game.load.spritesheet('alienBlue', 'assets/LongAlien.png', 32, 48);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.png');

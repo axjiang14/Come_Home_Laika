@@ -19,6 +19,11 @@ create: function() {
 	player.body.gravity.y = 1800;
 	
 	stateLoad('states/neptune.json', platforms, aliens);
+    
+    //add spaceship
+    spaceship = game.add.sprite(2300, 500, 'spaceship');
+	game.physics.arcade.enable(spaceship);
+	spaceship.enableBody = true;
 },
 
 update: function() {
@@ -28,7 +33,10 @@ update: function() {
 
 spaceshipLeave: function() {
 	console.log('Got to spaceship!');
-	planets_unlocked = Math.max(planetsUnlocked, 2);
+    
+	console.log('planetsUnlocked=', planetsUnlocked);
+	planetsUnlocked = Math.max(planetsUnlocked, 2);
+    console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
 }
 

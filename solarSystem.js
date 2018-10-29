@@ -47,7 +47,9 @@ var solarSystem = {
         p4.onInputDown.add(this.tint, p4);
         p5.onInputDown.add(this.tint, p5);
         p6.onInputDown.add(this.tint, p6);
+        p6.onInputDown.add(this.changeSaturn, p6);
         p7.onInputDown.add(this.tint, p7);
+        p7.onInputDown.add(this.changeUranus, p7);
         p8.onInputDown.add(this.tint, p8);
         p8.onInputDown.add(this.changeNeptune, p8);
         p9.onInputDown.add(this.tint, p9);
@@ -97,6 +99,18 @@ var solarSystem = {
     	console.log('trying to change to neptune w/ planetsUnlocked=', planetsUnlocked);
     	if(planetsUnlocked >= 1)
     		game.state.start('neptuneState');
+    },
+    
+    changeUranus: function() {
+    	console.log('trying to change to uranus w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 2)
+    		game.state.start('uranusState');
+    },
+    
+    changeSaturn: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 3)
+    		game.state.start('saturnState');
     },
     
     update: function(){

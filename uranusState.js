@@ -4,7 +4,7 @@ document.head.appendChild(main);
 
 var uranusState = {
 preload: function() {
-	game.load.image('background', 'assets/Background.png');
+	game.load.image('background', 'assets/BGUranus.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
@@ -158,7 +158,7 @@ update: function()
 
 spaceshipLeave: function() {
 	console.log('Got to spaceship!');
-	planetsUnlocked = Math.max(planetsUnlocked, 2);
+	planetsUnlocked = Math.max(planetsUnlocked, 3);
 	console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
 }

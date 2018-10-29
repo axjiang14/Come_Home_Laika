@@ -1,133 +1,133 @@
 {
   "aliens": [
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 2,
       "y": 7,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 3,
       "y": 10,
       "min_x": 1,
       "max_x": 9
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 3,
       "y": 16,
       "min_x": 1,
       "max_x": 11
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 18,
       "y": 10,
       "min_x": 16,
       "max_x": 19
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 18,
       "y": 20,
       "min_x": 15,
       "max_x": 32
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 23,
       "y": 7,
       "min_x": 20,
       "max_x": 29
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 25,
       "y": 17,
       "min_x": 21,
       "max_x": 30
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 29,
       "y": 20,
       "min_x": 15,
       "max_x": 32
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 39,
       "y": 16,
       "min_x": 36,
       "max_x": 45
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 43,
       "y": 16,
       "min_x": 36,
       "max_x": 45
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 51,
       "y": 7,
       "min_x": 48,
       "max_x": 58
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 53,
       "y": 20,
       "min_x": 48,
       "max_x": 58
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 55,
       "y": 7,
       "min_x": 48,
       "max_x": 58
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 70,
       "y": 16,
       "min_x": 63,
       "max_x": 71
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 71,
       "y": 20,
       "min_x": 63,
       "max_x": 71
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 85,
       "y": 7,
       "min_x": 83,
       "max_x": 92
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 88,
       "y": 11,
       "min_x": 84,
       "max_x": 93
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 88,
       "y": 15,
       "min_x": 83,
       "max_x": 92
     },
     {
-      "sprite": "alien",
+      "sprite": "alienBlue",
       "x": 90,
       "y": 3,
       "min_x": 84,
