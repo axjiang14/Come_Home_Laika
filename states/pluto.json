@@ -1,74 +1,79 @@
 {
+  "laika": {
+    "sprite": 0,
+    "x": 2,
+    "y": 23
+  },
   "aliens": [
     {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 2,
       "y": 7,
-      "min_x": 1,
-      "max_x": 4
+      "min_x": 2,
+      "max_x": 2
     },
     {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 2,
       "y": 13,
-      "min_x": 1,
+      "min_x": 2,
+      "max_x": 2
+    },
+    {
+      "sprite": "alien1",
+      "x": 2,
+      "y": 16,
+      "min_x": 2,
+      "max_x": 2
+    },
+    {
+      "sprite": "alien1",
+      "x": 4,
+      "y": 19,
+      "min_x": 4,
       "max_x": 4
     },
     {
-      "sprite": "alien",
-      "x": 2,
-      "y": 16,
-      "min_x": 1,
+      "sprite": "alien1",
+      "x": 7,
+      "y": 19,
+      "min_x": 7,
       "max_x": 7
     },
     {
-      "sprite": "alien",
-      "x": 4,
-      "y": 19,
-      "min_x": 1,
-      "max_x": 18
-    },
-    {
-      "sprite": "alien",
-      "x": 7,
-      "y": 19,
-      "min_x": 1,
-      "max_x": 18
-    },
-    {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 10,
       "y": 7,
-      "min_x": 8,
-      "max_x": 18
+      "min_x": 10,
+      "max_x": 10
     },
     {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 14,
       "y": 7,
-      "min_x": 8,
-      "max_x": 18
+      "min_x": 14,
+      "max_x": 14
     },
     {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 27,
       "y": 9,
-      "min_x": 22,
-      "max_x": 32
+      "min_x": 27,
+      "max_x": 27
     },
     {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 28,
       "y": 17,
-      "min_x": 27,
-      "max_x": 32
+      "min_x": 28,
+      "max_x": 29
     },
     {
-      "sprite": "alien",
+      "sprite": "alien1",
       "x": 29,
       "y": 17,
-      "min_x": 27,
-      "max_x": 32
+      "min_x": 28,
+      "max_x": 29
     }
   ],
   "tiles": [

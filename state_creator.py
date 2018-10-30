@@ -1,9 +1,13 @@
 import sys, json, re
 from PIL import Image
 
-pixel_map = {(0, 255, 0): 'tile_light',
+pixel_map = {
+			 (255, 255, 255): '',
+			 (0, 0, 255): 'laika',
+			 (0, 255, 255): 'spaceship',
+			 (0, 255, 0): 'tile_light',
 			 (0, 0, 0): 'platform_tile',
-			 (255, 0, 0): 'alien'}
+			 (255, 0, 0): 'alien1'}
 
 def main():
 	state_pic = sys.argv[1]
@@ -15,14 +19,22 @@ def main():
 	enemies = []
 	tiles = []
 	
+	json_obj = {}
+	
 	for x in range(pic.width):
 		for y in range(pic.height):
-			pixel = pic.getpixel((x, y))
+			pixel = pic.getpixel((x, y))[:3]
+			
+			if pixel not in pixel_map:
+				print('Unknown pixel color:', pixel, 'at', str(x) + ',' + str(y))
+			
 			obj = pixel_map.get(pixel)
 			
 			if obj:
 				print('Placing:', obj, 'at', x, ',', y)
-				if 'tile' in obj:
+				if obj == 'laika':
+					json_obj['laika'] = {'sprite': 0, 'x': x, 'y': y}
+				elif 'tile' in obj:
 					tiles.append({'sprite': obj, 'x': x, 'y': y})
 				elif 'alien' in obj:
 					# Find alien minmax x
@@ -39,7 +51,9 @@ def main():
 						
 					enemies.append({'sprite': obj, 'x': x, 'y': y, 'min_x': min_x, 'max_x': max_x})
 	
-	json_obj = {'aliens': enemies, 'tiles': tiles}
+	json_obj['aliens'] = enemies
+	json_obj['tiles'] = tiles
+		
 	with open(filename + '.json', 'w') as f:
 		json.dump(json_obj, f, indent=2)
 

@@ -1,3 +1,12 @@
+var Alien1 = class {
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+		
+		this.spritesheet = 'assets/Alien1.png';
+	}
+}
+
 function fire() {
 	//console.log('game is:', game);
 	//console.log('bullets is:', bullets);
@@ -107,7 +116,7 @@ function onPlayerHit() {
 function stateLoadAux(platforms, aliens) {
 }
 
-function stateLoad(filename, platforms, aliens) {
+function stateLoad(filename) {
 	console.log('loading from:', filename);
 	var rawFile = new XMLHttpRequest();
 	var allText;
@@ -119,7 +128,6 @@ function stateLoad(filename, platforms, aliens) {
 			if(rawFile.status === 200 || rawFile.status == 0)
 			{
 				allText = rawFile.responseText;
-				//alert(allText);
 			}
 		}
 	}
@@ -128,7 +136,10 @@ function stateLoad(filename, platforms, aliens) {
 	console.log('all text is:', allText);
 	var data = JSON.parse(allText);
 	
-	var i = 0;
+	player.x = data.laika.x * 24;
+	player.y = data.laika.y * 24 - 24;
+	console.log('putting player at:', player.x, player.y);
+	
 	data.aliens.forEach(function(a){
 		var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
 		alien.body.gravity.y = 1800;
@@ -142,8 +153,6 @@ function stateLoad(filename, platforms, aliens) {
 	});
 	
 	data.tiles.forEach(function(tile){
-		//console.log('got p as:', tile);
-		//console.log('creating:', tile.sprite, 'at:', tile.x * 24, tile.y * 24); 
 		var platform = platforms.create(tile.x * 24, tile.y * 24, tile.sprite);
 		platform.enableBody = true;
 		platform.body.immovable = true;
@@ -158,7 +167,7 @@ function everyPreload() {
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
-	game.load.spritesheet('alien', 'assets/Alien1.png', 32, 40);
+	game.load.spritesheet('alien1', 'assets/Alien1.png', 32, 40);
     game.load.spritesheet('alienBlue', 'assets/LongAlien.png', 32, 48);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);

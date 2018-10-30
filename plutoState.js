@@ -9,7 +9,8 @@ preload: function() {
 
 create: function() {
 	game.add.sprite(0, 0, 'background');
-	player = game.add.sprite(20, game.world.height - 70, 'laika');
+	player = game.add.sprite(0, 0, 'laika');
+	console.log('player is:', player);
 	
 	everyCreate();
 	player.hp = 10;
@@ -21,7 +22,7 @@ create: function() {
     var healthKit2 = healthKits.create(650, 110, 'healthKit')
     healthKit2.body.gravity.y = 900;
     
-	stateLoad('states/pluto.json', platforms, aliens);   
+	stateLoad('states/pluto.json');   
     
 	// Add spaceship exit
 	spaceship = game.add.sprite(720, 178, 'spaceship');
