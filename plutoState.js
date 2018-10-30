@@ -12,7 +12,7 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
-	
+	player.hp = 10;
 	player.body.gravity.y = 900;
 
     // Add health
@@ -44,6 +44,7 @@ spaceshipLeave: function() {
 	planetsUnlocked = Math.max(planetsUnlocked, 1);
 	console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
+    savedHP = player.hp;
 }
 
 }// main state

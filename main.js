@@ -187,7 +187,7 @@ function everyCreate() {
     bullets.setAll('outOfBoundsKill', true);
 
 	crosshair = game.add.sprite(400, 300, 'crosshair');
-	//crosshair.fixedToCamera = true;
+	crosshair.fixedToCamera = true;
 	
 	game.physics.arcade.enable(player);
 	game.physics.arcade.enable(crosshair);
@@ -196,10 +196,13 @@ function everyCreate() {
 	player.body.bounce.y = 0;
 	
 	// HP
-	player.hp = 10; // for the next stage we want to start from the old HP
+    
+    player.hp = 10;
+    
 	player.hpBox = game.add.sprite(300, 16, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
+    player.hpBox.fixedToCamera = true;
 	
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -210,6 +213,7 @@ function everyCreate() {
     weapon.reset(player.x,player.y);
     
 	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
+    scoreText.fixedToCamera = true;
 	
 	cursors = game.input.keyboard.createCursorKeys();
     //wasd
@@ -237,7 +241,9 @@ function everyUpdate() {
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(healthKits, platforms);
 	game.physics.arcade.collide(aliens, aliens);
-	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
+//	game.physics.arcade.collide(crosshair, platforms);
+	
+    game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
     game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
@@ -298,6 +304,27 @@ function moveCursor(pointer, x, y, click) {
         //console.log('game.input.mouse:', x);
         //crosshair.x = game.input.x;
         //crosshair.y = game.input.y;
+        crosshair.fixedToCamera = true;
+//        if (crosshair.x < 0) {
+//                crosshair.x = 0;
+//            }
+//        else if (crosshair.x > 780) {
+//                crosshair = 780;
+//            }
+//        else {
+//            crosshair.x += game.input.mouse.event.movementX;
+//            }
+//        if (crosshair.y < 0) {
+//                crosshairs.y = 0;
+//            }
+//        else if (crosshair.y > 600) {
+//                crosshair.y = 600;
+//            }
+//        else {
+//            crosshair.y += game.input.mouse.event.movementY;
+//             }
+
+        crosshair.fixedToCamera = true;
     }
 
 }

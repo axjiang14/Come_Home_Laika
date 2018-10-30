@@ -15,13 +15,15 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
-
+    player.hp = savedHP + 1; // starts with old HP +1 for the coloring
+    onPlayerHit(); // to color
+    
 	player.body.gravity.y = 1800;
 	
 	stateLoad('states/neptune.json', platforms, aliens);
     
     //add spaceship
-    spaceship = game.add.sprite(2300, 500, 'spaceship');
+    spaceship = game.add.sprite(2300, 30, 'spaceship');
 	game.physics.arcade.enable(spaceship);
 	spaceship.enableBody = true;
 },
@@ -29,6 +31,7 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
+    
 },
 
 spaceshipLeave: function() {
@@ -38,6 +41,7 @@ spaceshipLeave: function() {
 	planetsUnlocked = Math.max(planetsUnlocked, 2);
     console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
+    savedHP = player.hp;
 }
 
 }
