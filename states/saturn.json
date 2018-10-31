@@ -1,4 +1,9 @@
 {
+  "laika": {
+    "sprite": 0,
+    "x": 2,
+    "y": 23
+  },
   "aliens": [],
   "tiles": [
     {

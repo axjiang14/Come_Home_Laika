@@ -13,7 +13,8 @@ function fire() {
     if(this.game != null && game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
     	var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
-    	game.physics.arcade.moveToXY(bullet, crosshair.x + 2, crosshair.y + 7, bulletSpeed); // +2 and + 7 seems to be the accurate rate
+    	game.physics.arcade.moveToPointer(bullet, bulletSpeed);
+    	//game.physics.arcade.moveToXY(bullet, crosshair.x + 2, crosshair.y + 7, bulletSpeed); // +2 and + 7 seems to be the accurate rate
     }
 }
 
@@ -37,7 +38,7 @@ function handle_alien(player, alien, alienBullets) {
 		if(alien.grounded <= 0) {
 			alien.grounded = 200 + Math.random() * 100;
 			
-			console.log('Alien wants to move in:', alien.grounded, 'ticks.');
+			//console.log('Alien wants to move in:', alien.grounded, 'ticks.');
 			
 			alien.move = 100;
 			alien.body.velocity.x = 75 + 50 * Math.random();
@@ -47,7 +48,7 @@ function handle_alien(player, alien, alienBullets) {
             alien.animations.add('left', [0, 1, 2, 3], 10, true);
             alien.animations.add('right', [5, 6, 7, 8], 10, true);
             
-            console.log(direction);
+            //console.log(direction);
             
 			alien.body.velocity.x *= direction;
             if (direction == 1){
@@ -136,11 +137,13 @@ function stateLoad(filename) {
 	console.log('all text is:', allText);
 	var data = JSON.parse(allText);
 	
-	player.x = data.laika.x * 24;
-	player.y = data.laika.y * 24 - 24;
-	console.log('putting player at:', player.x, player.y);
+	if(data.laika) {
+		player.x = data.laika.x * 24;
+		player.y = data.laika.y * 24 - 24;
+		console.log('putting player at:', player.x, player.y);
+	}
 	
-	data.aliens.forEach(function(a){
+	data.aliens.forEach(function(a) {
 		var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
 		alien.body.gravity.y = 1800;
 		alien.shoot_ticks = 0;
@@ -152,10 +155,15 @@ function stateLoad(filename) {
 		alien.max_x = a.max_x * 24;
 	});
 	
-	data.tiles.forEach(function(tile){
+	data.tiles.forEach(function(tile) {
 		var platform = platforms.create(tile.x * 24, tile.y * 24, tile.sprite);
 		platform.enableBody = true;
 		platform.body.immovable = true;
+	});
+	
+	data.healthKits.forEach(function(healthKit) {
+		var healthKit = healthKits.create(healthKit.x * 24, healthKit.y * 24, 'healthKit');
+		healthKit.body.gravity.y = 900;
 	});
 }
 
@@ -168,7 +176,7 @@ function everyPreload() {
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
 	game.load.spritesheet('alien1', 'assets/Alien1.png', 32, 40);
-    game.load.spritesheet('alienBlue', 'assets/LongAlien.png', 32, 48);
+    game.load.spritesheet('alien2', 'assets/LongAlien.png', 32, 48);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     game.load.image('bullet', 'assets/Beam-Pink.png');
@@ -180,8 +188,8 @@ function everyPreload() {
 }
 
 function everyCreate() {
-	game.canvas.addEventListener('mousedown', requestLock);
-    game.input.addMoveCallback(moveCursor, this);
+	//game.canvas.addEventListener('mousedown', requestLock);
+    //game.input.addMoveCallback(moveCursor, this);
 
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -250,7 +258,6 @@ function everyUpdate() {
 	game.physics.arcade.collide(aliens, platforms);
 	game.physics.arcade.collide(healthKits, platforms);
 	game.physics.arcade.collide(aliens, aliens);
-//	game.physics.arcade.collide(crosshair, platforms);
 	
     game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);

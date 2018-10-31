@@ -7,7 +7,9 @@ pixel_map = {
 			 (0, 255, 255): 'spaceship',
 			 (0, 255, 0): 'tile_light',
 			 (0, 0, 0): 'platform_tile',
-			 (255, 0, 0): 'alien1'}
+			 (255, 255, 0): 'healthKit',
+			 (255, 0, 0): 'alien1',
+			 (100, 0, 100): 'alien2'}
 
 def main():
 	state_pic = sys.argv[1]
@@ -18,6 +20,7 @@ def main():
 	
 	enemies = []
 	tiles = []
+	healthKits = []
 	
 	json_obj = {}
 	
@@ -34,22 +37,28 @@ def main():
 				print('Placing:', obj, 'at', x, ',', y)
 				if obj == 'laika':
 					json_obj['laika'] = {'sprite': 0, 'x': x, 'y': y}
+					
 				elif 'tile' in obj:
 					tiles.append({'sprite': obj, 'x': x, 'y': y})
+					
 				elif 'alien' in obj:
 					# Find alien minmax x
 					min_x = x
-					while min_x >= 0 and 'tile' in pixel_map.get(pic.getpixel((min_x, y + 1)), '') and 'alien' in pixel_map.get(pic.getpixel((min_x, y)), 'alien'):
+					while min_x >= 0 and ('tile' in pixel_map.get(pic.getpixel((min_x, y + 1)), '') or 'alien' in pixel_map.get(pic.getpixel((min_x, y)), 'alien')):
 						min_x -= 1
 					min_x += 1
 					print('alien.min_x:', min_x)
+					
 					max_x = x
-					while max_x <= pic.width and 'tile' in pixel_map.get(pic.getpixel((max_x, y + 1)), '') and 'alien' in pixel_map.get(pic.getpixel((max_x, y)), 'alien'):
+					while max_x < pic.width and 'tile' in pixel_map.get(pic.getpixel((max_x, y + 1)), '') and 'alien' in pixel_map.get(pic.getpixel((max_x, y)), 'alien'):
 						max_x += 1
 					max_x -= 1
-					print('alien.min_x:', max_x)
+					print('alien.max_x:', max_x)
 						
 					enemies.append({'sprite': obj, 'x': x, 'y': y, 'min_x': min_x, 'max_x': max_x})
+				
+				elif 'healthKit' == obj:
+					healthKits.append({'sprite': obj, 'x': x, 'y': y})
 	
 	json_obj['aliens'] = enemies
 	json_obj['tiles'] = tiles
