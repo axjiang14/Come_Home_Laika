@@ -4,6 +4,11 @@
     "x": 2,
     "y": 23
   },
+  "spaceship": {
+    "sprite": "spaceship",
+    "x": 29,
+    "y": 9
+  },
   "aliens": [
     {
       "sprite": "alien1",
@@ -993,5 +998,31 @@
       "y": 24
     }
   ],
-  "healthKits": []
+  "healthKits": [
+    {
+      "sprite": "healthKit",
+      "x": 10,
+      "y": 23
+    },
+    {
+      "sprite": "healthKit",
+      "x": 14,
+      "y": 23
+    },
+    {
+      "sprite": "healthKit",
+      "x": 18,
+      "y": 23
+    },
+    {
+      "sprite": "healthKit",
+      "x": 21,
+      "y": 17
+    },
+    {
+      "sprite": "healthKit",
+      "x": 24,
+      "y": 23
+    }
+  ]
 }

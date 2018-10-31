@@ -59,6 +59,9 @@ def main():
 				
 				elif 'healthKit' == obj:
 					healthKits.append({'sprite': obj, 'x': x, 'y': y})
+				
+				elif 'spaceship' == obj:
+					json_obj['spaceship'] = {'sprite': 'spaceship', 'x': x, 'y': y}
 	
 	json_obj['aliens'] = enemies
 	json_obj['tiles'] = tiles

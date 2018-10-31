@@ -17,18 +17,18 @@ create: function() {
 	player.body.gravity.y = 900;
 
     // Add health
-    var healthKit1 = healthKits.create(700, 330, 'healthKit')
+    /*var healthKit1 = healthKits.create(700, 330, 'healthKit')
     healthKit1.body.gravity.y = 900;
     var healthKit2 = healthKits.create(650, 110, 'healthKit')
-    healthKit2.body.gravity.y = 900;
+    healthKit2.body.gravity.y = 900;*/
     
 	stateLoad('states/pluto.json');   
     
 	// Add spaceship exit
-	spaceship = game.add.sprite(720, 178, 'spaceship');
+	/*spaceship = game.add.sprite(720, 178, 'spaceship');
 	game.physics.arcade.enable(spaceship);
 	spaceship.enableBody = true;
-	console.log('canvas is:', game.canvas);
+	console.log('canvas is:', game.canvas);*/
 },
 
 update: function()

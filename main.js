@@ -1,12 +1,14 @@
 var Alien1 = class {
-	//var phaserObj;
 
 	constructor(x, y) {
-		this.x = x;
-		this.y = y;
+		this.x = x * 24;
+		this.y = y * 24 - 12;
 		this.spritesheet = 'assets/Alien1.png';
 		
-		//phaserObj = aliens.create(this.x * 24, this.y * 24 - 12, this.spritesheet);
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
+	}
+	
+	handle() {
 	}
 }
 
@@ -15,7 +17,6 @@ function fire() {
         nextFire = game.time.now + fireRate;
     	var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
     	game.physics.arcade.moveToPointer(bullet, bulletSpeed);
-    	//game.physics.arcade.moveToXY(bullet, crosshair.x + 2, crosshair.y + 7, bulletSpeed); // +2 and + 7 seems to be the accurate rate
     }
 }
 
@@ -144,6 +145,13 @@ function stateLoad(filename) {
 		console.log('putting player at:', player.x, player.y);
 	}
 	
+	if(data.spaceship) {
+		// Add spaceship exit
+		spaceship = game.add.sprite(data.spaceship.x * 24, data.spaceship.y * 24 - 40, 'spaceship');
+		game.physics.arcade.enable(spaceship);
+		spaceship.enableBody = true;
+	}
+	
 	data.aliens.forEach(function(a) {
 		var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
 		alien.body.gravity.y = 1800;
@@ -163,8 +171,9 @@ function stateLoad(filename) {
 	});
 	
 	data.healthKits.forEach(function(healthKit) {
-		var healthKit = healthKits.create(healthKit.x * 24, healthKit.y * 24, 'healthKit');
+		var healthKit = healthKits.create(healthKit.x * 24, healthKit.y * 24 - 8, 'healthKit');
 		healthKit.body.gravity.y = 900;
+		healthKit.enableBody = true;
 	});
 }
 
@@ -201,12 +210,8 @@ function everyCreate() {
     bullets.createMultiple(300, 'bullet'); // NUMBER OF BULLETS ALLOWED;
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
-
-	crosshair = game.add.sprite(400, 300, 'crosshair');
-	//crosshair.fixedToCamera = true;
 	
 	game.physics.arcade.enable(player);
-	//game.physics.arcade.enable(crosshair);
     //player.body.collideWorldBounds= true;
 	game.camera.follow(player);
 	player.body.bounce.y = 0;
@@ -229,6 +234,8 @@ function everyCreate() {
     
 	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
     scoreText.fixedToCamera = true;
+    
+    crosshair = game.add.sprite(400, 300, 'crosshair');
 	
 	cursors = game.input.keyboard.createCursorKeys();
     //wasd
@@ -302,45 +309,5 @@ function everyUpdate() {
     handleAlienBullets(alienBullets);
     
 	scoreText.text = 'Score: ' + score;
-}
-
-function requestLock() {
-	game.input.mouse.requestPointerLock();
-}
-
-function moveCursor(pointer, x, y, click) {/*
-
-    //  If the cursor is locked to the game, and the callback was not fired from a 'click' event
-    //  (such as a mouse click or touch down) - as then it might contain incorrect movement values
-    //if (game.input.mouse.locked && !click)
-    {
-        crosshair.x += game.input.mouse.event.movementX;
-        crosshair.y += game.input.mouse.event.movementY;
-        //console.log('game.input.mouse:', x);
-        //crosshair.x = game.input.x;
-        //crosshair.y = game.input.y;
-        crosshair.fixedToCamera = true;
-//        if (crosshair.x < 0) {
-//                crosshair.x = 0;
-//            }
-//        else if (crosshair.x > 780) {
-//                crosshair = 780;
-//            }
-//        else {
-//            crosshair.x += game.input.mouse.event.movementX;
-//            }
-//        if (crosshair.y < 0) {
-//                crosshairs.y = 0;
-//            }
-//        else if (crosshair.y > 600) {
-//                crosshair.y = 600;
-//            }
-//        else {
-//            crosshair.y += game.input.mouse.event.movementY;
-//             }
-
-        crosshair.fixedToCamera = true;
-    }*/
-
 }
 
