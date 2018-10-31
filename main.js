@@ -216,14 +216,26 @@ function everyCreate() {
 	game.camera.follow(player);
 	player.body.bounce.y = 0;
 	
-	// HP
+	// User Interface
     player.hp = 10;
-    
-	player.hpBox = game.add.sprite(300, 16, 'white_tile');
+	player.hpBox = game.add.sprite(200, 18, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
     player.hpBox.fixedToCamera = true;
+    
+    playerHPtext = game.add.text(280, 16, 'HP: ', '16px')
+    playerHPtext.fixedToCamera = true;
 	
+	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
+    scoreText.fixedToCamera = true;
+    
+    bulletText = game.add.text(500, 16, 'Bullets: ', '16px');
+    bulletText.fixedToCamera = true;
+    
+    timeText = game.add.text(650, 16, 'Time: ', '16px');
+    timeText.fixedToCamera = true;
+    
+    //
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 	
@@ -231,9 +243,6 @@ function everyCreate() {
     weapon.scale.setTo(.8);
     weapon.anchor.setTo(player.x, player.y); // spawn weapon
     weapon.reset(player.x,player.y);
-    
-	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
-    scoreText.fixedToCamera = true;
     
     crosshair = game.add.sprite(400, 300, 'crosshair');
 	
@@ -309,5 +318,9 @@ function everyUpdate() {
     handleAlienBullets(alienBullets);
     
 	scoreText.text = 'Score: ' + score;
+    playerHPtext.text = 'HP: ' + player.hp;
+//    bulletText.text = 'Bullets: ' + bullets[1];
+//    timeText.text = 'Time: ' + ticks;
+    
 }
 
