@@ -10,7 +10,8 @@ var gameOverState = {
 	
 	create: function()
 	{
-		game.physics.startSystem(Phaser.Physics.ARCADE);
+		savedHP = 10;// when you die, make sure you come back healthy
+        game.physics.startSystem(Phaser.Physics.ARCADE);
         game.add.sprite(0, 0, 'homeScreen');
 		platforms = game.add.group();
 		platforms.enableBody = true;
