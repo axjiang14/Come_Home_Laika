@@ -62,6 +62,7 @@ def main():
 	
 	json_obj['aliens'] = enemies
 	json_obj['tiles'] = tiles
+	json_obj['healthKits'] = healthKits
 		
 	with open(filename + '.json', 'w') as f:
 		json.dump(json_obj, f, indent=2)

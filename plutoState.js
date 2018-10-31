@@ -28,6 +28,7 @@ create: function() {
 	spaceship = game.add.sprite(720, 178, 'spaceship');
 	game.physics.arcade.enable(spaceship);
 	spaceship.enableBody = true;
+	console.log('canvas is:', game.canvas);
 },
 
 update: function()

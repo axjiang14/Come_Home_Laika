@@ -1,15 +1,16 @@
 var Alien1 = class {
+	//var phaserObj;
+
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		
 		this.spritesheet = 'assets/Alien1.png';
+		
+		//phaserObj = aliens.create(this.x * 24, this.y * 24 - 12, this.spritesheet);
 	}
 }
 
 function fire() {
-	//console.log('game is:', game);
-	//console.log('bullets is:', bullets);
     if(this.game != null && game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
     	var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
@@ -134,7 +135,7 @@ function stateLoad(filename) {
 	}
 	rawFile.send(null);
 	
-	console.log('all text is:', allText);
+	//console.log('all text is:', allText);
 	var data = JSON.parse(allText);
 	
 	if(data.laika) {
@@ -188,8 +189,6 @@ function everyPreload() {
 }
 
 function everyCreate() {
-	//game.canvas.addEventListener('mousedown', requestLock);
-    //game.input.addMoveCallback(moveCursor, this);
 
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -204,16 +203,15 @@ function everyCreate() {
     bullets.setAll('outOfBoundsKill', true);
 
 	crosshair = game.add.sprite(400, 300, 'crosshair');
-	crosshair.fixedToCamera = true;
+	//crosshair.fixedToCamera = true;
 	
 	game.physics.arcade.enable(player);
-	game.physics.arcade.enable(crosshair);
+	//game.physics.arcade.enable(crosshair);
     //player.body.collideWorldBounds= true;
 	game.camera.follow(player);
 	player.body.bounce.y = 0;
 	
 	// HP
-    
     player.hp = 10;
     
 	player.hpBox = game.add.sprite(300, 16, 'white_tile');
@@ -267,7 +265,8 @@ function everyUpdate() {
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
 	player.body.velocity.x = 0;
-	//crosshair.body.velocity.x = 0;
+	crosshair.x = game.input.x - 2 + game.camera.x;
+	crosshair.y = game.input.y - 7 + game.camera.y;
 	
 	if(leftKey.isDown)
 	{
@@ -309,7 +308,7 @@ function requestLock() {
 	game.input.mouse.requestPointerLock();
 }
 
-function moveCursor(pointer, x, y, click) {
+function moveCursor(pointer, x, y, click) {/*
 
     //  If the cursor is locked to the game, and the callback was not fired from a 'click' event
     //  (such as a mouse click or touch down) - as then it might contain incorrect movement values
@@ -341,7 +340,7 @@ function moveCursor(pointer, x, y, click) {
 //             }
 
         crosshair.fixedToCamera = true;
-    }
+    }*/
 
 }
 
