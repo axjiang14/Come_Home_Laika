@@ -17,7 +17,9 @@ var gameStartState = {
         
 	},
 	
-	update: function(){},
+	update: function(){
+        planetsUnlocked = Math.max(planetsUnlocked, 0);
+    },
     
     tint: function(){
         this.tint = 0xbbbbbb;

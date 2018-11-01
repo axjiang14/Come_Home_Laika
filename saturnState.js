@@ -18,7 +18,7 @@ create: function() {
 
 	player.body.gravity.y = 3000;
 	
-	//stateLoad('states/neptune.json', platforms, aliens);
+	stateLoad('states/saturn.json');
     
     //add spaceship
     spaceship = game.add.sprite(2300, 500, 'spaceship');

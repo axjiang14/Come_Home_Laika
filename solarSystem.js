@@ -20,6 +20,10 @@ var solarSystem = {
         
         game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
         game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
+        
+        game.load.bitmapFont('gem', 'assets/gem.png', 'assets/gem.xml');
+        
+        
     },
     
     create: function(){
@@ -40,7 +44,6 @@ var solarSystem = {
         var p8 = game.add.button(650, 90, 'neptune');
         var p9 = game.add.button(730, 370, 'pluto');
         
-//        game.add.sprite(190, 460, 'plutoInfoSheet')
         
         p1.onInputDown.add(this.tint, p1);
         p2.onInputDown.add(this.tint, p2);
@@ -68,9 +71,36 @@ var solarSystem = {
         p7.onInputUp.add(this.unTint, p7);
         p8.onInputUp.add(this.unTint, p8);
         p9.onInputUp.add(this.unTint, p9);
+        
+        
+        var bmpText;
+        var plutoText = "We're about to crash land on Pluto! Here's some information about the planet: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
+        var neptuneText = "Great job! We've escaped from Pluto. It looks like we're headed for Neptune next. \nBundle up. Neptune is chilly.";
+        var uranusText = "Wow that was tough! Next stop is Uranus!";
+        var saturnText = "Watch out for the dust";
+               
+        
+        if(planetsUnlocked == 0){
+            bmpText = game.add.bitmapText(160, 480, "gem", plutoText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked == 1){
+            bmpText = game.add.bitmapText(160, 480, "gem", neptuneText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked == 2){
+            bmpText = game.add.bitmapText(160, 480, "gem", uranusText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked >= 3){
+            bmpText = game.add.bitmapText(160, 480, "gem", saturnText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         console.log('solarSystem');
+        console.log(planetsUnlocked);
         
         spaceBGM = game.add.audio('spaceBGM'); //has to be last for some reason
         spaceBGM.addMarker('spaceBGM', 0, 151);
@@ -113,6 +143,8 @@ var solarSystem = {
     	if(planetsUnlocked >= 3)
     		game.state.start('saturnState');
     },
+    
+   
     
     update: function(){
         
