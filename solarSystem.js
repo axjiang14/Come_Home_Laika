@@ -29,15 +29,16 @@ var solarSystem = {
         game.add.sprite(0, 0, 'sun'); // background
         
         
-        var p1 = game.add.button(190, 0, 'mercury');
-        var p2 = game.add.button(300, 15, 'venus');
-        var p3 = game.add.button(420, 30, 'earth');
-        var p4 = game.add.button(550, 40, 'mars');
-        var p5 = game.add.button(670, 80, 'jupiter');
-        var p6 = game.add.button(670, 230, 'saturn');
+        var p1 = game.add.button(150, 0, 'mercury');
+        var p2 = game.add.button(20, 140, 'venus');
+        var p3 = game.add.button(170, 170, 'earth');
+        p3.scale.setTo(0.8,0.8);
+        var p4 = game.add.button(300, 40, 'mars');
+        var p5 = game.add.button(300, 250, 'jupiter');
+        var p6 = game.add.button(450, 50, 'saturn');
         var p7 = game.add.button(550, 260, 'uranus');
-        var p8 = game.add.button(420, 290, 'neptune');
-        var p9 = game.add.button(310, 320, 'pluto');
+        var p8 = game.add.button(650, 90, 'neptune');
+        var p9 = game.add.button(730, 370, 'pluto');
         
 //        game.add.sprite(190, 460, 'plutoInfoSheet')
         
