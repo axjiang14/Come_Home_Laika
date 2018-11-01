@@ -12,6 +12,12 @@ var Alien1 = class {
 	}
 }
 
+function handlePlayer() {
+	//if(ticks % 100 == 0)
+		//console.log('bounce =', player.body.bounce.y);
+	player.body.bounce.y = Math.max(0, player.body.bounce.y - 0.01);
+}
+
 function fire() {
     if(this.game != null && game.time.now > nextFire) {
         nextFire = game.time.now + fireRate;
@@ -90,14 +96,16 @@ function handleAlienBullets(alienBullets) {
 }
 
 function onPlayerHit() {
-    --player.hp;
-    if(player.hp >= 10){
-        
-        player.hpBox.tint = 0x20ff00;
-        player.hp = 10;
-    }
+	--player.hp;
+	if(player.hp >= 10) {
+		player.hpBox.tint = 0x20ff00;
+		player.hp = 10;
+	}
 	
-	console.log('player hp is now:' + player.hp);
+	player.body.bounce.y = 1;
+	player.body.velocity.y = -300;
+	
+	//console.log('player hp is now:' + player.hp);
 	player.hpBox.scale.setTo(player.hp, 1);
 	
 	// Do pretty hp box coloring
@@ -111,8 +119,8 @@ function onPlayerHit() {
 	//console.log('set color to:', (red | green | blue).toString(16));
 	player.hpBox.tint = red | green | blue;
 	if(player.hp >= 10){
-        player.hpBox.tint = 0x20ff00;
-        player.hp = 10;
+		player.hpBox.tint = 0x20ff00;
+		player.hp = 10;
     }
 }
 
@@ -276,19 +284,18 @@ function everyUpdate() {
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
 	player.body.velocity.x = 0;
+	handlePlayer();
 	crosshair.x = game.input.x - 2 + game.camera.x;
 	crosshair.y = game.input.y - 7 + game.camera.y;
 	
 	if(leftKey.isDown)
 	{
 		player.body.velocity.x = -300; // can be gravity
-		//crosshair.body.velocity.x = -300;
 		player.animations.play('left');
 	}
 	else if(rightKey.isDown)
 	{
 		player.body.velocity.x = 300; // can be gravity
-		//crosshair.body.velocity.x = 300;
 		player.animations.play('right');
 	}
 	else
