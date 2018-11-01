@@ -8,9 +8,8 @@ preload: function() {
 },
 
 create: function() {
-	game.add.sprite(0, 0, 'background');
+	game.add.sprite(0, 0, 'background').fixedToCamera = true;
 	player = game.add.sprite(0, 0, 'laika');
-	console.log('player is:', player);
 	
 	everyCreate();
 	player.hp = 10;
