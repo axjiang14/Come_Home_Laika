@@ -116,9 +116,6 @@ function onPlayerHit() {
     }
 }
 
-function stateLoadAux(platforms, aliens) {
-}
-
 function stateLoad(filename) {
 	console.log('loading from:', filename);
 	var rawFile = new XMLHttpRequest();

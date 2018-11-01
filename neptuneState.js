@@ -23,9 +23,9 @@ create: function() {
 	stateLoad('states/neptune.json');
     
     //add spaceship
-    spaceship = game.add.sprite(2300, 30, 'spaceship');
+    /*spaceship = game.add.sprite(2300, 30, 'spaceship');
 	game.physics.arcade.enable(spaceship);
-	spaceship.enableBody = true;
+	spaceship.enableBody = true;*/
 },
 
 update: function() {
