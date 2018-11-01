@@ -6,6 +6,7 @@ var Alien1 = class {
 		this.spritesheet = 'alien1';
 		
 		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
 		this.hasSight = false; /// Can we see the player?
 		this.grounded = 0; // # of ticks to stay still for
@@ -18,17 +19,22 @@ var Alien1 = class {
 		var py = player.body.y;
 		var distance = Phaser.Math.distance(px, py, this.x, this.y);
 		
-		var sightLine = new Phaser.Line(this.x, this.y, px, py);
-		var hasSightTmp = game.physics.arcade.overlap(sightLine, platforms);
-		if(ticks % 1000 == 0)
+		//var sightLine = new Phaser.Line(this.x, this.y, px, py);
+		this.sightLine.start.x = px;
+		this.sightLine.start.y = py;
+		this.sightLine.end.x = this.x;
+		this.sightLine.end.y = this.y;
+		game.debug.geom(this.sightLine);
+		/*var hasSightTmp = game.physics.arcade.overlap(this.sightLine, platforms);
+		if(ticks == 0)
 		{
-			console.log('sightline is:', sightLine);
+			console.log('sightline is:', this.sightLine);
 			console.log('hasSightTmp:', hasSightTmp);
 		}
 		if(hasSightTmp && !this.hasSight) {
 			console.log('Alien now has sight on player!');
 		}
-		this.hasSight = hasSightTmp;
+		this.hasSight = hasSightTmp;*/
 	}
 }
 
