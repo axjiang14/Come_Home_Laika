@@ -116,11 +116,7 @@ function onPlayerHit() {
     }
 }
 
-function stateLoadAux(platforms, aliens) {
-}
-
 function stateLoad(filename) {
-	console.log('loading from:', filename);
 	var rawFile = new XMLHttpRequest();
 	var allText;
 	rawFile.open("GET", filename, false);
@@ -136,7 +132,6 @@ function stateLoad(filename) {
 	}
 	rawFile.send(null);
 	
-	//console.log('all text is:', allText);
 	var data = JSON.parse(allText);
 	
 	if(data.laika) {

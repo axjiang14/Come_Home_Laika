@@ -11,7 +11,7 @@ preload: function() {
 create: function() {
     game.world.setBounds(0 , 0, 2400, 600); //has to match with background siz...?
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-	game.add.sprite(0, 0, 'neptuneBackground');
+	game.add.sprite(0, 0, 'neptuneBackground').fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
@@ -23,9 +23,9 @@ create: function() {
 	stateLoad('states/neptune.json');
     
     //add spaceship
-    spaceship = game.add.sprite(2300, 30, 'spaceship');
+    /*spaceship = game.add.sprite(2300, 30, 'spaceship');
 	game.physics.arcade.enable(spaceship);
-	spaceship.enableBody = true;
+	spaceship.enableBody = true;*/
 },
 
 update: function() {
