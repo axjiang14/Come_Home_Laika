@@ -3,12 +3,32 @@ var Alien1 = class {
 	constructor(x, y) {
 		this.x = x * 24;
 		this.y = y * 24 - 12;
-		this.spritesheet = 'assets/Alien1.png';
+		this.spritesheet = 'alien1';
 		
-		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		
+		this.hasSight = false; /// Can we see the player?
+		this.grounded = 0; // # of ticks to stay still for
+		this.shootTicks = 0; // # of ticks before we shoot
 	}
 	
 	handle() {
+		// Get distance b/w this alien and the player
+		var px = player.body.x;
+		var py = player.body.y;
+		var distance = Phaser.Math.distance(px, py, this.x, this.y);
+		
+		var sightLine = new Phaser.Line(this.x, this.y, px, py);
+		var hasSightTmp = game.physics.arcade.overlap(sightLine, platforms);
+		if(ticks % 1000 == 0)
+		{
+			console.log('sightline is:', sightLine);
+			console.log('hasSightTmp:', hasSightTmp);
+		}
+		if(hasSightTmp && !this.hasSight) {
+			console.log('Alien now has sight on player!');
+		}
+		this.hasSight = hasSightTmp;
 	}
 }
 
@@ -156,15 +176,17 @@ function stateLoad(filename) {
 	}
 	
 	data.aliens.forEach(function(a) {
-		var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
-		alien.body.gravity.y = 1800;
-		alien.shoot_ticks = 0;
-		alien.grounded = 0;
-		alien.animations.add('left', [0, 1, 2, 3], 10, true);
-		alien.animations.add('right', [5, 6, 7, 8], 10, true);
+		var alien = new Alien1(a.x, a.y);
+		aliens.push(alien);
+		//var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
+		//alien.body.gravity.y = 1800;
+		//alien.shoot_ticks = 0;
+		//alien.grounded = 0;
+		//alien.animations.add('left', [0, 1, 2, 3], 10, true);
+		//alien.animations.add('right', [5, 6, 7, 8], 10, true);
 		
-		alien.min_x = a.min_x * 24;
-		alien.max_x = a.max_x * 24;
+		//alien.min_x = a.min_x * 24;
+		//alien.max_x = a.max_x * 24;
 	});
 	
 	data.tiles.forEach(function(tile) {
@@ -256,9 +278,9 @@ function everyCreate() {
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     
-	
-	aliens = game.add.group();
-	aliens.enableBody = true;
+	aliens = []
+	_aliens = game.add.group();
+	_aliens.enableBody = true;
 	
     healthKits = game.add.group();
     healthKits.enableBody = true;
@@ -272,15 +294,15 @@ function everyCreate() {
 
 function everyUpdate() {
 	game.physics.arcade.collide(player, platforms);
-	game.physics.arcade.collide(aliens, platforms);
+	game.physics.arcade.collide(_aliens, platforms);
 	game.physics.arcade.collide(healthKits, platforms);
-	game.physics.arcade.collide(aliens, aliens);
+	game.physics.arcade.collide(_aliens, _aliens);
 	
     game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
-	game.physics.arcade.overlap(player, aliens, collectAlien, null, this);
+	game.physics.arcade.overlap(player, _aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
     game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
-	game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
+	game.physics.arcade.overlap(bullets, _aliens, killaliens, null, this); // kill alien when hit by bullet
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
     
 	player.body.velocity.x = 0;
@@ -308,8 +330,11 @@ function everyUpdate() {
 		player.body.velocity.y = - 600; //some what like gravitiy
 	}
 	
-	aliens.forEach(function(enemy) {
+	/*aliens.forEach(function(enemy) {
 		handle_alien(player, enemy, alienBullets);
+	});*/
+	aliens.forEach(function(alien) {
+		alien.handle();
 	});
 	
     weapon.rotation = game.physics.arcade.angleToPointer(weapon);
