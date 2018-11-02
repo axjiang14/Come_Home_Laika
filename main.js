@@ -19,28 +19,24 @@ var Alien1 = class {
 		var py = player.body.y;
 		var distance = Phaser.Math.distance(px, py, this.x, this.y);
 		
-		//var sightLine = new Phaser.Line(this.x, this.y, px, py);
 		this.sightLine.start.x = px;
 		this.sightLine.start.y = py;
 		this.sightLine.end.x = this.x;
 		this.sightLine.end.y = this.y;
-		game.debug.geom(this.sightLine);
-		/*var hasSightTmp = game.physics.arcade.overlap(this.sightLine, platforms);
-		if(ticks == 0)
-		{
-			console.log('sightline is:', this.sightLine);
-			console.log('hasSightTmp:', hasSightTmp);
-		}
-		if(hasSightTmp && !this.hasSight) {
-			console.log('Alien now has sight on player!');
-		}
-		this.hasSight = hasSightTmp;*/
+		
+		var intersectsAny = false;
+		var slTmp = this.sightLine;
+		platforms.forEach(function(platform) {
+			intersectsAny |= Phaser.Line.intersectsRectangle(slTmp, platform);
+		});
+		
+		this.hasSight = !intersectsAny;
+		var tint = this.hasSight != 0 ? 'lime' : 'red';
+		game.debug.geom(this.sightLine, tint, this.hasSight);
 	}
 }
 
 function handlePlayer() {
-	//if(ticks % 100 == 0)
-		//console.log('bounce =', player.body.bounce.y);
 	player.body.bounce.y = Math.max(0, player.body.bounce.y - 0.01);
 }
 

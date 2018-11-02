@@ -32,4 +32,4 @@ spaceshipLeave: function() {
     savedHP = player.hp;
 }
 
-}// main state
+}
