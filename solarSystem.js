@@ -13,8 +13,9 @@ var solarSystem = {
         game.load.image('uranus', 'assets/planets/uranus.png')
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
-        game.load.image('plutoInfoSheet', 'assets/plutoInfoSheet.png')
+        //game.load.image('plutoInfoSheet', 'assets/plutoInfoSheet.png')
         
+        game.load.image('enter', 'assets/buttonEnter.png')
         
         game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
         

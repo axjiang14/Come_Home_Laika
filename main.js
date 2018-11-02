@@ -320,25 +320,27 @@ function everyCreate() {
 	player.body.bounce.y = 0;
 	
 	// User Interface
-	player.hp = 10;
-	player.hpBox = game.add.sprite(200, 18, 'white_tile');
+    
+    var style = { font: "bold 32px Arial Rounded Mt", fill: "#000000", align: "left" };
+    
+    player.hp = 10;
+	player.hpBox = game.add.sprite(200, 19, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
-	player.hpBox.fixedToCamera = true;
+    player.hpBox.fixedToCamera = true;
+    
+    playerHPtext = game.add.text(280, 16, 'HP: ', style)
+    playerHPtext.fixedToCamera = true;
 	
-	playerHPtext = game.add.text(280, 16, 'HP: ', '16px')
-	playerHPtext.fixedToCamera = true;
-	
-	scoreText = game.add.text(16, 16, 'Score: 0', {fontSize: '32px'});
-	scoreText.fixedToCamera = true;
-	
-	bulletText = game.add.text(500, 16, 'Bullets: ', '16px');
-	bulletText.fixedToCamera = true;
-	
-	timeText = game.add.text(650, 16, 'Time: ', '16px');
-	timeText.fixedToCamera = true;
-	
-	//
+	scoreText = game.add.text(16, 16, 'Score: 0', style);
+    scoreText.fixedToCamera = true;
+    
+    bulletText = game.add.text(500, 16, 'Bullets: ', style);
+    bulletText.fixedToCamera = true;
+    
+    timeText = game.add.text(650, 16, 'Time: ', style);
+    timeText.fixedToCamera = true;
+    
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 	
