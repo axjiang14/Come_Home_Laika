@@ -14,6 +14,10 @@ var Alien1 = class {
 	}
 	
 	handle() {
+		// Decrement counters
+		--this.grounded;
+		--this.shootTicks;
+		
 		// Get distance b/w this alien and the player
 		var px = player.body.x;
 		var py = player.body.y;
@@ -24,15 +28,38 @@ var Alien1 = class {
 		this.sightLine.end.x = this.x;
 		this.sightLine.end.y = this.y;
 		
+		// Check if this alien's line of sight intersects any platforms
 		var intersectsAny = false;
 		var slTmp = this.sightLine;
 		platforms.forEach(function(platform) {
 			intersectsAny |= Phaser.Line.intersectsRectangle(slTmp, platform);
 		});
-		
 		this.hasSight = !intersectsAny;
+		
 		var tint = this.hasSight != 0 ? 'lime' : 'red';
 		game.debug.geom(this.sightLine, tint, this.hasSight);
+		
+		// If we're in range and have sight:
+		if(distance < 250 && this.hasSight) {
+			if(this.shootTicks <= 0) {
+				console.log('I would like to shoot the player.');
+				// Alien reload timer
+				this.shootTicks = 300;
+				this.shootAtPlayer();
+				
+				// Alien won't move
+				this.grounded = 150;
+			}
+		}
+		else {
+			if(this.grounded <= 0) {
+				console.log('I would like to move.');
+				this.grounded = 200 + Math.random() * 100;
+			}
+		}
+	}
+	
+	shootAtPlayer() {
 	}
 }
 
@@ -179,6 +206,8 @@ function stateLoad(filename) {
 	
 	data.aliens.forEach(function(a) {
 		var alien = new Alien1(a.x, a.y);
+		alien.min_x = a.min_x * 24;
+		alien.max_x = a.max_x * 24;
 		aliens.push(alien);
 		//var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
 		//alien.body.gravity.y = 1800;
