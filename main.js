@@ -288,11 +288,15 @@ function everyPreload() {
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
-	game.load.spritesheet('alien1', 'assets/Alien1.png', 32, 40);
-	game.load.spritesheet('alien2', 'assets/LongAlien.png', 32, 48);
+	game.load.spritesheet('alien1', 'assets/AlienBasic.png', 32, 40);
+	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
+    game.load.spritesheet('alien3', 'assets/AlienBouncy.png', 32, 48);
+    game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
 	game.load.image('bullet', 'assets/Beam-Pink.png');
+    game.load.image('flame', 'assets/Beam-Fire.png');
+    game.load.image('ice', 'assets/Beam-Ice.png');
 	game.load.image('healthKit', 'assets/firstaid.png');
 	game.load.audio('bgm', 'assets/spaceBGM.mp3');
 	game.load.image('white_tile', 'assets/white_rect.png');
