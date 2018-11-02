@@ -5,6 +5,7 @@
 	<title>No Pain, No Game</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src = "solarSystem.js"></script>
     <script src = "gameStartState.js"></script>
     <script src = "gameOverState.js"></script>
@@ -94,7 +95,12 @@ function killPlayer(player, alienBullet){
 
 function killaliens(bullet, alien){ // kill aliens with bullet
     score += 2;
-    alien.destroy();
+	alien.destroy();
+	
+	// Remove corresponding alien obj
+	aliens = aliens.filter(function(a) {
+		return a.phaserObj != alien;
+	});
     bullet.kill();
 }
 
