@@ -74,10 +74,23 @@ game.state.add('saturnState', saturnState);
 game.state.start('gameStartState'); // set start until add change state funciton
 
 function collectAlien(player, alien){
-    score += 10;
+    if (score >= 4){
+        score -= 4;
+    }
+    else{
+        score =0
+    }
     player.hp -= 4;
     colorHPBar();
     if (player.hp <= 0 ) {
+        if(score >= 20){
+            score -= 20
+        }
+        else{
+            score = 0
+        }
+        
+
 		game.state.start('gameOverState');
     }
 	alien.destroy();
