@@ -16,6 +16,7 @@ var Alien1 = class {
 		this.grounded = 0; // # of ticks to stay still for
 		this.shootTicks = 0; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
+		this.range = 250; // Our shooting range
 	}
 	
 	handle() {
@@ -31,13 +32,16 @@ var Alien1 = class {
 		// Stop moving
 		if(this.moveTicks <= 0) {
 			this.phaserObj.body.velocity.x = 0;
+			this.phaserObj.animations.stop();
 		}
 		// Don't go past min/max x
 		if(this.x <= this.min_x) {
 			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
 		}
 		else if(this.x >= this.max_x) {
 			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
 		}
 		
 		// Get distance b/w this alien and the player
@@ -51,18 +55,16 @@ var Alien1 = class {
 		this.sightLine.end.y = this.y;
 		
 		// Check if this alien's line of sight intersects any platforms
-		var intersectsAny = false;
 		var slTmp = this.sightLine;
+		var intersectsAny = false;
 		platforms.forEach(function(platform) {
 			intersectsAny |= Phaser.Line.intersectsRectangle(slTmp, platform);
 		});
 		this.hasSight = !intersectsAny;
 		
-		var tint = this.hasSight != 0 ? 'lime' : 'red';
-		game.debug.geom(this.sightLine, tint, this.hasSight);
-		
 		// If we're in range and have sight:
-		if(distance < 250 && this.hasSight) {
+		var inRange = distance < this.range;
+		if(inRange && this.hasSight) {
 			if(this.shootTicks <= 0) {
 				console.log('I would like to shoot the player.');
 				this.shootAtPlayer();
@@ -75,6 +77,15 @@ var Alien1 = class {
 				this.move();
 			}
 		}
+		
+		// Draw line-of-sight debug
+		var tint = 'red';
+		if(this.hasSight) {
+			tint = 'yellow';
+			if(inRange)
+				tint = 'lime';
+		}
+		game.debug.geom(this.sightLine, tint, this.hasSight);
 	}
 	
 	shootAtPlayer() {
@@ -122,73 +133,25 @@ function fire() {
 	}
 }
 
-function handle_alien(player, alien, alienBullets) {
-	px = player.body.x;
-	py = player.body.y;
-	ax = alien.body.x;
-	ay = alien.body.y;
-	
-	var distance = Phaser.Math.distance(px, py, ax, ay);
-	if(distance <= 250 && alien.shoot_ticks <= 0) {
-		alien.shoot_ticks = 300;
-			
-		var bullet = alienBullets.create(ax + 16, ay + 16, 'bullet');
-		bullet.liveTicks = 30;
-		game.physics.arcade.moveToXY(bullet, px + 20, py + 20, bulletSpeed / 2);
-		bullet.rotation = game.physics.arcade.angleToXY(bullet, px, py, game.world);
-		alien.grounded = 100;
-	}
-	else {
-		if(alien.grounded <= 0) {
-			alien.grounded = 200 + Math.random() * 100;
-			
-			//console.log('Alien wants to move in:', alien.grounded, 'ticks.');
-			
-			alien.move = 100;
-			alien.body.velocity.x = 75 + 50 * Math.random();
-			
-			// Flip a coin to go right/left
-			direction = Math.random() > 0.5 ? -1 : 1
-			alien.animations.add('left', [0, 1, 2, 3], 10, true);
-			alien.animations.add('right', [5, 6, 7, 8], 10, true);
-			
-			//console.log(direction);
-			
-			alien.body.velocity.x *= direction;
-			if (direction == 1){
-				alien.animations.play('right')
-			}
-			else {
-				alien.animations.play('left')
-			}
-		}
-	}
-	if(--alien.move <= 0)
-	{
-		alien.body.velocity.x = 0;
-		alien.animations.stop();
-	}
-	
-	--alien.shoot_ticks;
-	--alien.grounded;
-	
-	//console.log('ax is:', ax);
-	//console.log('alien.min_x is:', alien.min_x);
-	if(ax <= alien.min_x) {
-		//console.log('Alien got away!');
-		alien.body.velocity.x = Math.max(0, alien.body.velocity.x);
-	}
-	if(ax >= alien.max_x) {
-		alien.body.velocity.x = Math.min(0, alien.body.velocity.x);
-	}
-}
-
 function handleAlienBullets(alienBullets) {
 	alienBullets.forEach(function(bullet) {
 		if(--bullet.liveTicks <= 0){
 			bullet.destroy();
 		}
 	});
+}
+
+function colorHPBar() {
+	// Calculate RGB values for hp bar
+	var red = Math.max(66, Math.min(226, /*386*/330 - 32 * player.hp));
+	var green = Math.max(20, Math.min(255, 20 + 47 * player.hp));
+	var blue = Math.max(20, Math.min(66, 20 + 5 * player.hp));
+	//console.log('red:', red, 'green:', green, 'blue:', blue);
+	
+	var tint = red << 16 | green << 8 | blue;
+	
+	player.hpBox.tint = tint;
+	player.hpBox.scale.setTo(player.hp, 1);
 }
 
 function onPlayerHit() {
@@ -202,7 +165,7 @@ function onPlayerHit() {
 	player.body.velocity.y = -300;
 	
 	//console.log('player hp is now:' + player.hp);
-	player.hpBox.scale.setTo(player.hp, 1);
+	/*player.hpBox.scale.setTo(player.hp, 1);
 	
 	// Do pretty hp box coloring
 	var red = Math.max(0x42, Math.min(0xff - 0xff * (5 - player.hp) / 10, 0xff));
@@ -217,7 +180,8 @@ function onPlayerHit() {
 	if(player.hp >= 10){
 		player.hpBox.tint = 0x20ff00;
 		player.hp = 10;
-	}
+	}*/
+	colorHPBar();
 }
 
 function stateLoad(filename) {
@@ -244,27 +208,19 @@ function stateLoad(filename) {
 		console.log('putting player at:', player.x, player.y);
 	}
 	
+	// Add spaceship exit
 	if(data.spaceship) {
-		// Add spaceship exit
 		spaceship = game.add.sprite(data.spaceship.x * 24, data.spaceship.y * 24 - 40, 'spaceship');
 		game.physics.arcade.enable(spaceship);
 		spaceship.enableBody = true;
 	}
 	
+	// Create Aliens
 	data.aliens.forEach(function(a) {
 		var alien = new Alien1(a.x, a.y);
 		alien.min_x = a.min_x * 24;
 		alien.max_x = a.max_x * 24;
 		aliens.push(alien);
-		//var alien = aliens.create(a.x * 24, a.y * 24 - 12, a.sprite);
-		//alien.body.gravity.y = 1800;
-		//alien.shoot_ticks = 0;
-		//alien.grounded = 0;
-		//alien.animations.add('left', [0, 1, 2, 3], 10, true);
-		//alien.animations.add('right', [5, 6, 7, 8], 10, true);
-		
-		//alien.min_x = a.min_x * 24;
-		//alien.max_x = a.max_x * 24;
 	});
 	
 	data.tiles.forEach(function(tile) {
@@ -383,11 +339,11 @@ function everyUpdate() {
 	game.physics.arcade.collide(_aliens, _aliens);
 	
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
+	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, _aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
 	game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
 	game.physics.arcade.overlap(bullets, _aliens, killaliens, null, this); // kill alien when hit by bullet
-	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
 	
 	player.body.velocity.x = 0;
 	handlePlayer();
@@ -396,12 +352,12 @@ function everyUpdate() {
 	
 	if(leftKey.isDown)
 	{
-		player.body.velocity.x = -300; // can be gravity
+		player.body.velocity.x = -300;
 		player.animations.play('left');
 	}
 	else if(rightKey.isDown)
 	{
-		player.body.velocity.x = 300; // can be gravity
+		player.body.velocity.x = 300;
 		player.animations.play('right');
 	}
 	else
@@ -414,9 +370,6 @@ function everyUpdate() {
 		player.body.velocity.y = - 600; //some what like gravitiy
 	}
 	
-	/*aliens.forEach(function(enemy) {
-		handle_alien(player, enemy, alienBullets);
-	});*/
 	aliens.forEach(function(alien) {
 		alien.handle();
 	});
