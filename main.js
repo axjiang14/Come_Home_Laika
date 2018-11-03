@@ -1,4 +1,7 @@
-var Alien1 = class {
+Alien = class {
+}
+
+Alien1 = class {
 
 	constructor(x, y) {
 		this.x = x * 24;
@@ -49,10 +52,10 @@ var Alien1 = class {
 		var py = player.body.y;
 		var distance = Phaser.Math.distance(px, py, this.x, this.y);
 		
-		this.sightLine.start.x = px;
-		this.sightLine.start.y = py;
-		this.sightLine.end.x = this.x;
-		this.sightLine.end.y = this.y;
+		this.sightLine.start.x = px + 12;
+		this.sightLine.start.y = py + 18;
+		this.sightLine.end.x = this.x + 16;
+		this.sightLine.end.y = this.y + 16;
 		
 		// Check if this alien's line of sight intersects any platforms
 		var slTmp = this.sightLine;
@@ -121,6 +124,30 @@ var Alien1 = class {
 	}
 }
 
+var Alien2 = class {
+	constructor(x, y) {
+		this.x = x * 24;
+		this.y = y * 24 - 24;
+		this.spritesheet = 'alien2';
+		
+		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj.Alien = this;
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
+		
+		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
+		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+		this.hasSight = false; /// Can we see the player?
+		this.grounded = 0; // # of ticks to stay still for
+		this.shootTicks = 0; // # of ticks before we shoot
+		this.moveTicks = 0; // # of ticks to move for
+		this.range = 250; // Our shooting range
+	}
+	
+	handle() {
+	}
+}
+
 function handlePlayer() {
 	player.body.bounce.y = Math.max(0, player.body.bounce.y - 0.01);
 }
@@ -164,23 +191,6 @@ function onPlayerHit() {
 	player.body.bounce.y = 1;
 	player.body.velocity.y = -300;
 	
-	//console.log('player hp is now:' + player.hp);
-	/*player.hpBox.scale.setTo(player.hp, 1);
-	
-	// Do pretty hp box coloring
-	var red = Math.max(0x42, Math.min(0xff - 0xff * (5 - player.hp) / 10, 0xff));
-	//console.log('red:', (red).toString(16));
-	red <<= 16;
-	var green = 0xff * player.hp / 10;
-	//console.log('green:', (green).toString(16));
-	green <<= 8;
-	var blue = 0x000000;
-	//console.log('set color to:', (red | green | blue).toString(16));
-	player.hpBox.tint = red | green | blue;
-	if(player.hp >= 10){
-		player.hpBox.tint = 0x20ff00;
-		player.hp = 10;
-	}*/
 	colorHPBar();
 }
 
@@ -217,10 +227,22 @@ function stateLoad(filename) {
 	
 	// Create Aliens
 	data.aliens.forEach(function(a) {
-		var alien = new Alien1(a.x, a.y);
-		alien.min_x = a.min_x * 24;
-		alien.max_x = a.max_x * 24;
-		aliens.push(alien);
+		switch(a.sprite) {
+			case 'alien1':
+				var alien = new Alien1(a.x, a.y);
+				alien.min_x = a.min_x * 24;
+				alien.max_x = a.max_x * 24;
+				aliens.push(alien);
+				break;
+			case 'alien2':
+				var alien = new Alien2(a.x, a.y);
+				alien.min_x = a.min_x * 24;
+				alien.max_x = a.max_x * 24;
+				aliens.push(alien);
+				break;
+			default:
+				break;
+		}
 	});
 	
 	data.tiles.forEach(function(tile) {

@@ -75,14 +75,15 @@ game.state.start('gameStartState'); // set start until add change state funciton
 
 function collectAlien(player, alien){
     score += 10;
-    onPlayerHit();
-    onPlayerHit();
-    onPlayerHit();
-    onPlayerHit();
-    if (player.hp <= 0 ){
-        game.state.start('gameOverState');
+    player.hp -= 4;
+    colorHPBar();
+    if (player.hp <= 0 ) {
+		game.state.start('gameOverState');
     }
 	alien.destroy();
+	aliens = aliens.filter(function(a) {
+		return a.phaserObj != alien;
+	});
 }
 
 function killPlayer(player, alienBullet){
@@ -109,10 +110,9 @@ function killBullet(bullet, platform) {
 }
 
 function healthRestore(player, heatlhKit){
-    player.hp += 3; // hp + 3
-    onPlayerHit(); // hp -1 ends with hp + 2
+    player.hp = Math.min(10, player.hp + 2); // hp + 2
+    colorHPBar();
     heatlhKit.kill();
-//    console.log('player hp is now:' + player.hp);
 }
     
 function displayPlanetInfo(){
