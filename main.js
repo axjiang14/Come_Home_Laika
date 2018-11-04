@@ -1,20 +1,5 @@
-Alien = class {
-}
-
-Alien1 = class {
-
+class Alien {
 	constructor(x, y) {
-		this.x = x * 24;
-		this.y = y * 24 - 16;
-		this.spritesheet = 'alien1';
-		
-		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
-		this.phaserObj.Alien = this;
-		this.sightLine = new Phaser.Line(0, 0, 0, 0);
-		
-		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
-		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
-		
 		this.hasSight = false; /// Can we see the player?
 		this.grounded = 0; // # of ticks to stay still for
 		this.shootTicks = 0; // # of ticks before we shoot
@@ -37,6 +22,48 @@ Alien1 = class {
 			this.phaserObj.body.velocity.x = 0;
 			this.phaserObj.animations.stop();
 		}
+	}
+	
+	move() {
+		// Wait for 200-300 ticks before we move again
+		this.grounded = 200 + Math.random() * 100;
+		// Move for 100 ticks
+		this.moveTicks = 100;
+		// Move at a speed of 75-125
+		this.phaserObj.body.velocity.x = 75 + 50 * Math.random();
+
+		// Flip a coin to go right/left
+		var direction = Math.random() > 0.5 ? -1 : 1
+
+		this.phaserObj.body.velocity.x *= direction;
+		if(direction == 1) {
+			this.phaserObj.animations.play('right');
+		}
+		else {
+			this.phaserObj.animations.play('left');
+		}
+	}
+}
+
+class Alien1 extends Alien {
+
+	constructor(x, y) {
+		super(x, y);
+		this.x = x * 24;
+		this.y = y * 24 - 16;
+		this.spritesheet = 'alien1';
+		
+		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj.alienParent = this;
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
+		
+		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
+		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+	}
+	
+	handle() {
+		super.handle();
+		
 		// Don't go past min/max x
 		if(this.x <= this.min_x) {
 			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);
@@ -102,36 +129,17 @@ Alien1 = class {
 		// Alien won't move
 		this.grounded = 150;
 	}
-	
-	move() {
-		// Wait for 200-300 ticks before we move again
-		this.grounded = 200 + Math.random() * 100;
-		// Move for 100 ticks
-		this.moveTicks = 100;
-		// Move at a speed of 75-125
-		this.phaserObj.body.velocity.x = 75 + 50 * Math.random();
-
-		// Flip a coin to go right/left
-		var direction = Math.random() > 0.5 ? -1 : 1
-
-		this.phaserObj.body.velocity.x *= direction;
-		if(direction == 1) {
-			this.phaserObj.animations.play('right');
-		}
-		else {
-			this.phaserObj.animations.play('left');
-		}
-	}
 }
 
-var Alien2 = class {
+class Alien2 extends Alien {
 	constructor(x, y) {
+		super(x, y);
 		this.x = x * 24;
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien2';
 		
 		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
-		this.phaserObj.Alien = this;
+		this.phaserObj.alienParent = this;
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -150,6 +158,10 @@ var Alien2 = class {
 
 function handlePlayer() {
 	player.body.bounce.y = Math.max(0, player.body.bounce.y - 0.01);
+	
+	// Handle player speed restore
+	var delta = playerSpeedMax - playerSpeed;
+	playerSpeed += .01 * delta;
 }
 
 function fire() {
@@ -215,7 +227,6 @@ function stateLoad(filename) {
 	if(data.laika) {
 		player.x = data.laika.x * 24;
 		player.y = data.laika.y * 24 - 24;
-		console.log('putting player at:', player.x, player.y);
 	}
 	
 	// Add spaceship exit
@@ -359,6 +370,7 @@ function everyCreate() {
 }
 
 function everyUpdate() {
+	++ticks;
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(_aliens, platforms);
 	game.physics.arcade.collide(healthKits, platforms);
@@ -378,12 +390,12 @@ function everyUpdate() {
 	
 	if(leftKey.isDown)
 	{
-		player.body.velocity.x = -300;
+		player.body.velocity.x = -playerSpeed;
 		player.animations.play('left');
 	}
 	else if(rightKey.isDown)
 	{
-		player.body.velocity.x = 300;
+		player.body.velocity.x = playerSpeed;
 		player.animations.play('right');
 	}
 	else

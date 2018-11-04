@@ -27,18 +27,21 @@
     
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
-var cursors;
 var platforms;
 var spaceBGM;
 var buttonBGM;
 
+// Player variables
 var player;
+var playerSpeed = 300;
+var playerSpeedMax = 300;
+var hp;
+var savedHP;
+
 var crosshair;
 
 var spaceship;
 var planetsUnlocked = 0;
-var hp;
-var savedHP;
 
 var score = 0;
 var scoreText;
@@ -122,7 +125,7 @@ function killBullet(bullet, platform) {
 	bullet.kill();
 }
 
-function healthRestore(player, heatlhKit){
+function healthRestore(player, heatlhKit) {
     player.hp = Math.min(10, player.hp + 2); // hp + 2
     colorHPBar();
     heatlhKit.kill();
