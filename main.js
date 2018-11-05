@@ -285,10 +285,12 @@ class Alien4 extends Alien {
 		
 		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
 		
+		this.hasSight = false; /// Can we see the player?
 		this.grounded = 0; // # of ticks to stay still for
 		this.shootTicks = 0; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
@@ -296,7 +298,8 @@ class Alien4 extends Alien {
 	}
 	
 	handle() {
-        super.handle();		
+        super.handle();
+		
 		// Don't go past min/max x
 		if(this.x <= this.min_x) {
 			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);

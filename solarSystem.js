@@ -78,10 +78,13 @@ var solarSystem = {
         
         
         var bmpText;
-        var plutoText = "We're about to crash land on Pluto! Here's some information about the planet: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
-        var neptuneText = "Great job! We've escaped from Pluto. It looks like we're headed for Neptune next. \nBundle up. Neptune is chilly.";
-        var uranusText = "Wow that was tough! Next stop is Uranus!";
-        var saturnText = "Watch out for the dust";
+        var plutoText = "Control Tower: Hello Laika. This is control tower from Earth. We are glad that you made it to space safely! We're about to crash land on Pluto! Here's some information about the planet: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
+        var neptuneText = "Great job! We've escaped from Pluto. It looks like we're headed for Neptune next. This is Neptune: \nGravity: 1.14x compared to Earth \nSize: 58x compared to Earth";
+        var uranusText = "Wow that was tough! Next stop is Uranus!This is Uranus: \nGravity: 0.886x compared to Earth \nSize: 63x compared to Earth \nControl Tower: This Planet is the coldest planet of solar system. Get to the spaceship fast! Or You will freeze to death!";
+        var saturnText = "Watch out for the dust! \nGravity: 1.065x compared to Earth \nSize: 764x compared to Earth ";
+        var jupiterText = "This is Jupiter: \n Gravity: 2.528x compared to Earth \nSize: 1321x compared to Earth \nControl Tower: This Planet is very difficult to move, make sure you take careful steps.";
+        var marsText = "This is Mars:  \nGravity: 0.376x compared to Earth \nSize: 0.151x compared to Earth \nControl Tower: This Planet is very similar to Earth, we might have to conquer this planet in the future. Special Mission: Kill all the aliens.";
+
                
         
         if(planetsUnlocked == 0){
@@ -96,8 +99,16 @@ var solarSystem = {
             bmpText = game.add.bitmapText(160, 480, "gem", uranusText, 18); 
             bmpText.maxWidth = 620;}
         
-        if(planetsUnlocked >= 3){
+        if(planetsUnlocked == 3){
             bmpText = game.add.bitmapText(160, 480, "gem", saturnText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked == 4){
+            bmpText = game.add.bitmapText(160, 480, "gem", jupiterText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked >= 5){
+            bmpText = game.add.bitmapText(160, 480, "gem", marsText, 18); 
             bmpText.maxWidth = 620;}
         
         
