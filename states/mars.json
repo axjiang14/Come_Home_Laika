@@ -1,5 +1,200 @@
 {
-  "aliens": [],
+  "spaceship": {
+    "sprite": "spaceship",
+    "x": 97,
+    "y": 5
+  },
+  "aliens": [
+    {
+      "sprite": "alien1",
+      "x": 7,
+      "y": 5,
+      "min_x": 0,
+      "max_x": 6
+    },
+    {
+      "sprite": "alien1",
+      "x": 15,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 14
+    },
+    {
+      "sprite": "alien1",
+      "x": 22,
+      "y": 5,
+      "min_x": 0,
+      "max_x": 21
+    },
+    {
+      "sprite": "alien1",
+      "x": 29,
+      "y": 10,
+      "min_x": 0,
+      "max_x": 28
+    },
+    {
+      "sprite": "alien1",
+      "x": 32,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 31
+    },
+    {
+      "sprite": "alien1",
+      "x": 36,
+      "y": 10,
+      "min_x": 0,
+      "max_x": 35
+    },
+    {
+      "sprite": "alien1",
+      "x": 46,
+      "y": 15,
+      "min_x": 0,
+      "max_x": 45
+    },
+    {
+      "sprite": "alien1",
+      "x": 48,
+      "y": 23,
+      "min_x": 0,
+      "max_x": 47
+    },
+    {
+      "sprite": "alien1",
+      "x": 52,
+      "y": 5,
+      "min_x": 0,
+      "max_x": 51
+    },
+    {
+      "sprite": "alien1",
+      "x": 52,
+      "y": 9,
+      "min_x": 0,
+      "max_x": 51
+    },
+    {
+      "sprite": "alien1",
+      "x": 53,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 52
+    },
+    {
+      "sprite": "alien1",
+      "x": 53,
+      "y": 23,
+      "min_x": 0,
+      "max_x": 52
+    },
+    {
+      "sprite": "alien1",
+      "x": 60,
+      "y": 5,
+      "min_x": 0,
+      "max_x": 59
+    },
+    {
+      "sprite": "alien1",
+      "x": 62,
+      "y": 10,
+      "min_x": 0,
+      "max_x": 61
+    },
+    {
+      "sprite": "alien1",
+      "x": 62,
+      "y": 15,
+      "min_x": 0,
+      "max_x": 61
+    },
+    {
+      "sprite": "alien1",
+      "x": 64,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 63
+    },
+    {
+      "sprite": "alien1",
+      "x": 68,
+      "y": 10,
+      "min_x": 0,
+      "max_x": 67
+    },
+    {
+      "sprite": "alien1",
+      "x": 68,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 67
+    },
+    {
+      "sprite": "alien1",
+      "x": 71,
+      "y": 23,
+      "min_x": 0,
+      "max_x": 70
+    },
+    {
+      "sprite": "alien1",
+      "x": 73,
+      "y": 5,
+      "min_x": 0,
+      "max_x": 72
+    },
+    {
+      "sprite": "alien1",
+      "x": 77,
+      "y": 15,
+      "min_x": 0,
+      "max_x": 76
+    },
+    {
+      "sprite": "alien1",
+      "x": 77,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 76
+    },
+    {
+      "sprite": "alien1",
+      "x": 79,
+      "y": 10,
+      "min_x": 0,
+      "max_x": 78
+    },
+    {
+      "sprite": "alien1",
+      "x": 82,
+      "y": 5,
+      "min_x": 0,
+      "max_x": 81
+    },
+    {
+      "sprite": "alien1",
+      "x": 83,
+      "y": 15,
+      "min_x": 0,
+      "max_x": 82
+    },
+    {
+      "sprite": "alien1",
+      "x": 87,
+      "y": 20,
+      "min_x": 0,
+      "max_x": 86
+    },
+    {
+      "sprite": "alien1",
+      "x": 90,
+      "y": 23,
+      "min_x": 0,
+      "max_x": 89
+    }
+  ],
   "tiles": [
     {
       "sprite": "platform_tile",
@@ -3076,5 +3271,6 @@
       "x": 99,
       "y": 24
     }
-  ]
+  ],
+  "healthKits": []
 }

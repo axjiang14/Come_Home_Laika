@@ -15,8 +15,9 @@
     <script src = "saturnState.js"></script>
     <script src = "jupiterState.js"></script>
     <script src = "marsState.js"></script>
-    <script src = "mercuryState.js"></script>
     <script src = "venusState.js"></script>
+    <script src = "mercuryState.js"></script>
+    <script src = "earthState.js"></script>
     
     
     
@@ -85,8 +86,9 @@ game.state.add('uranusState', uranusState);
 game.state.add('saturnState', saturnState);
 game.state.add('jupiterState', jupiterState);
 game.state.add('marsState', marsState);
-game.state.add('mercuryState', mercuryState);
 game.state.add('venusState', venusState);
+game.state.add('mercuryState', mercuryState);
+game.state.add('earthState', earthState);
 game.state.start('gameStartState'); // set start until add change state funciton
 
 function collectAlien(player, alien){

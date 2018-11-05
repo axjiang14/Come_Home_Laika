@@ -17,7 +17,7 @@ create: function() {
 	
 	everyCreate();
 
-	player.body.gravity.y = 2400; // 3 TILES JUMP 1800 = 4 TILES JUMP
+	player.body.gravity.y = 1200; // 3 TILES JUMP 1800 = 4 TILES JUMP
 	
 	stateLoad('states/mercury.json');
     

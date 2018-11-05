@@ -46,10 +46,11 @@ var solarSystem = {
         
         
         p1.onInputDown.add(this.tint, p1);
-        p1.onInputDown.add(this.changeVenus, p1);
+        p1.onInputDown.add(this.changeMercury, p1);
         p2.onInputDown.add(this.tint, p2);
-        p2.onInputDown.add(this.changeMercury, p2);
+        p2.onInputDown.add(this.changeVenus, p2);
         p3.onInputDown.add(this.tint, p3);
+        p3.onInputDown.add(this.changeEarth, p3);
         p4.onInputDown.add(this.tint, p4);
         p4.onInputDown.add(this.changeMars, p4);
         p5.onInputDown.add(this.tint, p5);
@@ -171,22 +172,29 @@ var solarSystem = {
     		game.state.start('marsState');
     },
     
-    changeMercury: function() {
+    changeVenus: function() {
     	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
     	if(planetsUnlocked >= 6)
+    		game.state.start('venusState');
+    },
+    
+    changeMercury: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 7)
     		game.state.start('mercuryState');
     },
     
-    changeVenus: function() {
+    changeEarth: function() {
     	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
-    	if(planetsUnlocked >= 7)
-    		game.state.start('venusState');
+    	if(planetsUnlocked >= 8)
+    		game.state.start('earthState');
     },
+    
     update: function(){
         if(qKey.isDown) {
             console.log('q key pressed');
             //stateLoad('assets/state_test.json', null, null);
-            game.state.start('marsState');
+            game.state.start('earthState');
         }
     }
     

@@ -1,4 +1,9 @@
 {
+  "spaceship": {
+    "sprite": "spaceship",
+    "x": 96,
+    "y": 3
+  },
   "aliens": [],
   "tiles": [
     {
@@ -1219,6 +1224,11 @@
     {
       "sprite": "platform_tile",
       "x": 41,
+      "y": 16
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 41,
       "y": 24
     },
     {
@@ -3019,7 +3029,7 @@
     {
       "sprite": "platform_tile",
       "x": 92,
-      "y": 19
+      "y": 17
     },
     {
       "sprite": "platform_tile",
@@ -3049,7 +3059,7 @@
     {
       "sprite": "platform_tile",
       "x": 94,
-      "y": 17
+      "y": 13
     },
     {
       "sprite": "platform_tile",
@@ -3099,6 +3109,16 @@
     {
       "sprite": "platform_tile",
       "x": 97,
+      "y": 9
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 97,
+      "y": 10
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 97,
       "y": 24
     },
     {
@@ -3110,6 +3130,16 @@
       "sprite": "platform_tile",
       "x": 98,
       "y": 4
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 98,
+      "y": 9
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 98,
+      "y": 10
     },
     {
       "sprite": "platform_tile",
@@ -3241,5 +3271,6 @@
       "x": 99,
       "y": 24
     }
-  ]
+  ],
+  "healthKits": []
 }

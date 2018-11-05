@@ -17,8 +17,16 @@ create: function() {
 	
 	everyCreate();
 
-	player.body.gravity.y = 2400; // 3 TILES JUMP 1800 = 4 TILES JUMP
-	
+	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
+    
+//	for(var i = 0; i < 21; ++i){
+//		var tile = platforms.create( 336, 24 * i , 'tile_light'); // x = (nth tile+1) * 24
+//        
+//		//tile.scale.setTo(1, 0.25);
+//		tile.enableBody = true;
+//		tile.body.immovable = true;
+//    }
+    
 	stateLoad('states/venus.json');
     
 },
