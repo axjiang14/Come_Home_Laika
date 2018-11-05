@@ -153,6 +153,103 @@ class Alien2 extends Alien {
 	}
 	
 	handle() {
+        super.handle();
+		
+		// Don't go past min/max x
+		if(this.x <= this.min_x) {
+			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
+		}
+		else if(this.x >= this.max_x) {
+			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
+		}
+        
+        if(this.grounded <= 0) {
+				console.log('I would like to move.');
+				this.move();
+        }
+		
+	}
+    
+}
+
+class Alien3 extends Alien {
+	constructor(x, y) {
+		super(x, y);
+		this.x = x * 24;
+		this.y = y * 24 - 24;
+		this.spritesheet = 'alien3';
+		
+		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj.alienParent = this;
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
+		
+		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
+		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+		this.hasSight = false; /// Can we see the player?
+		this.grounded = 0; // # of ticks to stay still for
+		this.shootTicks = 0; // # of ticks before we shoot
+		this.moveTicks = 0; // # of ticks to move for
+		this.range = 250; // Our shooting range
+	}
+	
+	handle() {
+        super.handle();
+		
+		// Don't go past min/max x
+		if(this.x <= this.min_x) {
+			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
+		}
+		else if(this.x >= this.max_x) {
+			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
+		}
+        
+        if(this.grounded <= 0) {
+				console.log('I would like to move.');
+				this.move();
+        }
+	}
+}
+
+class Alien4 extends Alien {
+	constructor(x, y) {
+		super(x, y);
+		this.x = x * 24;
+		this.y = y * 24 - 24;
+		this.spritesheet = 'alien4';
+		
+		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj.alienParent = this;
+		
+		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
+		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+		this.grounded = 0; // # of ticks to stay still for
+		this.shootTicks = 0; // # of ticks before we shoot
+		this.moveTicks = 0; // # of ticks to move for
+		this.range = 250; // Our shooting range
+	}
+	
+	handle() {
+        super.handle();		
+		// Don't go past min/max x
+		if(this.x <= this.min_x) {
+			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
+		}
+		else if(this.x >= this.max_x) {
+			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
+			this.phaserObj.animations.stop();
+		}
+        
+        if(this.grounded <= 0) {
+				console.log('I would like to move.');
+				this.move();
+        }
 	}
 }
 
@@ -247,6 +344,18 @@ function stateLoad(filename) {
 				break;
 			case 'alien2':
 				var alien = new Alien2(a.x, a.y);
+				alien.min_x = a.min_x * 24;
+				alien.max_x = a.max_x * 24;
+				aliens.push(alien);
+				break;
+            case 'alien3':
+				var alien = new Alien3(a.x, a.y);
+				alien.min_x = a.min_x * 24;
+				alien.max_x = a.max_x * 24;
+				aliens.push(alien);
+				break;
+            case 'alien4':
+				var alien = new Alien4(a.x, a.y);
 				alien.min_x = a.min_x * 24;
 				alien.max_x = a.max_x * 24;
 				aliens.push(alien);
