@@ -20,7 +20,7 @@ create: function() {
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
 //	for(var i = 0; i < 21; ++i){
-//		var tile = platforms.create( 336, 24 * i , 'tile_light'); // x = (nth tile+1) * 24
+//		var tile = platforms.create( 384, 24 * i , 'platform_tile'); // x = (nth tile+1) * 24
 //        
 //		//tile.scale.setTo(1, 0.25);
 //		tile.enableBody = true;
@@ -38,7 +38,7 @@ update: function() {
 
 spaceshipLeave: function() {
 	console.log('Got to spaceship!');
-	planetsUnlocked = Math.max(planetsUnlocked, 8);
+	planetsUnlocked = Math.max(planetsUnlocked, 7);
     console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
     savedHP = player.hp;

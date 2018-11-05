@@ -30,7 +30,7 @@ update: function() {
 
 spaceshipLeave: function() {
 	console.log('Got to spaceship!');
-	planetsUnlocked = Math.max(planetsUnlocked, 7);
+	planetsUnlocked = Math.max(planetsUnlocked, 8);
     console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
     savedHP = player.hp;
