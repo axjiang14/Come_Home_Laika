@@ -20,7 +20,7 @@
     
     
     
-    
+    <script src = "bullet.js"></script>
     <script src = "main.js"></script>
 	<style type="text/css">
 		body {
@@ -68,6 +68,7 @@ var _aliens;	// Phaser objects
 var alienBullets;
 var diamonds;
 var bullets;
+var _bullets;
 var healthKits;
 var weapon; // this is barrel that follows the pointer
 
@@ -125,7 +126,10 @@ function killPlayer(player, alienBullet){
             score = 0
         }
 		game.state.start('gameOverState');
-	}       
+	}
+	
+	if(alienBullet.bulletObj)
+		alienBullet.bulletObj.cb();
 }
 
 function killaliens(bullet, alien){ // kill aliens with bullet

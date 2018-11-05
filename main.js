@@ -1,3 +1,30 @@
+class Bullet {
+	constructor(x, y, sprite, onHitCB) {
+		this.x = x;
+		this.y = y;
+		this.bulletSprite = alienBullets.create(x, y, sprite);
+		this.bulletSprite.bulletObj = this;
+		this.cb = onHitCB;
+		this.liveTicks = 30;
+		
+		game.physics.arcade.moveToXY(this.bulletSprite, player.x + 20, player.y + 20, bulletSpeed / 2);
+	}
+	
+	handle() {
+		--this.liveTicks;
+		
+		if(this.liveTicks <= 0) {
+			/*_bullets = _bullets.filter(function(bullet) {
+				bullet != this;
+			});*/
+			this.bulletSprite.destroy();
+		}
+		
+		this.x = this.bulletSprite.x;
+		this.y = this.bulletSprite.y;
+	}
+}
+
 class Alien {
 	constructor(x, y) {
 		this.hasSight = false; /// Can we see the player?
@@ -5,6 +32,11 @@ class Alien {
 		this.shootTicks = 0; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
 		this.range = 250; // Our shooting range
+		
+		// Get distance b/w this alien and the player
+		var px = player.body.x;
+		var py = player.body.y;
+		this.distance = Phaser.Math.distance(px, py, x, y);
 	}
 	
 	handle() {
@@ -22,6 +54,24 @@ class Alien {
 			this.phaserObj.body.velocity.x = 0;
 			this.phaserObj.animations.stop();
 		}
+		
+		// Get distance b/w this alien and the player
+		var px = player.body.x;
+		var py = player.body.y;
+		this.distance = Phaser.Math.distance(px, py, this.x, this.y);
+		
+		this.sightLine.start.x = px + 12;
+		this.sightLine.start.y = py + 18;
+		this.sightLine.end.x = this.x + 16;
+		this.sightLine.end.y = this.y + 16;
+		
+		// Check if this alien's line of sight intersects any platforms
+		var slTmp = this.sightLine;
+		var intersectsAny = false;
+		platforms.forEach(function(platform) {
+			intersectsAny |= Phaser.Line.intersectsRectangle(slTmp, platform);
+		});
+		this.hasSight = !intersectsAny;
 	}
 	
 	move() {
@@ -42,6 +92,9 @@ class Alien {
 		else {
 			this.phaserObj.animations.play('left');
 		}
+	}
+	
+	shoot() {
 	}
 }
 
@@ -74,30 +127,12 @@ class Alien1 extends Alien {
 			this.phaserObj.animations.stop();
 		}
 		
-		// Get distance b/w this alien and the player
-		var px = player.body.x;
-		var py = player.body.y;
-		var distance = Phaser.Math.distance(px, py, this.x, this.y);
-		
-		this.sightLine.start.x = px + 12;
-		this.sightLine.start.y = py + 18;
-		this.sightLine.end.x = this.x + 16;
-		this.sightLine.end.y = this.y + 16;
-		
-		// Check if this alien's line of sight intersects any platforms
-		var slTmp = this.sightLine;
-		var intersectsAny = false;
-		platforms.forEach(function(platform) {
-			intersectsAny |= Phaser.Line.intersectsRectangle(slTmp, platform);
-		});
-		this.hasSight = !intersectsAny;
-		
 		// If we're in range and have sight:
-		var inRange = distance < this.range;
+		var inRange = this.distance < this.range;
 		if(inRange && this.hasSight) {
 			if(this.shootTicks <= 0) {
 				console.log('I would like to shoot the player.');
-				this.shootAtPlayer();
+				this.shoot();
 			}
 		}
 		// If we're not attacking, let's consider moving
@@ -118,7 +153,7 @@ class Alien1 extends Alien {
 		game.debug.geom(this.sightLine, tint, this.hasSight);
 	}
 	
-	shootAtPlayer() {
+	shoot() {
 		var bullet = alienBullets.create(this.x + 16, this.y + 16, 'bullet');
 		bullet.liveTicks = 30;
 		game.physics.arcade.moveToXY(bullet, player.x + 20, player.y + 20, bulletSpeed / 2);
@@ -165,13 +200,39 @@ class Alien2 extends Alien {
 			this.phaserObj.animations.stop();
 		}
         
-        if(this.grounded <= 0) {
+        // If we're in range and have sight:
+		var inRange = this.distance < this.range;
+		if(inRange && this.hasSight) {
+			if(this.shootTicks <= 0) {
+				console.log('I would like to shoot the player.');
+				this.shoot();
+			}
+		}
+		// If we're not attacking, let's consider moving
+		else {
+			if(this.grounded <= 0) {
 				console.log('I would like to move.');
 				this.move();
-        }
+			}
+		}
 		
 	}
-    
+	
+	shoot() {
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'ice', this.iceBulletCB);
+		
+		// Alien reload timer
+		this.shootTicks = 275 + Math.random() * 50;
+		// Alien won't move
+		this.grounded = 150;
+	}
+	
+	iceBulletCB() {
+		playerSpeed *= 0.1;
+		console.log('playerSpeed is now:', playerSpeed);
+		--hp;
+		colorHPBar();
+	}
 }
 
 class Alien3 extends Alien {
@@ -269,10 +330,15 @@ function fire() {
 	}
 }
 
-function handleAlienBullets(alienBullets) {
+function handleAlienBullets() {
 	alienBullets.forEach(function(bullet) {
 		if(--bullet.liveTicks <= 0){
 			bullet.destroy();
+		}
+		
+		if(bullet.bulletObj) {
+			console.log('yeah');
+			bullet.bulletObj.handle();
 		}
 	});
 }
@@ -338,31 +404,22 @@ function stateLoad(filename) {
 		switch(a.sprite) {
 			case 'alien1':
 				var alien = new Alien1(a.x, a.y);
-				alien.min_x = a.min_x * 24;
-				alien.max_x = a.max_x * 24;
-				aliens.push(alien);
 				break;
 			case 'alien2':
 				var alien = new Alien2(a.x, a.y);
-				alien.min_x = a.min_x * 24;
-				alien.max_x = a.max_x * 24;
-				aliens.push(alien);
 				break;
             case 'alien3':
 				var alien = new Alien3(a.x, a.y);
-				alien.min_x = a.min_x * 24;
-				alien.max_x = a.max_x * 24;
-				aliens.push(alien);
 				break;
             case 'alien4':
 				var alien = new Alien4(a.x, a.y);
-				alien.min_x = a.min_x * 24;
-				alien.max_x = a.max_x * 24;
-				aliens.push(alien);
 				break;
 			default:
 				break;
 		}
+		alien.min_x = a.min_x * 24;
+		alien.max_x = a.max_x * 24;
+		aliens.push(alien);
 	});
 	
 	data.tiles.forEach(function(tile) {
@@ -526,7 +583,7 @@ function everyUpdate() {
 		fire();
 	}
 	
-	handleAlienBullets(alienBullets);
+	handleAlienBullets();
 	
 	scoreText.text = 'Score: ' + score;
 	playerHPtext.text = 'HP: ' + player.hp;
