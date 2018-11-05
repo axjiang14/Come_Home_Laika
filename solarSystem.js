@@ -13,9 +13,8 @@ var solarSystem = {
         game.load.image('uranus', 'assets/planets/uranus.png')
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
-        //game.load.image('plutoInfoSheet', 'assets/plutoInfoSheet.png')
+        game.load.image('plutoInfoSheet', 'assets/plutoInfoSheet.png')
         
-        game.load.image('enter', 'assets/buttonEnter.png')
         
         game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
         
@@ -47,10 +46,14 @@ var solarSystem = {
         
         
         p1.onInputDown.add(this.tint, p1);
+        p1.onInputDown.add(this.changeVenus, p1);
         p2.onInputDown.add(this.tint, p2);
+        p2.onInputDown.add(this.changeMercury, p2);
         p3.onInputDown.add(this.tint, p3);
         p4.onInputDown.add(this.tint, p4);
+        p4.onInputDown.add(this.changeMars, p4);
         p5.onInputDown.add(this.tint, p5);
+        p5.onInputDown.add(this.changeJupiter, p5);
         p6.onInputDown.add(this.tint, p6);
         p6.onInputDown.add(this.changeSaturn, p6);
         p7.onInputDown.add(this.tint, p7);
@@ -145,8 +148,29 @@ var solarSystem = {
     		game.state.start('saturnState');
     },
     
-   
+   changeJupiter: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 4)
+    		game.state.start('jupiterState');
+    },
     
+    changeMars: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 5)
+    		game.state.start('marsState');
+    },
+    
+    changeMercury: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 6)
+    		game.state.start('mercuryState');
+    },
+    
+    changeVenus: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 7)
+    		game.state.start('venusState');
+    },
     update: function(){
         
     }

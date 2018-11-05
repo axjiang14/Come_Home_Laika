@@ -12,7 +12,6 @@ create: function() {
 	player = game.add.sprite(0, 0, 'laika');
 	
 	everyCreate();
-	player.hp = 10;
 	player.body.gravity.y = 1800;
     
 	stateLoad('states/uranus.json');
@@ -27,8 +26,9 @@ update: function()
 spaceshipLeave: function() {
 	console.log('Got to spaceship!');
 	planetsUnlocked = Math.max(planetsUnlocked, 3);
-	console.log('planetsUnlocked=', planetsUnlocked);
+    console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
+    savedHP = player.hp;
 }
 
 }
