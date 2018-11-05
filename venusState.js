@@ -16,7 +16,8 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
-
+    player.hp = savedHP + 1; // starts with old HP +1 for the coloring
+    onPlayerHit(); // to color
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
 //	for(var i = 0; i < 21; ++i){

@@ -494,7 +494,7 @@ function everyCreate() {
     
     var style = { font: "bold 32px Arial Rounded Mt", fill: "#000000", align: "left" };
     
-    player.hp = 10;
+    player.hp = savedHP;
 	player.hpBox = game.add.sprite(200, 19, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
