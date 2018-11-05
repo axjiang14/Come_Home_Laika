@@ -11,7 +11,7 @@ preload: function() {
 create: function() {
     game.world.setBounds(0 , 0, 2400, 600); //has to match with background siz...?
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-	var background = game.add.sprite(0, 0, 'saturnBackground');
+	var background = game.add.sprite(0, 0, 'jupiterBackground');
     background.fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	

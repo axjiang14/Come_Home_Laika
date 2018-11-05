@@ -440,6 +440,11 @@ function everyPreload() {
 	game.load.image('neptuneBackground', 'assets/NeptuneBackground_test.png');
 	game.load.image('uranusBackground', 'assets/BGUranus.png');
 	game.load.image('saturnBackground', 'assets/BGSaturn.png');
+    game.load.image('jupiterBackground', 'assets/BGJupiter.png');
+    game.load.image('marsBackground', 'assets/BGMars.png');
+    game.load.image('venusBackground', 'assets/BGVenus.png');
+    game.load.image('mercuryBackground', 'assets/BGMercury.png');
+    game.load.image('earthBackground', 'assets/BGEarth.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
