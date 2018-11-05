@@ -1,4 +1,9 @@
 {
+  "spaceship": {
+    "sprite": "spaceship",
+    "x": 97,
+    "y": 5
+  },
   "aliens": [
     {
       "sprite": "alien1",
