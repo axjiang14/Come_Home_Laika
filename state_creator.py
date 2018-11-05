@@ -3,6 +3,7 @@ from PIL import Image
 
 pixel_map = {
 			 (255, 255, 255): '',
+			 (255, 0, 255): 'infoSheet', # infosheet
 			 (0, 0, 255): 'laika',
 			 (0, 255, 255): 'spaceship',
 			 (0, 255, 0): 'tile_light',
