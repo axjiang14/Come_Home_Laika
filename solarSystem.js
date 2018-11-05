@@ -23,11 +23,11 @@ var solarSystem = {
         
         game.load.bitmapFont('gem', 'assets/gem.png', 'assets/gem.xml');
         
+        qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
         
     },
     
     create: function(){
-        
         
         game.add.sprite(0, 0, 'spaceBackground');
         game.add.sprite(0, 0, 'sun'); // background
@@ -172,7 +172,11 @@ var solarSystem = {
     		game.state.start('venusState');
     },
     update: function(){
-        
+        if(qKey.isDown) {
+            console.log('q key pressed');
+            //stateLoad('assets/state_test.json', null, null);
+            game.state.start('jupiterState');
+        }
     }
     
 };// solarSystem State
