@@ -30,11 +30,14 @@ update: function() {
 },
 
 spaceshipLeave: function() {
-	console.log('Got to spaceship!');
-	planetsUnlocked = Math.max(planetsUnlocked, 5);
-    console.log('planetsUnlocked=', planetsUnlocked);
-	game.state.start('solarSystem');
-    savedHP = player.hp;
+    if (player.infoSheetNum == 5){
+        console.log('Got to spaceship!');
+        planetsUnlocked = Math.max(planetsUnlocked, 5);
+        console.log('planetsUnlocked=', planetsUnlocked);
+        game.state.start('solarSystem');
+        savedHP = player.hp;
+    }
+    player.infoSheetNum = 0;
 }
 
 }

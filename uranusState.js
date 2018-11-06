@@ -33,7 +33,7 @@ spaceshipLeave: function() {
         game.state.start('solarSystem');
         savedHP = player.hp;
     }
-    infoSheetNum = 0;
+    player.infoSheetNum = 0;
 }
 
 }
