@@ -194,7 +194,7 @@ var solarSystem = {
         if(qKey.isDown) {
             console.log('q key pressed');
             //stateLoad('assets/state_test.json', null, null);
-            game.state.start('venusState');
+            planetsUnlocked = 9;
         }
     }
     

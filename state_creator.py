@@ -22,6 +22,7 @@ def main():
 	enemies = []
 	tiles = []
 	healthKits = []
+	infoSheets = []
 	
 	json_obj = {}
 	
@@ -61,12 +62,16 @@ def main():
 				elif 'healthKit' == obj:
 					healthKits.append({'sprite': obj, 'x': x, 'y': y})
 				
+				elif 'infoSheet' == obj:
+					infoSheets.append({'sprite': obj, 'x': x, 'y': y})
+				
 				elif 'spaceship' == obj:
 					json_obj['spaceship'] = {'sprite': 'spaceship', 'x': x, 'y': y}
 	
 	json_obj['aliens'] = enemies
 	json_obj['tiles'] = tiles
 	json_obj['healthKits'] = healthKits
+	json_obj['infoSheets'] = infoSheets
 		
 	with open(filename + '.json', 'w') as f:
 		json.dump(json_obj, f, indent=2)

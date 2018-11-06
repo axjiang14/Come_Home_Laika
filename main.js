@@ -436,6 +436,13 @@ function stateLoad(filename) {
 		healthKit.body.gravity.y = 900;
 		healthKit.enableBody = true;
 	});
+    
+    data.infoSheets.forEach(function(infoSheet) {
+		var infoSheet = infoSheets.create(infoSheet.x * 24, infoSheet.y * 24 - 8, 'infoSheet');
+		infoSheet.body.gravity.y = 900;
+		infoSheet.enableBody = true;
+	});
+    
 }
 
 function everyPreload() {
@@ -455,11 +462,10 @@ function everyPreload() {
 	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
     game.load.spritesheet('alien3', 'assets/AlienBouncy.png', 32, 48);
     game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
-	game.load.image('diamond', 'assets/diamond.png');
+	game.load.image('infoSheet', 'assets/diamond.png');// need to be changed to InformationSheet.
     game.load.spritesheet('alien5', 'assets/AlienSpaceship.png', 32, 32);
     game.load.spritesheet('alien6', 'assets/AlienFlying.png', 48, 48);
     game.load.spritesheet('alienBoss1', 'assets/AlienSquid.png', 51, 96);
-	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
 	game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.image('flame', 'assets/Beam-Fire.png');
@@ -494,7 +500,8 @@ function everyCreate() {
     
     var style = { font: "bold 32px Arial Rounded Mt", fill: "#000000", align: "left" };
     
-    player.hp = savedHP;
+    player.infoSheetNum = 0; //collect to escape
+    player.hp = savedHP; //has to go through Pluto to declare hp = 10
 	player.hpBox = game.add.sprite(200, 19, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
@@ -535,6 +542,9 @@ function everyCreate() {
 	
 	healthKits = game.add.group();
 	healthKits.enableBody = true;
+    
+    infoSheets = game.add.group();
+    infoSheets.enableBody = true;
 	
 	alienBullets = game.add.group();
 	alienBullets.enableBody = true;
@@ -548,14 +558,18 @@ function everyUpdate() {
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(_aliens, platforms);
 	game.physics.arcade.collide(healthKits, platforms);
+	game.physics.arcade.collide(infoSheets, platforms);
 	game.physics.arcade.collide(_aliens, _aliens);
+    
 	
 	game.physics.arcade.overlap(bullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(alienBullets, platforms, killBullet, null, this);
 	game.physics.arcade.overlap(player, _aliens, collectAlien, null, this);
 	game.physics.arcade.overlap(player, alienBullets, killPlayer, null, this);
 	game.physics.arcade.overlap(player, healthKits, healthRestore, null, this);
-	game.physics.arcade.overlap(bullets, _aliens, killaliens, null, this); // kill alien when hit by bullet
+	game.physics.arcade.overlap(player, infoSheets, collectInfoSheets, null, this);
+	
+    game.physics.arcade.overlap(bullets, _aliens, killaliens, null, this); // kill alien when hit by bullet
 	
 	player.body.velocity.x = 0;
 	handlePlayer();

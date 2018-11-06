@@ -36,7 +36,6 @@
     
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
-
 var spaceBGM;
 var buttonBGM;
 
@@ -71,6 +70,8 @@ var diamonds;
 var bullets;
 var _bullets;
 var healthKits;
+var infoSheets; // collect all to exit
+var infoSheetNum; 
 var weapon; // this is barrel that follows the pointer
 
 var bulletSpeed = 1000;
@@ -154,17 +155,13 @@ function healthRestore(player, heatlhKit) {
     colorHPBar();
     heatlhKit.kill();
 }
-    
-function displayPlanetInfo(){
-    // we need to display planet info when it is clicked once.
-    // display enter button
-}
 
-function enterPlanet(){
-    game.state.start('plutoState');
-    // we need to enter planet when we click that enter button
-    // change state()   
-}
+function collectInfoSheets(player, infoSheets) {
+    player.infoSheetNum += 1; //collect infoSheet
+    infoSheets.kill();
+}    
+
+
     
 </script>
 
