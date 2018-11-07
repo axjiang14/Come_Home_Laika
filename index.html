@@ -93,6 +93,8 @@ game.state.add('earthState', earthState);
 game.state.start('gameStartState'); // set start until add change state funciton
 
 function collectAlien(player, alien){
+    game.camera.shake(0.02, 500);
+//    game.camera.flash(0xff0000, 500);
     if (score >= 4){
         score -= 4;
     }

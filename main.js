@@ -582,7 +582,9 @@ function everyCreate() {
 	rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 	upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
 	qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
 	
+    
 	aliens = []
 	_aliens = game.add.group();
 	_aliens.enableBody = true;
@@ -643,6 +645,9 @@ function everyUpdate() {
 		player.body.velocity.y = - 600; //some what like gravitiy
 	}
 	
+    if(pKey.isDown){
+        game.state.start('solarSystem');
+    }
 	weapon.rotation = game.physics.arcade.angleToPointer(weapon);
 	if (game.input.activePointer.isDown) {
 		fire();

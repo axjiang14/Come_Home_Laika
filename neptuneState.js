@@ -18,10 +18,9 @@ create: function() {
 	
 	stateLoad('states/neptune.json');
     
-    //add spaceship
-    /*spaceship = game.add.sprite(2300, 30, 'spaceship');
-	game.physics.arcade.enable(spaceship);
-	spaceship.enableBody = true;*/
+    
+//    game.time.events.add(Phaser.Timer.SECOND * 10, fadePicture, this);
+
 },
 
 update: function() {
