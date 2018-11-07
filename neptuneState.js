@@ -5,7 +5,7 @@ preload: function() {
 },
 
 create: function() {
-    game.world.setBounds(0 , 0, 2400, 600); //has to match with background siz...?
+    
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.add.sprite(0, 0, 'neptuneBackground').fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
@@ -19,7 +19,7 @@ create: function() {
 	stateLoad('states/neptune.json');
     
     
-//    game.time.events.add(Phaser.Timer.SECOND * 10, fadePicture, this);
+    var timeLimit = game.time.events.add(Phaser.Timer.SECOND * 4, gameOver, this);
 
 },
 
@@ -36,8 +36,8 @@ spaceshipLeave: function() {
         console.log('planetsUnlocked=', planetsUnlocked);
         game.state.start('solarSystem');
         savedHP = player.hp;
+        player.infoSheetNum = 0;
     }
-    player.infoSheetNum = 0;
 }
 
 }

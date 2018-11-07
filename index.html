@@ -163,8 +163,19 @@ function collectInfoSheets(player, infoSheets) {
     infoSheets.kill();
 }    
 
-
+function gameOver(){
+    game.add.tween(player).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+    console.log('GAMEOVER.');
+    if (score >= 20){
+        score -= 20;
+    }
+    else{
+        score =0
+    }
+    game.state.start('gameOverState');
+}
     
+
 </script>
 
 </body>

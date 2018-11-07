@@ -525,7 +525,7 @@ function everyPreload() {
 }
 
 function everyCreate() {
-
+    game.world.setBounds(0 , 0, 2400, 600);
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	platforms = game.add.group();
@@ -662,7 +662,7 @@ function everyUpdate() {
 	scoreText.text = 'Score: ' + score;
 	playerHPtext.text = 'HP: ' + player.hp;
 //	bulletText.text = 'Bullets: ' + bullets[1];
-//	timeText.text = 'Time: ' + ticks;
+	timeText.text = 'Time: ' + ticks;
 	
 }
 

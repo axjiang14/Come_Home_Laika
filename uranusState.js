@@ -8,7 +8,8 @@ preload: function() {
 },
 
 create: function() {
-	game.add.sprite(0, 0, 'uranusBackground').fixedToCamera = true;
+	
+    game.add.sprite(0, 0, 'uranusBackground').fixedToCamera = true;
 	player = game.add.sprite(0, 0, 'laika');
 	
 	everyCreate();
@@ -32,8 +33,8 @@ spaceshipLeave: function() {
         console.log('planetsUnlocked=', planetsUnlocked);
         game.state.start('solarSystem');
         savedHP = player.hp;
+        player.infoSheetNum = 0;
     }
-    player.infoSheetNum = 0;
 }
 
 }
