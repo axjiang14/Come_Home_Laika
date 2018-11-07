@@ -14,9 +14,6 @@ class Bullet {
 		--this.liveTicks;
 		
 		if(this.liveTicks <= 0) {
-			/*_bullets = _bullets.filter(function(bullet) {
-				bullet != this;
-			});*/
 			this.bulletSprite.destroy();
 		}
 		
@@ -222,7 +219,7 @@ class Alien2 extends Alien {
 		var bullet = new Bullet(this.x + 16, this.y + 16, 'ice', this.iceBulletCB);
 		
 		// Alien reload timer
-		this.shootTicks = 275 + Math.random() * 50;
+		this.shootTicks = 75 + Math.random() * 50;
 		// Alien won't move
 		this.grounded = 150;
 	}
@@ -317,6 +314,52 @@ class Alien4 extends Alien {
 	}
 }
 
+class Alien6 extends Alien {
+	constructor(x, y) {
+		super(x, y);
+		this.x = x * 24;
+		this.y = y * 24 - 24;
+		this.spritesheet = 'alien6';
+		
+		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+
+		this.phaserObj.alienParent = this;
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
+		
+		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
+		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+		this.hasSight = false; /// Can we see the player?
+		this.grounded = 0; // # of ticks to stay still for
+		this.shootTicks = 0; // # of ticks before we shoot
+		this.moveTicks = 0; // # of ticks to move for
+		this.range = 10000; // Our shooting range
+	}
+	
+	handle() {
+        super.handle();
+		
+		// We fly so don't care about min/max_x      
+        if(this.grounded <= 0) {
+				console.log('I would like to fly.');
+				this.move();
+        }
+        
+        if(this.shootTicks <= 0) {
+        	this.shoot();
+        }
+	}
+	
+	shoot() {
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'ice', null);
+		bullet.bulletSprite.body.velocity.y = 300;
+		bullet.bulletSprite.body.velocity.x = 0;
+		
+		// Alien reload timer
+		this.shootTicks = 275 + Math.random() * 50;
+	}
+}
+
 function handlePlayer() {
 	player.body.bounce.y = Math.max(0, player.body.bounce.y - 0.01);
 	
@@ -404,18 +447,22 @@ function stateLoad(filename) {
 	
 	// Create Aliens
 	data.aliens.forEach(function(a) {
+		var alien;
 		switch(a.sprite) {
 			case 'alien1':
-				var alien = new Alien1(a.x, a.y);
+				alien = new Alien1(a.x, a.y);
 				break;
 			case 'alien2':
-				var alien = new Alien2(a.x, a.y);
+				alien = new Alien2(a.x, a.y);
 				break;
             case 'alien3':
-				var alien = new Alien3(a.x, a.y);
+				alien = new Alien3(a.x, a.y);
 				break;
             case 'alien4':
-				var alien = new Alien4(a.x, a.y);
+				alien = new Alien4(a.x, a.y);
+				break;
+			case 'alien6':
+				alien = new Alien6(a.x, a.y);
 				break;
 			default:
 				break;
@@ -596,14 +643,14 @@ function everyUpdate() {
 		player.body.velocity.y = - 600; //some what like gravitiy
 	}
 	
-	aliens.forEach(function(alien) {
-		alien.handle();
-	});
-	
 	weapon.rotation = game.physics.arcade.angleToPointer(weapon);
 	if (game.input.activePointer.isDown) {
 		fire();
 	}
+	
+	aliens.forEach(function(alien) {
+		alien.handle();
+	});
 	
 	handleAlienBullets();
 	

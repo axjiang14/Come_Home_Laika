@@ -131,7 +131,7 @@ function killPlayer(player, alienBullet){
 		game.state.start('gameOverState');
 	}
 	
-	if(alienBullet.bulletObj)
+	if(alienBullet.bulletObj && alienBullet.bulletObj.cb)
 		alienBullet.bulletObj.cb();
 }
 

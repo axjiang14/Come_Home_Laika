@@ -36,24 +36,36 @@ def main():
 			obj = pixel_map.get(pixel)
 			
 			if obj:
-				print('Placing:', obj, 'at', x, ',', y)
+				#print('Placing:', obj, 'at', x, ',', y)
 				if obj == 'laika':
 					json_obj['laika'] = {'sprite': 0, 'x': x, 'y': y}
 					
 				elif 'tile' in obj:
 					tiles.append({'sprite': obj, 'x': x, 'y': y})
 					
-				elif 'alien' in obj:
+				elif obj.startswith('alien'):
 					# Find alien minmax x
 					min_x = x
-					while min_x >= 0 and ('tile' in pixel_map.get(pic.getpixel((min_x, y + 1)), '') or 'alien' in pixel_map.get(pic.getpixel((min_x, y)), 'alien')):
+					while min_x >= 0:
 						min_x -= 1
+						pixel = pic.getpixel((min_x, y))[:3] # what pixel would the alien be in?
+						floor_pixel = pic.getpixel((min_x, y + 1))[:3] # what pixel would the alien be standing on?
+						if 'tile' in pixel_map.get(pixel, ''): # Wall in the way
+							break
+						if 'tile' not in pixel_map.get(floor_pixel, ''): # No floor to stand on
+							break
 					min_x += 1
 					print('alien.min_x:', min_x)
 					
 					max_x = x
-					while max_x < pic.width and 'tile' in pixel_map.get(pic.getpixel((max_x, y + 1)), '') and 'alien' in pixel_map.get(pic.getpixel((max_x, y)), 'alien'):
+					while max_x <= pic.width:
 						max_x += 1
+						pixel = pic.getpixel((max_x, y))[:3] # what pixel would the alien be in?
+						floor_pixel = pic.getpixel((max_x, y + 1))[:3] # what pixel would the alien be standing on?
+						if 'tile' in pixel_map.get(pixel, ''): # Wall in the way
+							break
+						if 'tile' not in pixel_map.get(floor_pixel, ''): # No floor to stand on
+							break
 					max_x -= 1
 					print('alien.max_x:', max_x)
 						

@@ -11,74 +11,67 @@
   },
   "aliens": [
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 2,
       "y": 7,
-      "min_x": 0,
-      "max_x": 2
-    },
-    {
-      "sprite": "alien1",
-      "x": 2,
-      "y": 13,
-      "min_x": 0,
-      "max_x": 2
-    },
-    {
-      "sprite": "alien1",
-      "x": 2,
-      "y": 16,
-      "min_x": 0,
-      "max_x": 2
-    },
-    {
-      "sprite": "alien1",
-      "x": 4,
-      "y": 19,
-      "min_x": 0,
+      "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien1",
-      "x": 7,
-      "y": 19,
-      "min_x": 0,
+      "sprite": "alien6",
+      "x": 2,
+      "y": 13,
+      "min_x": 1,
+      "max_x": 4
+    },
+    {
+      "sprite": "alien6",
+      "x": 2,
+      "y": 16,
+      "min_x": 1,
       "max_x": 7
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
+      "x": 4,
+      "y": 19,
+      "min_x": 1,
+      "max_x": 18
+    },
+    {
+      "sprite": "alien6",
+      "x": 7,
+      "y": 19,
+      "min_x": 1,
+      "max_x": 18
+    },
+    {
+      "sprite": "alien6",
       "x": 10,
       "y": 7,
       "min_x": 8,
-      "max_x": 10
+      "max_x": 18
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 14,
       "y": 7,
       "min_x": 8,
-      "max_x": 14
+      "max_x": 18
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 27,
       "y": 9,
       "min_x": 22,
-      "max_x": 27
+      "max_x": 32
     },
     {
-      "sprite": "alien1",
-      "x": 28,
-      "y": 17,
-      "min_x": 27,
-      "max_x": 29
-    },
-    {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 29,
       "y": 17,
       "min_x": 27,
-      "max_x": 29
+      "max_x": 32
     }
   ],
   "tiles": [
@@ -1001,28 +994,24 @@
   "healthKits": [
     {
       "sprite": "healthKit",
-      "x": 10,
-      "y": 23
-    },
-    {
-      "sprite": "healthKit",
-      "x": 14,
-      "y": 23
-    },
-    {
-      "sprite": "healthKit",
-      "x": 18,
-      "y": 23
-    },
-    {
-      "sprite": "healthKit",
-      "x": 21,
+      "x": 9,
       "y": 17
     },
     {
       "sprite": "healthKit",
-      "x": 24,
-      "y": 23
+      "x": 16,
+      "y": 4
+    },
+    {
+      "sprite": "healthKit",
+      "x": 25,
+      "y": 9
+    },
+    {
+      "sprite": "healthKit",
+      "x": 31,
+      "y": 21
     }
-  ]
+  ],
+  "infoSheets": []
 }
