@@ -13,7 +13,7 @@ var solarSystem = {
         game.load.image('uranus', 'assets/planets/uranus.png')
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
-        game.load.image('plutoInfoSheet', 'assets/plutoInfoSheet.png')
+        game.load.image('spaceship', 'assets/Spaceship.PNG');
         
         
         game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
@@ -40,9 +40,12 @@ var solarSystem = {
         var p4 = game.add.button(300, 40, 'mars');
         var p5 = game.add.button(300, 250, 'jupiter');
         var p6 = game.add.button(450, 50, 'saturn');
-        var p7 = game.add.button(550, 260, 'uranus');
+        var p7 = game.add.button(520, 290, 'uranus');
+        p7.scale.setTo(0.9,0.9);
         var p8 = game.add.button(650, 90, 'neptune');
+        p8.scale.setTo(0.9,0.9);
         var p9 = game.add.button(730, 370, 'pluto');
+        p9.scale.setTo(0.6,0.6);
         
         
         p1.onInputDown.add(this.tint, p1);
@@ -89,6 +92,7 @@ var solarSystem = {
                
         
         if(planetsUnlocked == 0){
+            game.add.sprite(725, 306, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", plutoText, 18); 
             bmpText.maxWidth = 620;}
         
