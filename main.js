@@ -149,7 +149,8 @@ function everyPreload() {
 	game.load.image('infoSheet', 'assets/diamond.png');// need to be changed to InformationSheet.
     game.load.spritesheet('alien5', 'assets/AlienSpaceship.png', 32, 32);
     game.load.spritesheet('alien6', 'assets/AlienFlying.png', 48, 48);
-    game.load.spritesheet('alienBoss1', 'assets/AlienSquid.png', 51, 96);
+    game.load.spritesheet('boss1', 'assets/BossBasic.png', 60, 64);
+    game.load.spritesheet('bossSquid', 'assets/BossSquid.png', 51, 96);
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
 	game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.image('flame', 'assets/Beam-Fire.png');
