@@ -1,7 +1,3 @@
-var main = document.createElement('script');
-main.src = 'main.js';
-document.head.appendChild(main);
-
 var marsState = {
 
 preload: function() {

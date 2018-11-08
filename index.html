@@ -19,9 +19,10 @@
     <script src = "mercuryState.js"></script>
     <script src = "earthState.js"></script>
     
-    
+    <script src="debugState.js"></script>    
     
     <script src = "bullet.js"></script>
+    <script src = "alien.js"></script>
     <script src = "main.js"></script>
 	<style type="text/css">
 		body {
@@ -90,6 +91,9 @@ game.state.add('marsState', marsState);
 game.state.add('venusState', venusState);
 game.state.add('mercuryState', mercuryState);
 game.state.add('earthState', earthState);
+
+game.state.add('debugState', debugState);
+
 game.state.start('gameStartState'); // set start until add change state funciton
 
 function collectAlien(player, alien){

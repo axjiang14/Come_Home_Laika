@@ -10,7 +10,8 @@ pixel_map = {
 			 (0, 0, 0): 'platform_tile',
 			 (255, 255, 0): 'healthKit',
 			 (255, 0, 0): 'alien1',
-			 (100, 0, 100): 'alien2'}
+			 (100, 0, 100): 'alien2',
+			 (100, 0, 0): 'alien6'}
 
 def main():
 	state_pic = sys.argv[1]

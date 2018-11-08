@@ -1,7 +1,3 @@
-var main = document.createElement('script');
-main.src = 'main.js';
-document.head.appendChild(main);
-
 var earthState = {
 
 preload: function() {
@@ -21,11 +17,6 @@ create: function() {
 	player.body.gravity.y = 1800;
 	
 	stateLoad('states/earth.json');
-    
-    //add spaceship
-    /*spaceship = game.add.sprite(2300, 30, 'spaceship');
-	game.physics.arcade.enable(spaceship);
-	spaceship.enableBody = true;*/
 },
 
 update: function() {
