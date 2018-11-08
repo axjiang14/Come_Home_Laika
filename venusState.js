@@ -9,7 +9,7 @@ preload: function() {
 },
 
 create: function() {
-    game.world.setBounds(0 , 0, 2400, 600); //has to match with background siz...?
+    
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var background = game.add.sprite(0, 0, 'venusBackground');
     background.fixedToCamera = true;
@@ -44,8 +44,8 @@ spaceshipLeave: function() {
         console.log('planetsUnlocked=', planetsUnlocked);
         game.state.start('solarSystem');
         savedHP = player.hp;
+        player.infoSheetNum = 0;
     }
-    player.infoSheetNum = 0;
 }
 }
     
