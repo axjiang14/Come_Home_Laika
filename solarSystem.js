@@ -30,21 +30,23 @@ var solarSystem = {
     create: function(){
         
         game.add.sprite(0, 0, 'spaceBackground');
-        game.add.sprite(0, 0, 'sun'); // background
+        game.add.sprite(-35, -35, 'sun'); // background
         
         
-        var p1 = game.add.button(150, 0, 'mercury');
+        var p1 = game.add.button(150, 10, 'mercury');
+        p1.scale.setTo(0.6,0.6);
         var p2 = game.add.button(20, 140, 'venus');
+        p2.scale.setTo(0.8,0.8);
         var p3 = game.add.button(170, 170, 'earth');
         p3.scale.setTo(0.8,0.8);
         var p4 = game.add.button(300, 40, 'mars');
         var p5 = game.add.button(300, 250, 'jupiter');
         var p6 = game.add.button(450, 50, 'saturn');
         var p7 = game.add.button(520, 290, 'uranus');
-        p7.scale.setTo(0.9,0.9);
+        p7.scale.setTo(0.8,0.8);
         var p8 = game.add.button(650, 90, 'neptune');
-        p8.scale.setTo(0.9,0.9);
-        var p9 = game.add.button(730, 370, 'pluto');
+        p8.scale.setTo(0.8,0.8);
+        var p9 = game.add.button(725, 370, 'pluto');
         p9.scale.setTo(0.6,0.6);
         
         
@@ -92,7 +94,7 @@ var solarSystem = {
                
         
         if(planetsUnlocked == 0){
-            game.add.sprite(725, 306, 'spaceship');
+            game.add.sprite(720, 306, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", plutoText, 18); 
             bmpText.maxWidth = 620;}
         
