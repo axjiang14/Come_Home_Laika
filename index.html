@@ -44,7 +44,7 @@ var buttonBGM;
 var player;
 var playerSpeed = 300;
 var playerSpeedMax = 300;
-var hp;
+//var hp;
 var savedHP;
 
 var crosshair;
@@ -65,7 +65,7 @@ var gameOverText;
 
 var platforms;
 var aliens;	// Alien objects
-var _aliens;	// Phaser objects
+//var _aliens;	// Phaser objects
 var alienBullets;
 var diamonds;
 var bullets;
@@ -119,36 +119,24 @@ function collectAlien(player, alien){
 		game.state.start('gameOverState');
     }
 	alien.destroy();
-	aliens = aliens.filter(function(a) {
-		return a.phaserObj != alien;
-	});
 }
 
 function killPlayer(player, alienBullet){
 	alienBullet.destroy();
 	onPlayerHit();
-	if (player.hp <= 0 ){
-        if(score >= 20){
-            score -= 20
-        }
-        else{
-            score = 0
-        }
-		game.state.start('gameOverState');
-	}
 	
 	if(alienBullet.bulletObj && alienBullet.bulletObj.cb)
 		alienBullet.bulletObj.cb();
+	
+	if (player.hp <= 0 ){
+        score = Math.max(0, score - 20);
+		game.state.start('gameOverState');
+	}
 }
 
 function killaliens(bullet, alien){ // kill aliens with bullet
     score += 2;
 	alien.destroy();
-	
-	// Remove corresponding alien obj
-	aliens = aliens.filter(function(a) {
-		return a.phaserObj != alien;
-	});
     bullet.kill();
 }
 

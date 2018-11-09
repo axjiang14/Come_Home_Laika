@@ -79,7 +79,7 @@ class Alien1 extends Alien {
 		this.y = y * 24 - 16;
 		this.spritesheet = 'alien1';
 		
-		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
@@ -127,15 +127,17 @@ class Alien1 extends Alien {
 	}
 	
 	shoot() {
-		var bullet = alienBullets.create(this.x + 16, this.y + 16, 'bullet');
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'bullet', this.bulletCB);
 		bullet.liveTicks = 30;
-		game.physics.arcade.moveToXY(bullet, player.x + 20, player.y + 20, bulletSpeed / 2);
-		bullet.rotation = game.physics.arcade.angleBetween(bullet, player);
 		
 		// Alien reload timer
 		this.shootTicks = 275 + Math.random() * 50;
 		// Alien won't move
 		this.grounded = 150;
+	}
+	
+	bulletCB() {
+		--player.hp;
 	}
 }
 
@@ -146,7 +148,7 @@ class Alien2 extends Alien {
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien2';
 		
-		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
@@ -189,6 +191,14 @@ class Alien2 extends Alien {
 			}
 		}
 		
+		// Draw line-of-sight debug
+		var tint = 'red';
+		if(this.hasSight) {
+			tint = 'yellow';
+			if(inRange)
+				tint = 'lime';
+		}
+		game.debug.geom(this.sightLine, tint, this.hasSight);
 	}
 	
 	shoot() {
@@ -202,8 +212,7 @@ class Alien2 extends Alien {
 	
 	iceBulletCB() {
 		playerSpeed *= 0.1;
-		console.log('playerSpeed is now:', playerSpeed);
-		--hp;
+		--player.hp;
 		colorHPBar();
 	}
 }
@@ -215,7 +224,7 @@ class Alien3 extends Alien {
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien3';
 		
-		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
@@ -256,7 +265,7 @@ class Alien4 extends Alien {
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien4';
 		
-		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
@@ -297,7 +306,7 @@ class Alien6 extends Alien {
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien6';
 		
-		this.phaserObj = _aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 
 		this.phaserObj.alienParent = this;
 		
@@ -305,7 +314,7 @@ class Alien6 extends Alien {
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
 		
 		this.grounded = 0; // # of ticks to stay still for
-		this.shootTicks = 0; // # of ticks before we shoot
+		this.shootTicks = 175 + Math.random() * 150; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
 		this.range = 10000; // Our shooting range
 	}
@@ -339,21 +348,25 @@ class Alien6 extends Alien {
 	}
 	
 	shoot() {
-		var bullet = new Bullet(this.x + 16, this.y + 16, 'ice', null);
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB);
 		bullet.bulletSprite.body.velocity.y = 300;
 		bullet.bulletSprite.body.velocity.x = 0;
 		bullet.liveTicks = 1000;
-		var bulletLeft = new Bullet(this.x + 16, this.y + 16, 'ice', null);
+		var bulletLeft = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB);
 		bulletLeft.bulletSprite.body.velocity.y = 300;
 		bulletLeft.bulletSprite.body.velocity.x = -150;
 		bulletLeft.liveTicks = 1000;
-		var bulletRight = new Bullet(this.x + 16, this.y + 16, 'ice', null);
+		var bulletRight = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB);
 		bulletRight.bulletSprite.body.velocity.y = 300;
 		bulletRight.bulletSprite.body.velocity.x = 150;
 		bulletRight.liveTicks = 1000;
 		
 		// Alien reload timer
 		this.shootTicks = 275 + Math.random() * 50;
+	}
+	
+	fireBulletCB() {
+		player.onFire = 100;
 	}
 }
 

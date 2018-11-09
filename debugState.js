@@ -4,7 +4,7 @@ preload: function() {
 },
 
 create: function() {
-    //game.add.sprite(0, 0, 'background').fixedToCamera = false;
+    game.add.sprite(0, 0, 'white_tile').scale.setTo(100, 10);
 	player = game.add.sprite(0, 0, 'laika');
 	
     
