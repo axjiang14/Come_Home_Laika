@@ -1,3 +1,4 @@
+var startTicks;
 var neptuneState = {
 
 preload: function() {
@@ -5,7 +6,9 @@ preload: function() {
 },
 
 create: function() {
-    
+    console.log('hello world');
+    console.log('set start ticks to:', ticks);
+	startTicks = ticks;
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.add.sprite(0, 0, 'neptuneBackground').fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
@@ -26,7 +29,12 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
-    
+    if(ticks - startTicks > 100){
+    	console.log('ran out of time');
+    	game.state.start('gameOverState');
+    	}
+    //else
+    	//console.log(ticks, startTicks);
 },
 
 spaceshipLeave: function() {
