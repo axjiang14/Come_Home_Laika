@@ -124,19 +124,19 @@ var solarSystem = {
         console.log('solarSystem');
         console.log(planetsUnlocked);
         
+        
         spaceBGM = game.add.audio('spaceBGM'); //has to be last for some reason
-        spaceBGM.addMarker('spaceBGM', 0, 151);
-        
+        //spaceBGM.addMarker('spaceBGM', 0, 151);
+               
         buttonBGM = game.add.audio('buttonBGM');
-        buttonBGM.addMarker('click', 0, 1);
         
-        spaceBGM.play('spaceBGM');
-//        spaceBGM.repeat('spaceBGM'); //wrong code
+        spaceBGM.play('',0,1,true);
+
     },
     
     tint: function(){
         this.tint = 0xbbbbbb;
-        buttonBGM.play('click');
+        buttonBGM.play();
     },
     
     unTint: function(){

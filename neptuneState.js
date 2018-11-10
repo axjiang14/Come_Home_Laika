@@ -29,12 +29,19 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
-//    if(ticks - startTicks > 100){
+//<<<<<<< HEAD
+////    if(ticks - startTicks > 100){
+////    	console.log('ran out of time');
+////    	game.state.start('gameOverState');
+////    	}
+//=======
+//    if(ticks - startTicks > 10000){
 //    	console.log('ran out of time');
 //    	game.state.start('gameOverState');
 //    	}
-    //else
-    	//console.log(ticks, startTicks);
+//>>>>>>> 91515fd58eac3837fbbbafb0a746a1f89b7379aa
+//    //else
+//    	//console.log(ticks, startTicks);
 },
 
 spaceshipLeave: function() {

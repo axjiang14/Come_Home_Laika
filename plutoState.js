@@ -4,6 +4,8 @@ preload: function() {
 },
 
 create: function() {
+    //stops sound from previous state -- seems ratchet but idk
+    game.sound.stopAll();
     game.add.sprite(0, 0, 'background').fixedToCamera = false;
 	player = game.add.sprite(0, 0, 'laika');
 	
@@ -23,13 +25,14 @@ update: function()
 },
 
 spaceshipLeave: function() {
-    if (player.infoSheetNum >= 5) {
+    if (player.infoSheetNum >= 0) {
         console.log('Got to spaceship!');
         planetsUnlocked = Math.max(planetsUnlocked, 1);
         console.log('planetsUnlocked=', planetsUnlocked);
         game.state.start('solarSystem');
         savedHP = player.hp;
         player.infoSheetNum = 0;
+        successBGM.play();
     }
 }
 
