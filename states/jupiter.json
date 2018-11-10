@@ -7,255 +7,199 @@
   "aliens": [
     {
       "sprite": "alien1",
-      "x": 5,
-      "y": 11,
-      "min_x": 0,
-      "max_x": 4
-    },
-    {
-      "sprite": "alien1",
       "x": 7,
       "y": 11,
-      "min_x": 0,
-      "max_x": 6
-    },
-    {
-      "sprite": "alien1",
-      "x": 9,
-      "y": 11,
-      "min_x": 0,
-      "max_x": 8
+      "min_x": 4,
+      "max_x": 22
     },
     {
       "sprite": "alien1",
       "x": 11,
       "y": 11,
-      "min_x": 0,
-      "max_x": 10
+      "min_x": 4,
+      "max_x": 22
     },
     {
       "sprite": "alien1",
       "x": 14,
       "y": 18,
-      "min_x": 0,
-      "max_x": 13
+      "min_x": 14,
+      "max_x": 14
     },
     {
       "sprite": "alien1",
       "x": 20,
       "y": 18,
-      "min_x": 0,
-      "max_x": 19
+      "min_x": 20,
+      "max_x": 20
     },
     {
       "sprite": "alien1",
       "x": 26,
       "y": 18,
-      "min_x": 0,
-      "max_x": 25
+      "min_x": 26,
+      "max_x": 26
     },
     {
       "sprite": "alien1",
       "x": 31,
       "y": 5,
-      "min_x": 0,
-      "max_x": 30
+      "min_x": 31,
+      "max_x": 31
     },
     {
       "sprite": "alien1",
       "x": 32,
       "y": 11,
-      "min_x": 0,
-      "max_x": 31
+      "min_x": 32,
+      "max_x": 32
     },
     {
       "sprite": "alien1",
       "x": 32,
       "y": 23,
-      "min_x": 0,
-      "max_x": 31
-    },
-    {
-      "sprite": "alien1",
-      "x": 34,
-      "y": 23,
-      "min_x": 0,
-      "max_x": 33
+      "min_x": 9,
+      "max_x": 61
     },
     {
       "sprite": "alien1",
       "x": 36,
       "y": 23,
-      "min_x": 0,
-      "max_x": 35
+      "min_x": 9,
+      "max_x": 61
     },
     {
       "sprite": "alien1",
       "x": 37,
       "y": 5,
-      "min_x": 0,
-      "max_x": 36
+      "min_x": 37,
+      "max_x": 37
     },
     {
       "sprite": "alien1",
       "x": 38,
       "y": 17,
-      "min_x": 0,
-      "max_x": 37
-    },
-    {
-      "sprite": "alien1",
-      "x": 38,
-      "y": 23,
-      "min_x": 0,
-      "max_x": 37
+      "min_x": 38,
+      "max_x": 38
     },
     {
       "sprite": "alien1",
       "x": 40,
       "y": 23,
-      "min_x": 0,
-      "max_x": 39
+      "min_x": 9,
+      "max_x": 61
     },
     {
       "sprite": "alien1",
       "x": 41,
       "y": 17,
-      "min_x": 0,
-      "max_x": 40
+      "min_x": 41,
+      "max_x": 41
+    },
+    {
+      "sprite": "alien1",
+      "x": 58,
+      "y": 23,
+      "min_x": 9,
+      "max_x": 61
     },
     {
       "sprite": "alien1",
       "x": 64,
       "y": 7,
-      "min_x": 0,
-      "max_x": 63
+      "min_x": 63,
+      "max_x": 71
     },
     {
       "sprite": "alien1",
       "x": 68,
       "y": 13,
-      "min_x": 0,
-      "max_x": 67
-    },
-    {
-      "sprite": "alien1",
-      "x": 70,
-      "y": 7,
-      "min_x": 0,
-      "max_x": 69
+      "min_x": 66,
+      "max_x": 72
     },
     {
       "sprite": "alien1",
       "x": 71,
       "y": 13,
-      "min_x": 0,
-      "max_x": 70
+      "min_x": 66,
+      "max_x": 72
+    },
+    {
+      "sprite": "alien1",
+      "x": 80,
+      "y": 23,
+      "min_x": 74,
+      "max_x": 81
     },
     {
       "sprite": "alien1",
       "x": 86,
       "y": 17,
-      "min_x": 0,
-      "max_x": 85
+      "min_x": 86,
+      "max_x": 86
     },
     {
       "sprite": "alien1",
       "x": 86,
       "y": 18,
-      "min_x": 0,
-      "max_x": 85
-    },
-    {
-      "sprite": "alien1",
-      "x": 86,
-      "y": 19,
-      "min_x": 0,
-      "max_x": 85
-    },
-    {
-      "sprite": "alien1",
-      "x": 87,
-      "y": 17,
-      "min_x": 0,
+      "min_x": 86,
       "max_x": 86
     },
     {
       "sprite": "alien1",
       "x": 87,
-      "y": 18,
-      "min_x": 0,
-      "max_x": 86
+      "y": 17,
+      "min_x": 87,
+      "max_x": 87
     },
     {
       "sprite": "alien1",
       "x": 87,
       "y": 19,
-      "min_x": 0,
-      "max_x": 86
+      "min_x": 86,
+      "max_x": 90
     },
     {
       "sprite": "alien1",
       "x": 88,
       "y": 17,
-      "min_x": 0,
-      "max_x": 87
+      "min_x": 88,
+      "max_x": 88
     },
     {
       "sprite": "alien1",
       "x": 88,
       "y": 18,
-      "min_x": 0,
-      "max_x": 87
-    },
-    {
-      "sprite": "alien1",
-      "x": 88,
-      "y": 19,
-      "min_x": 0,
-      "max_x": 87
+      "min_x": 88,
+      "max_x": 88
     },
     {
       "sprite": "alien1",
       "x": 89,
       "y": 17,
-      "min_x": 0,
-      "max_x": 88
-    },
-    {
-      "sprite": "alien1",
-      "x": 89,
-      "y": 18,
-      "min_x": 0,
-      "max_x": 88
+      "min_x": 89,
+      "max_x": 89
     },
     {
       "sprite": "alien1",
       "x": 89,
       "y": 19,
-      "min_x": 0,
-      "max_x": 88
+      "min_x": 86,
+      "max_x": 90
     },
     {
       "sprite": "alien1",
       "x": 90,
       "y": 17,
-      "min_x": 0,
-      "max_x": 89
+      "min_x": 90,
+      "max_x": 90
     },
     {
       "sprite": "alien1",
       "x": 90,
       "y": 18,
-      "min_x": 0,
-      "max_x": 89
-    },
-    {
-      "sprite": "alien1",
-      "x": 90,
-      "y": 19,
-      "min_x": 0,
-      "max_x": 89
+      "min_x": 90,
+      "max_x": 90
     }
   ],
   "tiles": [
@@ -1447,6 +1391,11 @@
     {
       "sprite": "platform_tile",
       "x": 58,
+      "y": 10
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 58,
       "y": 13
     },
     {
@@ -2535,5 +2484,88 @@
       "y": 24
     }
   ],
-  "healthKits": []
+  "healthKits": [
+    {
+      "sprite": "healthKit",
+      "x": 13,
+      "y": 11
+    },
+    {
+      "sprite": "healthKit",
+      "x": 17,
+      "y": 11
+    },
+    {
+      "sprite": "healthKit",
+      "x": 46,
+      "y": 5
+    },
+    {
+      "sprite": "healthKit",
+      "x": 54,
+      "y": 21
+    },
+    {
+      "sprite": "healthKit",
+      "x": 56,
+      "y": 21
+    },
+    {
+      "sprite": "healthKit",
+      "x": 66,
+      "y": 7
+    },
+    {
+      "sprite": "healthKit",
+      "x": 68,
+      "y": 7
+    },
+    {
+      "sprite": "healthKit",
+      "x": 75,
+      "y": 13
+    },
+    {
+      "sprite": "healthKit",
+      "x": 75,
+      "y": 23
+    },
+    {
+      "sprite": "healthKit",
+      "x": 77,
+      "y": 23
+    },
+    {
+      "sprite": "healthKit",
+      "x": 78,
+      "y": 13
+    }
+  ],
+  "infoSheets": [
+    {
+      "sprite": "infoSheet",
+      "x": 1,
+      "y": 11
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 60,
+      "y": 22
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 70,
+      "y": 7
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 71,
+      "y": 19
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 97,
+      "y": 18
+    }
+  ]
 }

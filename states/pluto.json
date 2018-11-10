@@ -11,63 +11,63 @@
   },
   "aliens": [
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 2,
       "y": 7,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 2,
       "y": 13,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 2,
       "y": 16,
       "min_x": 1,
       "max_x": 7
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 4,
       "y": 19,
       "min_x": 1,
       "max_x": 18
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 7,
       "y": 19,
       "min_x": 1,
       "max_x": 18
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 10,
       "y": 7,
       "min_x": 8,
       "max_x": 18
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 14,
       "y": 7,
       "min_x": 8,
       "max_x": 18
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 27,
       "y": 9,
       "min_x": 22,
       "max_x": 32
     },
     {
-      "sprite": "alien6",
+      "sprite": "alien1",
       "x": 29,
       "y": 17,
       "min_x": 27,
@@ -1013,5 +1013,31 @@
       "y": 21
     }
   ],
-  "infoSheets": []
+  "infoSheets": [
+    {
+      "sprite": "infoSheet",
+      "x": 1,
+      "y": 7
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 2,
+      "y": 19
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 22,
+      "y": 9
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 29,
+      "y": 22
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 31,
+      "y": 17
+    }
+  ]
 }
