@@ -16,6 +16,7 @@ function fire() {
 		nextFire = game.time.now + fireRate;
 		var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
 		game.physics.arcade.moveToPointer(bullet, bulletSpeed);
+        gunBGM.play();
 	}
 }
 
@@ -138,27 +139,37 @@ function everyPreload() {
     game.load.image('venusBackground', 'assets/BGVenus.png');
     game.load.image('mercuryBackground', 'assets/BGMercury.png');
     game.load.image('earthBackground', 'assets/BGEarth.png');
+    
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
+    
 	game.load.spritesheet('alien1', 'assets/AlienBasic.png', 32, 40);
 	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
     game.load.spritesheet('alien3', 'assets/AlienBouncy.png', 32, 48);
     game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
-	game.load.image('infoSheet', 'assets/diamond.png');// need to be changed to InformationSheet.
     game.load.spritesheet('alien5', 'assets/AlienSpaceship.png', 32, 32);
     game.load.spritesheet('alien6', 'assets/AlienFlying.png', 48, 48);
     game.load.spritesheet('boss1', 'assets/BossBasic.png', 60, 64);
     game.load.spritesheet('bossSquid', 'assets/BossSquid.png', 51, 96);
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
+    
 	game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.image('flame', 'assets/Beam-Fire.png');
     game.load.image('ice', 'assets/Beam-Ice.png');
+    
+    game.load.image('infoSheet', 'assets/diamond.png');// need to be changed to InformationSheet.
 	game.load.image('healthKit', 'assets/firstaid.png');
-	game.load.audio('bgm', 'assets/spaceBGM.mp3');
+	
 	game.load.image('white_tile', 'assets/white_rect.png');
 	game.load.image('spaceship', 'assets/Spaceship.PNG');
 	game.load.image('crosshair', 'assets/crosshair.png');
+    
+    
+    game.load.audio('gunBGM', 'assets/BackGroundMusic/gunBGM.mp3');
+    game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
+    game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
+    game.load.audio('successBGM', 'assets/BackGroundMusic/starBGM.wav');
 }
 
 function everyCreate() {
@@ -215,7 +226,7 @@ function everyCreate() {
 	upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
 	qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
-	
+    
     
 	//aliens = []
 	aliens = game.add.group();
@@ -232,6 +243,10 @@ function everyCreate() {
 	alienBullets.physicsBodyType = Phaser.Physics.ARCADE;
 	alienBullets.setAll('checkWorldBounds', true);
 	alienBullets.setAll('outOfBoundsKill', true);
+    
+    //audio
+    gunBGM = game.add.audio('gunBGM');
+    successBGM = game.add.audio('successBGM');
 }
 
 function everyUpdate() {

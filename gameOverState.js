@@ -52,7 +52,7 @@ var gameOverState = {
 		player.animations.add('left', [0, 1, 2, 3], 10, true);
 		player.animations.add('right', [5, 6, 7, 8], 10, true);
 		
-		
+		buttonBGM = game.add.audio('buttonBGM');
         
         
         scoreText = game.add.text(16, 16, 'Score: ' + score, {fontSize: '32px', fill: '#ffffff'});
@@ -92,7 +92,7 @@ var gameOverState = {
     
     tint: function(){
         this.tint = 0xbbbbbb;
-        //buttonBGM.play('click');
+        buttonBGM.play();
     },
     
     unTint: function(){
