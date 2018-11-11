@@ -15,7 +15,7 @@ create: function() {
 	
 	everyCreate();
     player.hp = savedHP; // starts with old HP +1 for the coloring
-    onPlayerHit(); // to color
+    onPlayerHit(); // to acolor
     
 	player.body.gravity.y = 1800;
 	

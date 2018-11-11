@@ -12,10 +12,12 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
-    player.hp = savedHP + 1; // starts with old HP +1 for the coloring
+    player.hp = savedHP; // starts with old HP +1 for the coloring
     onPlayerHit(); // to color
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
+//    var tiles1 = platforms.create(384, 100, 'platform_tile');
+//    
 //	for(var i = 0; i < 21; ++i){
 //		var tile = platforms.create( 384, 24 * i , 'platform_tile'); // x = (nth tile+1) * 24
 //        
@@ -31,6 +33,12 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
+//    if (ticks % 20){
+//        tiles1.body.velocity.y = 600;
+//    }
+//    else {
+//        tiles1.body.velocity.y = 300;
+//    }
 },
 
 spaceshipLeave: function() {

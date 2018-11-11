@@ -175,7 +175,8 @@ function everyPreload() {
 function everyCreate() {
     game.world.setBounds(0 , 0, 2400, 600);
 	game.physics.startSystem(Phaser.Physics.ARCADE);
-
+    game.sound.stopAll(); // fresh start
+    
 	platforms = game.add.group();
 	platforms.enableBody = true;
 

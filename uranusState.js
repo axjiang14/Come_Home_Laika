@@ -9,7 +9,7 @@ create: function() {
 	player = game.add.sprite(0, 0, 'laika');
 	
 	everyCreate();
-    player.hp = savedHP + 1; // starts with old HP +1 for the coloring
+    player.hp = savedHP; // starts with old HP +1 for the coloring
     onPlayerHit(); // to color
 	player.body.gravity.y = 1800;
     
