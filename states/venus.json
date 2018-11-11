@@ -182,6 +182,11 @@
       "y": 0
     },
     {
+      "sprite": "tile_light",
+      "x": 3,
+      "y": 4
+    },
+    {
       "sprite": "platform_tile",
       "x": 3,
       "y": 24
@@ -814,6 +819,16 @@
     {
       "sprite": "tile_light",
       "x": 36,
+      "y": 1
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 2
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
       "y": 3
     },
     {
@@ -824,7 +839,27 @@
     {
       "sprite": "tile_light",
       "x": 36,
+      "y": 7
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 8
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
       "y": 9
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 10
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 11
     },
     {
       "sprite": "tile_light",
@@ -839,7 +874,27 @@
     {
       "sprite": "tile_light",
       "x": 36,
+      "y": 16
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 17
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
       "y": 18
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 19
+    },
+    {
+      "sprite": "tile_light",
+      "x": 36,
+      "y": 20
     },
     {
       "sprite": "tile_light",
@@ -869,22 +924,12 @@
     {
       "sprite": "tile_light",
       "x": 37,
-      "y": 9
-    },
-    {
-      "sprite": "tile_light",
-      "x": 37,
       "y": 12
     },
     {
       "sprite": "tile_light",
       "x": 37,
       "y": 15
-    },
-    {
-      "sprite": "tile_light",
-      "x": 37,
-      "y": 18
     },
     {
       "sprite": "tile_light",
@@ -914,22 +959,12 @@
     {
       "sprite": "tile_light",
       "x": 38,
-      "y": 9
-    },
-    {
-      "sprite": "tile_light",
-      "x": 38,
       "y": 12
     },
     {
       "sprite": "tile_light",
       "x": 38,
       "y": 15
-    },
-    {
-      "sprite": "tile_light",
-      "x": 38,
-      "y": 18
     },
     {
       "sprite": "tile_light",
@@ -1609,6 +1644,16 @@
     {
       "sprite": "tile_light",
       "x": 53,
+      "y": 19
+    },
+    {
+      "sprite": "tile_light",
+      "x": 53,
+      "y": 20
+    },
+    {
+      "sprite": "tile_light",
+      "x": 53,
       "y": 21
     },
     {
@@ -1652,11 +1697,6 @@
       "y": 18
     },
     {
-      "sprite": "tile_light",
-      "x": 54,
-      "y": 21
-    },
-    {
       "sprite": "platform_tile",
       "x": 54,
       "y": 24
@@ -1697,11 +1737,6 @@
       "y": 18
     },
     {
-      "sprite": "tile_light",
-      "x": 55,
-      "y": 21
-    },
-    {
       "sprite": "platform_tile",
       "x": 55,
       "y": 24
@@ -2189,11 +2224,6 @@
     {
       "sprite": "tile_light",
       "x": 66,
-      "y": 18
-    },
-    {
-      "sprite": "tile_light",
-      "x": 66,
       "y": 21
     },
     {
@@ -2234,11 +2264,6 @@
     {
       "sprite": "tile_light",
       "x": 67,
-      "y": 18
-    },
-    {
-      "sprite": "tile_light",
-      "x": 67,
       "y": 21
     },
     {
@@ -2279,7 +2304,27 @@
     {
       "sprite": "tile_light",
       "x": 68,
+      "y": 16
+    },
+    {
+      "sprite": "tile_light",
+      "x": 68,
+      "y": 17
+    },
+    {
+      "sprite": "tile_light",
+      "x": 68,
       "y": 18
+    },
+    {
+      "sprite": "tile_light",
+      "x": 68,
+      "y": 19
+    },
+    {
+      "sprite": "tile_light",
+      "x": 68,
+      "y": 20
     },
     {
       "sprite": "tile_light",
@@ -2324,11 +2369,6 @@
     {
       "sprite": "tile_light",
       "x": 69,
-      "y": 18
-    },
-    {
-      "sprite": "tile_light",
-      "x": 69,
       "y": 21
     },
     {
@@ -2369,11 +2409,6 @@
     {
       "sprite": "tile_light",
       "x": 70,
-      "y": 18
-    },
-    {
-      "sprite": "tile_light",
-      "x": 70,
       "y": 21
     },
     {
@@ -2529,11 +2564,6 @@
     {
       "sprite": "tile_light",
       "x": 74,
-      "y": 6
-    },
-    {
-      "sprite": "tile_light",
-      "x": 74,
       "y": 9
     },
     {
@@ -2574,11 +2604,6 @@
     {
       "sprite": "tile_light",
       "x": 75,
-      "y": 6
-    },
-    {
-      "sprite": "tile_light",
-      "x": 75,
       "y": 9
     },
     {
@@ -2619,7 +2644,27 @@
     {
       "sprite": "tile_light",
       "x": 76,
+      "y": 4
+    },
+    {
+      "sprite": "tile_light",
+      "x": 76,
+      "y": 5
+    },
+    {
+      "sprite": "tile_light",
+      "x": 76,
       "y": 6
+    },
+    {
+      "sprite": "tile_light",
+      "x": 76,
+      "y": 7
+    },
+    {
+      "sprite": "tile_light",
+      "x": 76,
+      "y": 8
     },
     {
       "sprite": "tile_light",
@@ -2659,17 +2704,7 @@
     {
       "sprite": "tile_light",
       "x": 77,
-      "y": 3
-    },
-    {
-      "sprite": "tile_light",
-      "x": 77,
       "y": 6
-    },
-    {
-      "sprite": "tile_light",
-      "x": 77,
-      "y": 9
     },
     {
       "sprite": "tile_light",
@@ -2704,17 +2739,7 @@
     {
       "sprite": "tile_light",
       "x": 78,
-      "y": 3
-    },
-    {
-      "sprite": "tile_light",
-      "x": 78,
       "y": 6
-    },
-    {
-      "sprite": "tile_light",
-      "x": 78,
-      "y": 9
     },
     {
       "sprite": "tile_light",
@@ -2745,6 +2770,16 @@
       "sprite": "platform_tile",
       "x": 79,
       "y": 0
+    },
+    {
+      "sprite": "tile_light",
+      "x": 79,
+      "y": 1
+    },
+    {
+      "sprite": "tile_light",
+      "x": 79,
+      "y": 2
     },
     {
       "sprite": "tile_light",
@@ -2899,22 +2934,12 @@
     {
       "sprite": "tile_light",
       "x": 82,
-      "y": 12
-    },
-    {
-      "sprite": "tile_light",
-      "x": 82,
       "y": 15
     },
     {
       "sprite": "tile_light",
       "x": 82,
       "y": 18
-    },
-    {
-      "sprite": "tile_light",
-      "x": 82,
-      "y": 21
     },
     {
       "sprite": "platform_tile",
@@ -2944,22 +2969,12 @@
     {
       "sprite": "tile_light",
       "x": 83,
-      "y": 12
-    },
-    {
-      "sprite": "tile_light",
-      "x": 83,
       "y": 15
     },
     {
       "sprite": "tile_light",
       "x": 83,
       "y": 18
-    },
-    {
-      "sprite": "tile_light",
-      "x": 83,
-      "y": 21
     },
     {
       "sprite": "platform_tile",
@@ -2987,9 +3002,29 @@
       "y": 9
     },
     {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 10
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 11
+    },
+    {
       "sprite": "platform_tile",
       "x": 84,
       "y": 12
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 13
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 14
     },
     {
       "sprite": "platform_tile",
@@ -2997,14 +3032,44 @@
       "y": 15
     },
     {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 16
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 17
+    },
+    {
       "sprite": "platform_tile",
       "x": 84,
       "y": 18
     },
     {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 19
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 20
+    },
+    {
       "sprite": "platform_tile",
       "x": 84,
       "y": 21
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 22
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 23
     },
     {
       "sprite": "platform_tile",
@@ -3385,9 +3450,50 @@
     },
     {
       "sprite": "healthKit",
+      "x": 57,
+      "y": 11
+    },
+    {
+      "sprite": "healthKit",
+      "x": 58,
+      "y": 11
+    },
+    {
+      "sprite": "healthKit",
       "x": 64,
       "y": 2
+    },
+    {
+      "sprite": "healthKit",
+      "x": 84,
+      "y": 7
     }
   ],
-  "infoSheets": []
+  "infoSheets": [
+    {
+      "sprite": "infoSheet",
+      "x": 38,
+      "y": 2
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 38,
+      "y": 10
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 52,
+      "y": 19
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 83,
+      "y": 17
+    },
+    {
+      "sprite": "infoSheet",
+      "x": 97,
+      "y": 22
+    }
+  ]
 }
