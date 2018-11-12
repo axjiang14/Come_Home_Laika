@@ -94,9 +94,10 @@ game.state.add('earthState', earthState);
 
 game.state.add('debugState', debugState);
 
-game.state.start('gameStartState'); // set start until add change state funciton
+game.state.start('gameStartState'); 
 
 function collectAlien(player, alien){
+    bigImpactBGM.play();
     game.camera.shake(0.02, 500);
 //    game.camera.flash(0xff0000, 500);
     if (score >= 4){
@@ -122,6 +123,7 @@ function collectAlien(player, alien){
 }
 
 function killPlayer(player, alienBullet){
+    impactBGM.play();
 	alienBullet.destroy();
 	onPlayerHit();
 	
@@ -153,6 +155,7 @@ function healthRestore(player, heatlhKit) {
 function collectInfoSheets(player, infoSheets) {
     player.infoSheetNum += 1; //collect infoSheet
     infoSheets.kill();
+    collectBGM.play("",0,0.2,false,true);
 }    
 
 function gameOver(){

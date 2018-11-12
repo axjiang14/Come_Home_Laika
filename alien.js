@@ -117,13 +117,13 @@ class Alien1 extends Alien {
 		}
 		
 		// Draw line-of-sight debug
-		var tint = 'red';
+		/*var tint = 'red';
 		if(this.hasSight) {
 			tint = 'yellow';
 			if(inRange)
 				tint = 'lime';
 		}
-		game.debug.geom(this.sightLine, tint, this.hasSight);
+		game.debug.geom(this.sightLine, tint, this.hasSight);*/
 	}
 	
 	shoot() {
@@ -192,13 +192,13 @@ class Alien2 extends Alien {
 		}
 		
 		// Draw line-of-sight debug
-		var tint = 'red';
+		/*var tint = 'red';
 		if(this.hasSight) {
 			tint = 'yellow';
 			if(inRange)
 				tint = 'lime';
 		}
-		game.debug.geom(this.sightLine, tint, this.hasSight);
+		game.debug.geom(this.sightLine, tint, this.hasSight);*/
 	}
 	
 	shoot() {

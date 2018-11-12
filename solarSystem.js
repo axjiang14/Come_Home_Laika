@@ -28,23 +28,22 @@ var solarSystem = {
     },
     
     create: function(){
-        
         game.add.sprite(0, 0, 'spaceBackground');
         game.add.sprite(-35, -35, 'sun'); // background
         
-        
-        var p1 = game.add.button(150, 10, 'mercury');
+        var p1 = game.add.button(150, 80, 'mercury');
         p1.scale.setTo(0.6,0.6);
-        var p2 = game.add.button(20, 140, 'venus');
+        var p2 = game.add.button(20, 180, 'venus');
         p2.scale.setTo(0.8,0.8);
-        var p3 = game.add.button(170, 170, 'earth');
+        var p3 = game.add.button(170, 230, 'earth');
         p3.scale.setTo(0.8,0.8);
-        var p4 = game.add.button(300, 40, 'mars');
-        var p5 = game.add.button(300, 250, 'jupiter');
-        var p6 = game.add.button(450, 50, 'saturn');
-        var p7 = game.add.button(520, 290, 'uranus');
+        var p4 = game.add.button(320, 150, 'mars');
+        p4.scale.setTo(0.7,0.7);
+        var p5 = game.add.button(310, 300, 'jupiter');
+        var p6 = game.add.button(450, 80, 'saturn');
+        var p7 = game.add.button(540, 300, 'uranus');
         p7.scale.setTo(0.8,0.8);
-        var p8 = game.add.button(650, 90, 'neptune');
+        var p8 = game.add.button(670, 110, 'neptune');
         p8.scale.setTo(0.8,0.8);
         var p9 = game.add.button(725, 370, 'pluto');
         p9.scale.setTo(0.6,0.6);
@@ -86,10 +85,14 @@ var solarSystem = {
         var bmpText;
         var plutoText = "Control Tower: Hello Laika. This is control tower from Earth. We are glad that you made it to space safely! We're about to crash land on Pluto! Here's some information about the planet: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
         var neptuneText = "Great job! We've escaped from Pluto. It looks like we're headed for Neptune next. This is Neptune: \nGravity: 1.14x compared to Earth \nSize: 58x compared to Earth";
-        var uranusText = "Wow that was tough! Next stop is Uranus!This is Uranus: \nGravity: 0.886x compared to Earth \nSize: 63x compared to Earth \nControl Tower: This Planet is the coldest planet of solar system. Get to the spaceship fast! Or You will freeze to death!";
+        var uranusText = "Wow that was tough! Next stop is Uranus! \nGravity: 0.886x compared to Earth \nSize: 63x compared to Earth \nControl Tower: This Planet is the coldest planet of solar system. Get to the spaceship fast! Or You will freeze to death!";
         var saturnText = "Watch out for the dust! \nGravity: 1.065x compared to Earth \nSize: 764x compared to Earth ";
         var jupiterText = "This is Jupiter: \n Gravity: 2.528x compared to Earth \nSize: 1321x compared to Earth \nControl Tower: This Planet is very difficult to move, make sure you take careful steps.";
         var marsText = "This is Mars:  \nGravity: 0.376x compared to Earth \nSize: 0.151x compared to Earth \nControl Tower: This Planet is very similar to Earth, we might have to conquer this planet in the future. Special Mission: Kill all the aliens.";
+        var venusText = "Hello Laika. This is Venus: \nGravity: 0.904x compared to Earth \nSize: 0.815x compared to Earth \nControl Tower: This Planet has special aliens. \nSpecial Mission: Kill all the aliens.";
+        var mercuryText = "Hello Laika. This is Mercury: \nGravity: 0.38x compared to Earth \nSize: 0.056x compared to Earth \nControl Tower: This Planet is your last planet. And your resources are running out.\nSpecial Mission: Kill all the aliens. You have 150 seconds.";
+        var earthText = "Hello Laika. We're almost home. Set your GPS for Earth!";
+
 
                
         
@@ -99,23 +102,43 @@ var solarSystem = {
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked == 1){
+            game.add.sprite(680, 50, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", neptuneText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked == 2){
+            game.add.sprite(550, 245, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", uranusText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked == 3){
+            game.add.sprite(500, 25, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", saturnText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked == 4){
+            game.add.sprite(340, 245, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", jupiterText, 18); 
             bmpText.maxWidth = 620;}
         
-        if(planetsUnlocked >= 5){
+        if(planetsUnlocked == 5){
+            game.add.sprite(310, 95, 'spaceship');
             bmpText = game.add.bitmapText(160, 480, "gem", marsText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked == 6){
+            game.add.sprite(143, 25, 'spaceship');
+            bmpText = game.add.bitmapText(160, 480, "gem", mercuryText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked == 7){
+            game.add.sprite(25, 125, 'spaceship');
+            bmpText = game.add.bitmapText(160, 480, "gem", venusText, 18); 
+            bmpText.maxWidth = 620;}
+        
+        if(planetsUnlocked >= 8){
+            game.add.sprite(175, 175, 'spaceship');
+            bmpText = game.add.bitmapText(160, 480, "gem", earthText, 18); 
             bmpText.maxWidth = 620;}
         
         

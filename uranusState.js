@@ -4,7 +4,7 @@ preload: function() {
 },
 
 create: function() {
-	
+	game.sound.stopAll();
     game.add.sprite(0, 0, 'uranusBackground').fixedToCamera = true;
 	player = game.add.sprite(0, 0, 'laika');
 	
@@ -14,6 +14,7 @@ create: function() {
 	player.body.gravity.y = 1800;
     
 	stateLoad('states/uranus.json');
+    uranusBGM.play("",0,1,true);
 },
 
 update: function()
@@ -24,12 +25,14 @@ update: function()
 
 spaceshipLeave: function() {
     if (player.infoSheetNum == 5){
+        game.sound.stopAll();
         console.log('Got to spaceship!');
         planetsUnlocked = Math.max(planetsUnlocked, 3);
         console.log('planetsUnlocked=', planetsUnlocked);
         game.state.start('solarSystem');
         savedHP = player.hp;
         player.infoSheetNum = 0;
+        successBGM.play();
     }
 }
 

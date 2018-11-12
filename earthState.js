@@ -31,6 +31,7 @@ spaceshipLeave: function() {
     console.log('planetsUnlocked=', planetsUnlocked);
 	game.state.start('solarSystem');
     savedHP = player.hp;
+    successBGM.play();
 }
 
 }

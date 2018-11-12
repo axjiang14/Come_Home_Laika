@@ -10,6 +10,7 @@ var gameOverState = {
 	
 	create: function()
 	{
+        game.sound.stopAll();
 		savedHP = 10;// when you die, make sure you come back healthy
         
         game.physics.startSystem(Phaser.Physics.ARCADE);

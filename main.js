@@ -169,7 +169,18 @@ function everyPreload() {
     game.load.audio('gunBGM', 'assets/BackGroundMusic/gunBGM.mp3');
     game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
     game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
-    game.load.audio('successBGM', 'assets/BackGroundMusic/starBGM.wav');
+    game.load.audio('successBGM', 'assets/BackGroundMusic/takeoffBGM.mp3');
+    game.load.audio('collectBGM', 'assets/BackGroundMusic/starBGM.wav');
+    game.load.audio('impactBGM', 'assets/BackGroundMusic/impactBGM.mp3');
+    game.load.audio('bigImpactBGM', 'assets/BackGroundMusic/bigImpactBGM.mp3');
+    game.load.audio('warningBGM', 'assets/BackGroundMusic/warningBGM.mp3');
+    game.load.audio('plutoBGM', 'assets/BackGroundMusic/plutoBGM.wav');
+    game.load.audio('neptuneBGM', 'assets/BackGroundMusic/neptuneBGM.mp3');
+    game.load.audio('uranusBGM', 'assets/BackGroundMusic/uranusBGM.mp3');
+    game.load.audio('saturnBGM', 'assets/BackGroundMusic/saturnBGM.wav');
+    game.load.audio('jupiterBGM', 'assets/BackGroundMusic/jupiterBGM.wav');
+    game.load.audio('finalBossBGM', 'assets/BackGroundMusic/finalBossBGM.wav');
+    
 }
 
 function everyCreate() {
@@ -248,6 +259,16 @@ function everyCreate() {
     //audio
     gunBGM = game.add.audio('gunBGM');
     successBGM = game.add.audio('successBGM');
+    collectBGM = game.add.audio('collectBGM');
+    impactBGM = game.add.audio('impactBGM');
+    bigImpactBGM = game.add.audio('bigImpactBGM');
+    warningBGM = game.add.audio('warningBGM');
+    plutoBGM = game.add.audio('plutoBGM');
+    neptuneBGM = game.add.audio('neptuneBGM');
+    uranusBGM = game.add.audio('uranusBGM');
+    saturnBGM = game.add.audio('saturnBGM');
+    jupiterBGM = game.add.audio('jupiterBGM');
+    finalBossBGM = game.add.audio('finalBossBGM');
 }
 
 function everyUpdate() {
@@ -293,6 +314,7 @@ function everyUpdate() {
 	}
 	
     if(pKey.isDown){
+        game.sound.stopAll();
         game.state.start('solarSystem');
     }
     if(qKey.isDown){

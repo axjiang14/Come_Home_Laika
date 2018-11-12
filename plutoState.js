@@ -16,6 +16,7 @@ create: function() {
 	player.body.gravity.y = 900;
     
 	stateLoad('states/pluto.json');
+    plutoBGM.play("",0,1,true);
 },
 
 update: function()
@@ -25,7 +26,8 @@ update: function()
 },
 
 spaceshipLeave: function() {
-    if (player.infoSheetNum >= 0) {
+    if (player.infoSheetNum >= 5) {
+        game.sound.stopAll();
         console.log('Got to spaceship!');
         planetsUnlocked = Math.max(planetsUnlocked, 1);
         console.log('planetsUnlocked=', planetsUnlocked);
