@@ -6,154 +6,154 @@
   },
   "aliens": [
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 5,
       "y": 21,
       "min_x": 4,
       "max_x": 6
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 6,
       "y": 10,
       "min_x": 5,
       "max_x": 6
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 13,
       "y": 13,
       "min_x": 12,
       "max_x": 14
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 18,
       "y": 14,
       "min_x": 17,
       "max_x": 19
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 24,
       "y": 21,
       "min_x": 23,
       "max_x": 25
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 33,
       "y": 20,
       "min_x": 33,
       "max_x": 33
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 35,
       "y": 12,
       "min_x": 35,
       "max_x": 35
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 45,
       "y": 11,
       "min_x": 44,
       "max_x": 47
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 48,
       "y": 19,
       "min_x": 47,
       "max_x": 56
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 51,
       "y": 23,
       "min_x": 41,
       "max_x": 59
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 52,
       "y": 19,
       "min_x": 47,
       "max_x": 56
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 53,
       "y": 12,
       "min_x": 52,
       "max_x": 68
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 62,
       "y": 21,
       "min_x": 61,
       "max_x": 62
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 63,
       "y": 16,
       "min_x": 62,
       "max_x": 64
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 77,
       "y": 5,
       "min_x": 77,
       "max_x": 79
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 90,
       "y": 20,
       "min_x": 90,
       "max_x": 90
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 91,
       "y": 23,
       "min_x": 90,
       "max_x": 98
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 92,
       "y": 16,
       "min_x": 92,
       "max_x": 92
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 93,
       "y": 23,
       "min_x": 90,
       "max_x": 98
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 94,
       "y": 12,
       "min_x": 94,
       "max_x": 94
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 95,
       "y": 23,
       "min_x": 90,
       "max_x": 98
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien6",
       "x": 97,
       "y": 23,
       "min_x": 90,

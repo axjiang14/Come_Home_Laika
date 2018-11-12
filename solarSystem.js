@@ -128,12 +128,12 @@ var solarSystem = {
         
         if(planetsUnlocked == 6){
             game.add.sprite(143, 25, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", mercuryText, 18); 
+            bmpText = game.add.bitmapText(160, 480, "gem", venusText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked == 7){
             game.add.sprite(25, 125, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", venusText, 18); 
+            bmpText = game.add.bitmapText(160, 480, "gem", mercuryText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked >= 8){
