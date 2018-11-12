@@ -13,32 +13,11 @@
       "max_x": 4
     },
     {
-      "sprite": "alien6",
-      "x": 4,
-      "y": 17,
-      "min_x": 4,
-      "max_x": 4
-    },
-    {
-      "sprite": "alien6",
-      "x": 7,
-      "y": 5,
-      "min_x": 7,
-      "max_x": 7
-    },
-    {
-      "sprite": "alien6",
-      "x": 11,
-      "y": 14,
-      "min_x": 11,
-      "max_x": 11
-    },
-    {
-      "sprite": "alien6",
-      "x": 21,
-      "y": 11,
-      "min_x": 21,
-      "max_x": 21
+      "sprite": "alien3",
+      "x": 20,
+      "y": 16,
+      "min_x": 18,
+      "max_x": 25
     }
   ],
   "tiles": [

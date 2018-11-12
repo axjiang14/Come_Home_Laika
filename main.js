@@ -52,6 +52,11 @@ function onPlayerHit() {
 	colorHPBar();
 }
 
+function alienCallbackAux(alien, platform) {
+	if(alien.alienParent.onCollide)
+		alien.alienParent.onCollide(platform);
+}
+
 function stateLoad(filename) {
 	var rawFile = new XMLHttpRequest();
 	var allText;
@@ -106,8 +111,10 @@ function stateLoad(filename) {
 		}
 		alien.min_x = a.min_x * 24;
 		alien.max_x = a.max_x * 24;
-		//aliens.push(alien);
 	});
+	
+	platformGrid = data.tiles;
+	console.log('got platformgrid w len:', platformGrid.length);
 	
 	data.tiles.forEach(function(tile) {
 		var platform = platforms.create(tile.x * 24, tile.y * 24, tile.sprite);
@@ -274,7 +281,7 @@ function everyCreate() {
 function everyUpdate() {
 	++ticks;
 	game.physics.arcade.collide(player, platforms);
-	game.physics.arcade.collide(aliens, platforms);
+	game.physics.arcade.collide(aliens, platforms, alienCallbackAux);
 	game.physics.arcade.collide(healthKits, platforms);
 	game.physics.arcade.collide(infoSheets, platforms);
 	game.physics.arcade.collide(aliens, aliens);

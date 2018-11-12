@@ -11,6 +11,7 @@ pixel_map = {
 			 (255, 255, 0): 'healthKit',
 			 (255, 0, 0): 'alien1',
 			 (100, 0, 100): 'alien2',
+			 (0, 0, 100): 'alien3',
 			 (100, 0, 0): 'alien6'}
 
 def main():

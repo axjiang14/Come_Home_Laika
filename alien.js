@@ -236,25 +236,33 @@ class Alien3 extends Alien {
 		this.shootTicks = 0; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
 		this.range = 250; // Our shooting range
+		
+		this.hitRight = false;
+		this.hitLeft = false;
 	}
 	
 	handle() {
         super.handle();
-		
-		// Don't go past min/max x
-		if(this.x <= this.min_x) {
-			this.phaserObj.body.velocity.x = Math.max(0, this.phaserObj.body.velocity.x);
-			this.phaserObj.animations.stop();
-		}
-		else if(this.x >= this.max_x) {
-			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
-			this.phaserObj.animations.stop();
-		}
         
-        if(this.grounded <= 0) {
-				console.log('I would like to move.');
-				this.move();
+        var tooLeft = this.x < player.x - 100;
+        var tooRight = this.x > player.x + 100;
+        var tooHigh = this.y < player.y;
+        var tooLow = this.y > player.y;
+        
+        if(tooLeft) {
+        	//console.log('Im too far left!');
+        	this.phaserObj.body.velocity.x = 50;
         }
+        else if(tooRight) {
+        	//console.log('too far right');
+        	this.phaserObj.body.velocity.x = -50;
+        }
+        
+        
+	}
+	
+	onCollide(platform) {
+		console.log('I hit:', platform);
 	}
 }
 
