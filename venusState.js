@@ -5,7 +5,7 @@ preload: function() {
 },
 
 create: function() {
-    
+    game.sound.stopAll();
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var background = game.add.sprite(0, 0, 'venusBackground');
     background.fixedToCamera = true;
@@ -30,6 +30,7 @@ create: function() {
     }
     
 	stateLoad('states/venus.json');
+    venusBGM.play('',0,1,true);
     
 },
 

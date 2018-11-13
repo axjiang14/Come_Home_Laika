@@ -150,6 +150,7 @@ function everyPreload() {
 	game.load.image('ground', 'assets/platform.png');
 	game.load.image('platform_tile', 'assets/DPlatformS.png');
 	game.load.image('tile_light', 'assets/LPlatformS.PNG');
+    game.load.image('uiBar', 'assets/uiBar.png');
     
 	game.load.spritesheet('alien1', 'assets/AlienBasic.png', 32, 40);
 	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
@@ -186,6 +187,9 @@ function everyPreload() {
     game.load.audio('uranusBGM', 'assets/BackGroundMusic/uranusBGM.mp3');
     game.load.audio('saturnBGM', 'assets/BackGroundMusic/saturnBGM.wav');
     game.load.audio('jupiterBGM', 'assets/BackGroundMusic/jupiterBGM.wav');
+    game.load.audio('marsBGM', 'assets/BackGroundMusic/marsBGM.wav');
+    game.load.audio('mercuryBGM', 'assets/BackGroundMusic/mercuryBGM.mp3');
+    game.load.audio('venusBGM', 'assets/BackGroundMusic/venusBGM.mp3');
     game.load.audio('finalBossBGM', 'assets/BackGroundMusic/finalBossBGM.wav');
     
 }
@@ -212,26 +216,32 @@ function everyCreate() {
 	
 	// User Interface
     
-    var style = { font: "bold 32px Arial Rounded Mt", fill: "#000000", align: "left" };
+    var style = { font: "bold 24px Arial Rounded Mt", fill: "#ffffff", align: "left" };
+    uiBar = game.add.sprite(0,0,'uiBar');
+    uiBar.fixedToCamera = true;
     
     player.infoSheetNum = 0; //collect to escape
     player.hp = savedHP; //has to go through Pluto to declare hp = 10
-	player.hpBox = game.add.sprite(200, 19, 'white_tile');
+	player.hpBox = game.add.sprite(200, 5, 'white_tile');
 	player.hpBox.scale.setTo(10, 1);
 	player.hpBox.tint = 0x20ff00;
     player.hpBox.fixedToCamera = true;
     
-    playerHPtext = game.add.text(280, 16, 'HP: ', style)
+    playerHPtext = game.add.text(280, 4, 'HP: ', style)
     playerHPtext.fixedToCamera = true;
 	
-	scoreText = game.add.text(16, 16, 'Score: 0', style);
+	scoreText = game.add.text(16, 4, 'Score: 0', style);
     scoreText.fixedToCamera = true;
     
-    bulletText = game.add.text(500, 16, 'Bullets: ', style);
-    bulletText.fixedToCamera = true;
+    infoIcon = game.add.sprite(490,4, 'infoSheet');
+    infoIcon.fixedToCamera = true;
+    infoText = game.add.text(530, 4, ': 0', style);
+    infoText.fixedToCamera = true;
     
-    timeText = game.add.text(650, 16, 'Time: ', style);
+    
+    timeText = game.add.text(650, 4, 'Time: ', style);
     timeText.fixedToCamera = true;
+    
     
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -275,6 +285,9 @@ function everyCreate() {
     uranusBGM = game.add.audio('uranusBGM');
     saturnBGM = game.add.audio('saturnBGM');
     jupiterBGM = game.add.audio('jupiterBGM');
+    marsBGM = game.add.audio('marsBGM');
+    mercuryBGM = game.add.audio('mercuryBGM');
+    venusBGM = game.add.audio('venusBGM');
     finalBossBGM = game.add.audio('finalBossBGM');
 }
 
@@ -342,6 +355,7 @@ function everyUpdate() {
 	
 	scoreText.text = 'Score: ' + score;
 	playerHPtext.text = 'HP: ' + player.hp;
+    infoText.text = ': ' + player.infoSheetNum;
 //	bulletText.text = 'Bullets: ' + bullets[1];
 	timeText.text = 'Time: ' + ticks;
 	

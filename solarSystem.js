@@ -2,8 +2,7 @@ var solarSystem = {
     
     preload: function(){
         game.load.image('spaceBackground', 'assets/SpaceTypeable.png');
-        game.load.image('sun', 'assets/planets/Sun.png');
-        
+        game.load.image('sun', 'assets/planets/Sun.png');    
         game.load.image('mercury', 'assets/planets/mercury.png')
         game.load.image('venus', 'assets/planets/Venus.png')
         game.load.image('earth', 'assets/planets/Earth.png')
@@ -14,8 +13,7 @@ var solarSystem = {
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
         game.load.image('spaceship', 'assets/Spaceship.PNG');
-        
-        
+             
         game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
         
         game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
@@ -144,7 +142,6 @@ var solarSystem = {
         
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        console.log('solarSystem');
         console.log(planetsUnlocked);
         
         

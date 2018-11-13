@@ -5,7 +5,7 @@ preload: function() {
 },
 
 create: function() {
-
+    game.sound.stopAll();
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var background = game.add.sprite(0, 0, 'mercuryBackground');
     background.fixedToCamera = true;
@@ -17,6 +17,7 @@ create: function() {
 	player.body.gravity.y = 1200; // 3 TILES JUMP 1800 = 4 TILES JUMP
 	
 	stateLoad('states/mercury.json');
+    mercuryBGM.play('',0,1,true);
     
 },
 
