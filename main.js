@@ -354,10 +354,10 @@ function everyUpdate() {
 	});
 	
 	scoreText.text = 'Score: ' + score;
-	playerHPtext.text = 'HP: ' + player.hp;
+	playerHPtext.text = 'HP: ' + Math.round(player.hp *100) /100;
     infoText.text = ': ' + player.infoSheetNum;
 //	bulletText.text = 'Bullets: ' + bullets[1];
-	timeText.text = 'Time: ' + ticks;
+	timeText.text = 'Time: ' + Math.round((ticks/3500) * 60) *100/100;
 	
 }
 
