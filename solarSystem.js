@@ -87,8 +87,8 @@ var solarSystem = {
         var saturnText = "Watch out for the dust! \nGravity: 1.065x compared to Earth \nSize: 764x compared to Earth ";
         var jupiterText = "This is Jupiter: \n Gravity: 2.528x compared to Earth \nSize: 1321x compared to Earth \nControl Tower: This Planet is very difficult to move, make sure you take careful steps.";
         var marsText = "This is Mars:  \nGravity: 0.376x compared to Earth \nSize: 0.151x compared to Earth \nControl Tower: This Planet is very similar to Earth, we might have to conquer this planet in the future. Special Mission: Kill all the aliens.";
-        var venusText = "Hello Laika. This is Venus: \nGravity: 0.904x compared to Earth \nSize: 0.815x compared to Earth \nControl Tower: This Planet has special aliens. \nSpecial Mission: Kill all the aliens.";
         var mercuryText = "Hello Laika. This is Mercury: \nGravity: 0.38x compared to Earth \nSize: 0.056x compared to Earth \nControl Tower: This Planet is your last planet. And your resources are running out.\nSpecial Mission: Kill all the aliens. You have 150 seconds.";
+        var venusText = "Hello Laika. This is Venus: \nGravity: 0.904x compared to Earth \nSize: 0.815x compared to Earth \nControl Tower: This Planet has special aliens. \nSpecial Mission: Kill all the aliens.";
         var earthText = "Hello Laika. We're almost home. Set your GPS for Earth!";
 
 
@@ -198,16 +198,16 @@ var solarSystem = {
     		game.state.start('marsState');
     },
     
-    changeVenus: function() {
-    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
-    	if(planetsUnlocked >= 6)
-    		game.state.start('venusState');
-    },
-    
     changeMercury: function() {
     	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
-    	if(planetsUnlocked >= 7)
+    	if(planetsUnlocked >= 6)
     		game.state.start('mercuryState');
+    },
+    
+    changeVenus: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 7)
+    		game.state.start('venusState');
     },
     
     changeEarth: function() {
@@ -220,8 +220,9 @@ var solarSystem = {
         if(qKey.isDown) {
             console.log('q key pressed');
             //stateLoad('assets/state_test.json', null, null);
-            planetsUnlocked = 9;
+            planetsUnlocked = 5;
         }
     }
     
 };// solarSystem State
+5
