@@ -11,63 +11,63 @@
   },
   "aliens": [
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 2,
       "y": 7,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 2,
       "y": 13,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 2,
       "y": 16,
       "min_x": 1,
       "max_x": 7
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 4,
       "y": 19,
       "min_x": 1,
       "max_x": 18
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 7,
       "y": 19,
       "min_x": 1,
       "max_x": 18
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 10,
       "y": 7,
       "min_x": 8,
       "max_x": 18
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 14,
       "y": 7,
       "min_x": 8,
       "max_x": 18
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 27,
       "y": 9,
       "min_x": 22,
       "max_x": 32
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien3",
       "x": 29,
       "y": 17,
       "min_x": 27,

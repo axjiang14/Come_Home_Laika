@@ -27,6 +27,7 @@ update: function() {
 
 spaceshipLeave: function() {
     if (player.infoSheetNum == 5){
+        game.sound.stopAll();
         console.log('Got to spaceship!');
         planetsUnlocked = Math.max(planetsUnlocked, 6);
         console.log('planetsUnlocked=', planetsUnlocked);
