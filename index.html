@@ -142,6 +142,8 @@ function killaliens(bullet, alien){ // kill aliens with bullet
 }
 
 function killBullet(bullet, platform) {
+	if(bullet.bulletObj.collideCB)
+	bullet.bulletObj.collideCB();
 	bullet.kill();
 }
 

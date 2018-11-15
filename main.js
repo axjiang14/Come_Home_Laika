@@ -154,11 +154,11 @@ function everyPreload() {
 	game.load.spritesheet('alien1', 'assets/AlienBasic.png', 32, 40);
 	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
     game.load.spritesheet('alien3', 'assets/AlienBouncy.png', 32, 48);
-    game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
+    //game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
     game.load.spritesheet('alien5', 'assets/AlienSpaceship.png', 32, 32);
     game.load.spritesheet('alien6', 'assets/AlienFlying.png', 48, 48);
     game.load.spritesheet('boss1', 'assets/BossBasic.png', 60, 64);
-    game.load.spritesheet('bossSquid', 'assets/BossSquid.png', 51, 96);
+    game.load.spritesheet('alien4', 'assets/BossSquid.png', 51, 96);
 	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
     
 	game.load.image('bullet', 'assets/Beam-Pink.png');

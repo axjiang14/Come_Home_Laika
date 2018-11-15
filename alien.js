@@ -356,7 +356,7 @@ class Alien6 extends Alien {
 	}
 	
 	shoot() {
-		var bullet = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB);
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB, this.collideCB, null);
 		bullet.bulletSprite.body.velocity.y = 300;
 		bullet.bulletSprite.body.velocity.x = 0;
 		bullet.liveTicks = 1000;
@@ -364,7 +364,8 @@ class Alien6 extends Alien {
 		bulletLeft.bulletSprite.body.velocity.y = 300;
 		bulletLeft.bulletSprite.body.velocity.x = -150;
 		bulletLeft.liveTicks = 1000;
-		var bulletRight = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB);
+		
+		var bulletRight = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB, null);
 		bulletRight.bulletSprite.body.velocity.y = 300;
 		bulletRight.bulletSprite.body.velocity.x = 150;
 		bulletRight.liveTicks = 1000;
@@ -375,6 +376,12 @@ class Alien6 extends Alien {
 	
 	fireBulletCB() {
 		player.onFire = 100;
+	}
+	
+	collideCB() {
+		console.log('Making new Alien at:', this.x / 24, this.y / 24 - 1);
+		//var newAlien = new Alien1(this.x / 24, this.y / 24 - 1);
+		//newAlien.phaserObj.body.gravity.y = 100;
 	}
 }
 
