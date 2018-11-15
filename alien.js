@@ -244,8 +244,8 @@ class Alien3 extends Alien {
 	handle() {
         super.handle();
         
-        var tooLeft = this.x < player.x - 100;
-        var tooRight = this.x > player.x + 100;
+        var tooLeft = this.x < player.x; //Yeoman changed to 0 so aliens will come all the way to collide
+        var tooRight = this.x > player.x;
         var tooHigh = this.y < player.y;
         var tooLow = this.y > player.y;
         

@@ -18,7 +18,7 @@
       "max_x": 12
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 11,
       "y": 20,
       "min_x": 10,
@@ -32,7 +32,7 @@
       "max_x": 14
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 13,
       "y": 12,
       "min_x": 13,
@@ -46,7 +46,7 @@
       "max_x": 15
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 17,
       "y": 5,
       "min_x": 15,
@@ -60,7 +60,7 @@
       "max_x": 23
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 25,
       "y": 16,
       "min_x": 25,
@@ -74,7 +74,7 @@
       "max_x": 29
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 26,
       "y": 23,
       "min_x": 23,
@@ -88,7 +88,7 @@
       "max_x": 29
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 29,
       "y": 23,
       "min_x": 23,
@@ -102,7 +102,7 @@
       "max_x": 44
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 47,
       "y": 21,
       "min_x": 45,
@@ -116,7 +116,7 @@
       "max_x": 53
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 65,
       "y": 11,
       "min_x": 65,
@@ -130,7 +130,7 @@
       "max_x": 73
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 76,
       "y": 6,
       "min_x": 74,
@@ -151,7 +151,7 @@
       "max_x": 98
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien4",
       "x": 92,
       "y": 5,
       "min_x": 90,
