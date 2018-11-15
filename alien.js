@@ -163,7 +163,7 @@ class Alien2 extends Alien {
 	}
 	
 	handle() {
-        super.handle();
+		super.handle();
 		
 		// Don't go past min/max x
 		if(this.x <= this.min_x) {
@@ -174,8 +174,8 @@ class Alien2 extends Alien {
 			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
 			this.phaserObj.animations.stop();
 		}
-        
-        // If we're in range and have sight:
+		
+		// If we're in range and have sight:
 		var inRange = this.distance < this.range;
 		if(inRange && this.hasSight) {
 			if(this.shootTicks <= 0) {
@@ -225,6 +225,7 @@ class Alien3 extends Alien {
 		this.spritesheet = 'alien3';
 		
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj.body.gravity.y = 300;
 		this.phaserObj.alienParent = this;
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
@@ -239,30 +240,61 @@ class Alien3 extends Alien {
 		
 		this.hitRight = false;
 		this.hitLeft = false;
+		
+		this.leftFoot = new Phaser.Point(this.x - 5, this.y + 53);
+		this.rightFoot = new Phaser.Point(this.x + 37, this.y + 53);
 	}
 	
 	handle() {
-        super.handle();
-        
-        var tooLeft = this.x < player.x; //Yeoman changed to 0 so aliens will come all the way to collide
-        var tooRight = this.x > player.x;
-        var tooHigh = this.y < player.y;
-        var tooLow = this.y > player.y;
-        
-        if(tooLeft) {
-        	//console.log('Im too far left!');
-        	this.phaserObj.body.velocity.x = 50;
-        }
-        else if(tooRight) {
-        	//console.log('too far right');
-        	this.phaserObj.body.velocity.x = -50;
-        }
-        
-        
+		super.handle();
+		
+		var tooLeft = this.x < player.x - 10; //Yeoman changed to 0 so aliens will come all the way to collide
+		var tooRight = this.x > player.x + 10;
+		var tooHigh = this.y < player.y;
+		var tooLow = this.y > player.y;
+		
+		this.leftFoot.x = this.x - 5;
+		this.leftFoot.y = this.y + 53;
+		this.rightFoot.x = this.x + 37;
+		this.rightFoot.y = this.y + 53;
+		
+		//game.debug.geom(this.leftFoot);
+		//game.debug.geom(this.rightFoot);
+		
+		if(tooLeft) {
+			//console.log('Im too far left!');
+			var canMoveRight = false;
+			var rf = this.rightFoot;
+			platforms.forEach(function(platform) {
+				if(platform.getBounds().contains(rf.x, rf.y)) {
+					canMoveRight = true;
+					return;
+				}
+			});
+			
+			if(canMoveRight)
+				this.phaserObj.body.velocity.x = 50;
+		}
+		else if(tooRight) {
+			//console.log('too far right');
+			var canMoveLeft = false;
+			var lf = this.leftFoot;
+			platforms.forEach(function(platform) {
+				if(platform.getBounds().contains(lf.x, lf.y)) {
+					canMoveLeft = true;
+					return;
+				}
+			});
+			
+			if(canMoveLeft)
+				this.phaserObj.body.velocity.x = -50;
+		}
+		else
+			this.phaserObj.body.velocity.x = 0;
 	}
 	
 	onCollide(platform) {
-		console.log('I hit:', platform);
+		//console.log('I hit:', platform);
 	}
 }
 
@@ -288,7 +320,7 @@ class Alien4 extends Alien {
 	}
 	
 	handle() {
-        super.handle();
+		super.handle();
 		
 		// Don't go past min/max x
 		if(this.x <= this.min_x) {
@@ -299,11 +331,11 @@ class Alien4 extends Alien {
 			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
 			this.phaserObj.animations.stop();
 		}
-        
-        if(this.grounded <= 0) {
-				console.log('I would like to move.');
-				this.move();
-        }
+		
+		if(this.grounded <= 0) {
+			console.log('I would like to move.');
+			this.move();
+		}
 	}
 }
 
@@ -342,17 +374,17 @@ class Alien6 extends Alien {
 			this.phaserObj.body.velocity.x = 0;
 		}
 		
-        this.phaserObj.animations.play('left');
+		this.phaserObj.animations.play('left');
 		
-		// We fly so don't care about min/max_x      
-        if(this.grounded <= 0) {
+		// We fly so don't care about min/max_x
+		if(this.grounded <= 0) {
 				console.log('I would like to fly.');
 				this.move();
-        }
-        
-        if(this.shootTicks <= 0) {
-        	this.shoot();
-        }
+		}
+		
+		if(this.shootTicks <= 0) {
+			this.shoot();
+		}
 	}
 	
 	shoot() {

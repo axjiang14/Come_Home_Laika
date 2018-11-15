@@ -15,62 +15,62 @@
       "x": 2,
       "y": 7,
       "min_x": 1,
-      "max_x": 3
+      "max_x": 4
     },
     {
       "sprite": "alien3",
       "x": 2,
       "y": 13,
       "min_x": 1,
-      "max_x": 3
+      "max_x": 4
     },
     {
       "sprite": "alien3",
       "x": 2,
       "y": 16,
       "min_x": 1,
-      "max_x": 7
+      "max_x": 8
     },
     {
       "sprite": "alien3",
       "x": 4,
       "y": 19,
       "min_x": 1,
-      "max_x": 17
+      "max_x": 18
     },
     {
       "sprite": "alien3",
       "x": 7,
       "y": 19,
       "min_x": 1,
-      "max_x": 17
+      "max_x": 18
     },
     {
       "sprite": "alien3",
       "x": 10,
       "y": 7,
-      "min_x": 9,
-      "max_x": 17
+      "min_x": 8,
+      "max_x": 18
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 14,
       "y": 7,
-      "min_x": 9,
-      "max_x": 17
+      "min_x": 8,
+      "max_x": 18
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 27,
       "y": 9,
-      "min_x": 25,
+      "min_x": 22,
       "max_x": 32
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 29,
       "y": 17,
-      "min_x": 28,
+      "min_x": 27,
       "max_x": 32
     }
   ],
@@ -298,17 +298,7 @@
     {
       "sprite": "tile_light",
       "x": 4,
-      "y": 7
-    },
-    {
-      "sprite": "tile_light",
-      "x": 4,
       "y": 8
-    },
-    {
-      "sprite": "tile_light",
-      "x": 4,
-      "y": 13
     },
     {
       "sprite": "tile_light",
@@ -403,11 +393,6 @@
     {
       "sprite": "tile_light",
       "x": 8,
-      "y": 7
-    },
-    {
-      "sprite": "tile_light",
-      "x": 8,
       "y": 8
     },
     {
@@ -428,11 +413,6 @@
     {
       "sprite": "tile_light",
       "x": 8,
-      "y": 16
-    },
-    {
-      "sprite": "tile_light",
-      "x": 8,
       "y": 17
     },
     {
@@ -633,17 +613,7 @@
     {
       "sprite": "tile_light",
       "x": 18,
-      "y": 7
-    },
-    {
-      "sprite": "tile_light",
-      "x": 18,
       "y": 8
-    },
-    {
-      "sprite": "tile_light",
-      "x": 18,
-      "y": 19
     },
     {
       "sprite": "tile_light",
@@ -723,11 +693,6 @@
     {
       "sprite": "tile_light",
       "x": 24,
-      "y": 9
-    },
-    {
-      "sprite": "tile_light",
-      "x": 24,
       "y": 10
     },
     {
@@ -774,11 +739,6 @@
       "sprite": "tile_light",
       "x": 27,
       "y": 10
-    },
-    {
-      "sprite": "tile_light",
-      "x": 27,
-      "y": 17
     },
     {
       "sprite": "tile_light",

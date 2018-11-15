@@ -14,8 +14,9 @@ function handlePlayer() {
 function fire() {
 	if(this.game != null && game.time.now > nextFire) {
 		nextFire = game.time.now + fireRate;
-		var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
-		game.physics.arcade.moveToPointer(bullet, bulletSpeed);
+		/*var bullet = bullets.create(player.x + 12, player.y + 18, 'bullet');
+		game.physics.arcade.moveToPointer(bullet, bulletSpeed);*/
+		var bullet = new PlayerBullet(player.x + 12, player.y + 18, 'bullet', null, null);
         gunBGM.play();
 	}
 }
@@ -113,9 +114,6 @@ function stateLoad(filename) {
 		alien.max_x = a.max_x * 24;
 	});
 	
-	platformGrid = data.tiles;
-	console.log('got platformgrid w len:', platformGrid.length);
-	
 	data.tiles.forEach(function(tile) {
 		var platform = platforms.create(tile.x * 24, tile.y * 24, tile.sprite);
 		platform.enableBody = true;
@@ -155,7 +153,7 @@ function everyPreload() {
 	game.load.spritesheet('alien1', 'assets/AlienBasic.png', 32, 40);
 	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
     game.load.spritesheet('alien3', 'assets/AlienBouncy.png', 32, 48);
-    //game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
+    game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
     game.load.spritesheet('alien5', 'assets/AlienSpaceship.png', 32, 32);
     game.load.spritesheet('alien6', 'assets/AlienFlying.png', 48, 48);
     game.load.spritesheet('boss1', 'assets/BossBasic.png', 60, 64);
