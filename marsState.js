@@ -5,7 +5,7 @@ preload: function() {
 },
 
 create: function() {
-    
+    game.sound.stopAll();
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var background = game.add.sprite(0, 0, 'marsBackground');
     background.fixedToCamera = true;
@@ -17,7 +17,7 @@ create: function() {
 	player.body.gravity.y = 1200; // 3 TILES JUMP 1800 = 4 TILES JUMP
 	
 	stateLoad('states/mars.json');
-    
+    marsBGM.play("",0,1,true);
 },
 
 update: function() {
@@ -27,6 +27,7 @@ update: function() {
 
 spaceshipLeave: function() {
     if (player.infoSheetNum == 5){
+        game.sound.stopAll();
         console.log('Got to spaceship!');
         planetsUnlocked = Math.max(planetsUnlocked, 6);
         console.log('planetsUnlocked=', planetsUnlocked);

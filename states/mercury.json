@@ -6,6 +6,13 @@
   },
   "aliens": [
     {
+      "sprite": "alien6",
+      "x": 2,
+      "y": 2,
+      "min_x": 2,
+      "max_x": 2
+    },
+    {
       "sprite": "alien1",
       "x": 5,
       "y": 21,
@@ -20,6 +27,27 @@
       "max_x": 6
     },
     {
+      "sprite": "alien6",
+      "x": 7,
+      "y": 3,
+      "min_x": 7,
+      "max_x": 7
+    },
+    {
+      "sprite": "alien6",
+      "x": 9,
+      "y": 8,
+      "min_x": 9,
+      "max_x": 9
+    },
+    {
+      "sprite": "alien6",
+      "x": 13,
+      "y": 2,
+      "min_x": 13,
+      "max_x": 13
+    },
+    {
       "sprite": "alien1",
       "x": 13,
       "y": 13,
@@ -32,6 +60,13 @@
       "y": 14,
       "min_x": 17,
       "max_x": 19
+    },
+    {
+      "sprite": "alien6",
+      "x": 20,
+      "y": 2,
+      "min_x": 20,
+      "max_x": 20
     },
     {
       "sprite": "alien1",
@@ -55,6 +90,20 @@
       "max_x": 35
     },
     {
+      "sprite": "alien6",
+      "x": 38,
+      "y": 3,
+      "min_x": 38,
+      "max_x": 38
+    },
+    {
+      "sprite": "alien6",
+      "x": 44,
+      "y": 3,
+      "min_x": 44,
+      "max_x": 44
+    },
+    {
       "sprite": "alien1",
       "x": 45,
       "y": 11,
@@ -67,6 +116,13 @@
       "y": 19,
       "min_x": 47,
       "max_x": 56
+    },
+    {
+      "sprite": "alien6",
+      "x": 49,
+      "y": 3,
+      "min_x": 49,
+      "max_x": 49
     },
     {
       "sprite": "alien1",
@@ -90,6 +146,13 @@
       "max_x": 68
     },
     {
+      "sprite": "alien6",
+      "x": 54,
+      "y": 3,
+      "min_x": 54,
+      "max_x": 54
+    },
+    {
       "sprite": "alien1",
       "x": 62,
       "y": 21,
@@ -111,6 +174,34 @@
       "max_x": 79
     },
     {
+      "sprite": "alien6",
+      "x": 78,
+      "y": 9,
+      "min_x": 78,
+      "max_x": 78
+    },
+    {
+      "sprite": "alien6",
+      "x": 78,
+      "y": 12,
+      "min_x": 78,
+      "max_x": 78
+    },
+    {
+      "sprite": "alien6",
+      "x": 84,
+      "y": 2,
+      "min_x": 84,
+      "max_x": 84
+    },
+    {
+      "sprite": "alien6",
+      "x": 89,
+      "y": 2,
+      "min_x": 89,
+      "max_x": 89
+    },
+    {
       "sprite": "alien1",
       "x": 90,
       "y": 20,
@@ -130,6 +221,13 @@
       "y": 16,
       "min_x": 92,
       "max_x": 92
+    },
+    {
+      "sprite": "alien6",
+      "x": 93,
+      "y": 2,
+      "min_x": 93,
+      "max_x": 93
     },
     {
       "sprite": "alien1",

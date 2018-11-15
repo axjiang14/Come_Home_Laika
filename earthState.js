@@ -11,7 +11,7 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
-    player.hp = savedHP + 1; // starts with old HP +1 for the coloring
+    player.hp = savedHP; // starts with old HP +1 for the coloring
     onPlayerHit(); // to color
     
 	player.body.gravity.y = 1800;
@@ -26,12 +26,15 @@ update: function() {
 },
 
 spaceshipLeave: function() {
-	console.log('Got to spaceship!');
-	planetsUnlocked = Math.max(planetsUnlocked, 8);
-    console.log('planetsUnlocked=', planetsUnlocked);
-	game.state.start('solarSystem');
-    savedHP = player.hp;
-    successBGM.play();
+    if (player.infoSheetNum >= 5) {
+        game.sound.stopAll();
+        console.log('Got to spaceship!');
+        planetsUnlocked = Math.max(planetsUnlocked, 8);
+        console.log('planetsUnlocked=', planetsUnlocked);
+        game.state.start('solarSystem');// ENDING!!!
+        savedHP = player.hp;
+        player.infoSheetNum = 0;
+        successBGM.play();
+    }
 }
-
 }

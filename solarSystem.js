@@ -2,8 +2,7 @@ var solarSystem = {
     
     preload: function(){
         game.load.image('spaceBackground', 'assets/SpaceTypeable.png');
-        game.load.image('sun', 'assets/planets/Sun.png');
-        
+        game.load.image('sun', 'assets/planets/Sun.png');    
         game.load.image('mercury', 'assets/planets/mercury.png')
         game.load.image('venus', 'assets/planets/Venus.png')
         game.load.image('earth', 'assets/planets/Earth.png')
@@ -14,8 +13,7 @@ var solarSystem = {
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')
         game.load.image('spaceship', 'assets/Spaceship.PNG');
-        
-        
+             
         game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
         
         game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
@@ -89,8 +87,8 @@ var solarSystem = {
         var saturnText = "Watch out for the dust! \nGravity: 1.065x compared to Earth \nSize: 764x compared to Earth ";
         var jupiterText = "This is Jupiter: \n Gravity: 2.528x compared to Earth \nSize: 1321x compared to Earth \nControl Tower: This Planet is very difficult to move, make sure you take careful steps.";
         var marsText = "This is Mars:  \nGravity: 0.376x compared to Earth \nSize: 0.151x compared to Earth \nControl Tower: This Planet is very similar to Earth, we might have to conquer this planet in the future. Special Mission: Kill all the aliens.";
-        var venusText = "Hello Laika. This is Venus: \nGravity: 0.904x compared to Earth \nSize: 0.815x compared to Earth \nControl Tower: This Planet has special aliens. \nSpecial Mission: Kill all the aliens.";
         var mercuryText = "Hello Laika. This is Mercury: \nGravity: 0.38x compared to Earth \nSize: 0.056x compared to Earth \nControl Tower: This Planet is your last planet. And your resources are running out.\nSpecial Mission: Kill all the aliens. You have 150 seconds.";
+        var venusText = "Hello Laika. This is Venus: \nGravity: 0.904x compared to Earth \nSize: 0.815x compared to Earth \nControl Tower: This Planet has special aliens. \nSpecial Mission: Kill all the aliens.";
         var earthText = "Hello Laika. We're almost home. Set your GPS for Earth!";
 
 
@@ -128,12 +126,12 @@ var solarSystem = {
         
         if(planetsUnlocked == 6){
             game.add.sprite(143, 25, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", mercuryText, 18); 
+            bmpText = game.add.bitmapText(160, 480, "gem", venusText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked == 7){
             game.add.sprite(25, 125, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", venusText, 18); 
+            bmpText = game.add.bitmapText(160, 480, "gem", mercuryText, 18); 
             bmpText.maxWidth = 620;}
         
         if(planetsUnlocked >= 8){
@@ -144,7 +142,6 @@ var solarSystem = {
         
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        console.log('solarSystem');
         console.log(planetsUnlocked);
         
         
@@ -201,16 +198,16 @@ var solarSystem = {
     		game.state.start('marsState');
     },
     
-    changeVenus: function() {
-    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
-    	if(planetsUnlocked >= 6)
-    		game.state.start('venusState');
-    },
-    
     changeMercury: function() {
     	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
-    	if(planetsUnlocked >= 7)
+    	if(planetsUnlocked >= 6)
     		game.state.start('mercuryState');
+    },
+    
+    changeVenus: function() {
+    	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
+    	if(planetsUnlocked >= 7)
+    		game.state.start('venusState');
     },
     
     changeEarth: function() {
@@ -228,3 +225,4 @@ var solarSystem = {
     }
     
 };// solarSystem State
+5
