@@ -140,7 +140,10 @@ function killPlayer(player, alienBullet){
 
 function killaliens(bullet, alien){ // kill aliens with bullet
     score += 2;
-	alien.destroy();
+    
+	//alien.destroy();
+	alien.alienParent.onHit();
+	
     bullet.kill();
 }
 

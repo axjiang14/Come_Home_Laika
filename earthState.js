@@ -22,7 +22,6 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
-    
 },
 
 spaceshipLeave: function() {

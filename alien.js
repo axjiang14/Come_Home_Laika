@@ -1,6 +1,7 @@
 class Alien {
 	constructor(x, y) {
 		this.hasSight = false; /// Can we see the player?
+		this.inRange = false;
 		this.grounded = 0; // # of ticks to stay still for
 		this.shootTicks = 0; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
@@ -10,6 +11,7 @@ class Alien {
 		var px = player.body.x;
 		var py = player.body.y;
 		this.distance = Phaser.Math.distance(px, py, x, y);
+		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 	}
 	
 	handle() {
@@ -33,6 +35,8 @@ class Alien {
 		var py = player.body.y;
 		this.distance = Phaser.Math.distance(px, py, this.x, this.y);
 		
+		this.inRange = this.distance < this.range;
+		
 		this.sightLine.start.x = px + 12;
 		this.sightLine.start.y = py + 18;
 		this.sightLine.end.x = this.x + 16;
@@ -45,6 +49,15 @@ class Alien {
 			intersectsAny |= Phaser.Line.intersectsRectangle(slTmp, platform);
 		});
 		this.hasSight = !intersectsAny;
+		
+		// Draw line-of-sight debug
+		var tint = 'red';
+		if(this.hasSight) {
+			tint = 'yellow';
+			if(this.inRange)
+				tint = 'lime';
+		}
+		game.debug.geom(this.sightLine, tint, this.hasSight);
 	}
 	
 	move() {
@@ -69,6 +82,10 @@ class Alien {
 	
 	shoot() {
 	}
+	
+	onHit() {
+		this.phaserObj.destroy();
+	}
 }
 
 class Alien1 extends Alien {
@@ -81,7 +98,6 @@ class Alien1 extends Alien {
 		
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
-		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -101,8 +117,7 @@ class Alien1 extends Alien {
 		}
 		
 		// If we're in range and have sight:
-		var inRange = this.distance < this.range;
-		if(inRange && this.hasSight) {
+		if(this.inRange && this.hasSight) {
 			if(this.shootTicks <= 0) {
 				console.log('I would like to shoot the player.');
 				this.shoot();
@@ -115,15 +130,6 @@ class Alien1 extends Alien {
 				this.move();
 			}
 		}
-		
-		// Draw line-of-sight debug
-		/*var tint = 'red';
-		if(this.hasSight) {
-			tint = 'yellow';
-			if(inRange)
-				tint = 'lime';
-		}
-		game.debug.geom(this.sightLine, tint, this.hasSight);*/
 	}
 	
 	shoot() {
@@ -150,16 +156,9 @@ class Alien2 extends Alien {
 		
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
-		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
-		
-		this.hasSight = false; /// Can we see the player?
-		this.grounded = 0; // # of ticks to stay still for
-		this.shootTicks = 0; // # of ticks before we shoot
-		this.moveTicks = 0; // # of ticks to move for
-		this.range = 250; // Our shooting range
 	}
 	
 	handle() {
@@ -176,7 +175,6 @@ class Alien2 extends Alien {
 		}
 		
 		// If we're in range and have sight:
-		var inRange = this.distance < this.range;
 		if(inRange && this.hasSight) {
 			if(this.shootTicks <= 0) {
 				console.log('I would like to shoot the player.');
@@ -227,16 +225,9 @@ class Alien3 extends Alien {
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.body.gravity.y = 300;
 		this.phaserObj.alienParent = this;
-		this.sightLine = new Phaser.Line(0, 0, 0, 0);
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
-		
-		this.hasSight = false; /// Can we see the player?
-		this.grounded = 0; // # of ticks to stay still for
-		this.shootTicks = 0; // # of ticks before we shoot
-		this.moveTicks = 0; // # of ticks to move for
-		this.range = 250; // Our shooting range
 		
 		this.hitRight = false;
 		this.hitLeft = false;
@@ -306,17 +297,10 @@ class Alien4 extends Alien {
 		this.spritesheet = 'alien4';
 		
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
-		this.phaserObj.alienParent = this;
-		this.sightLine = new Phaser.Line(0, 0, 0, 0);
+		this.phaserObj.alienParent = this;d
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
-		
-		this.hasSight = false; /// Can we see the player?
-		this.grounded = 0; // # of ticks to stay still for
-		this.shootTicks = 0; // # of ticks before we shoot
-		this.moveTicks = 0; // # of ticks to move for
-		this.range = 250; // Our shooting range
 	}
 	
 	handle() {
@@ -352,11 +336,6 @@ class Alien6 extends Alien {
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
-		
-		this.grounded = 0; // # of ticks to stay still for
-		this.shootTicks = 175 + Math.random() * 150; // # of ticks before we shoot
-		this.moveTicks = 0; // # of ticks to move for
-		this.range = 10000; // Our shooting range
 	}
 	
 	handle() {
@@ -388,11 +367,11 @@ class Alien6 extends Alien {
 	}
 	
 	shoot() {
-		var bullet = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB, this.collideCB, null);
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB, this.collideCB);
 		bullet.bulletSprite.body.velocity.y = 300;
 		bullet.bulletSprite.body.velocity.x = 0;
 		bullet.liveTicks = 1000;
-		var bulletLeft = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB);
+		var bulletLeft = new Bullet(this.x + 16, this.y + 16, 'flame', this.fireBulletCB, null);
 		bulletLeft.bulletSprite.body.velocity.y = 300;
 		bulletLeft.bulletSprite.body.velocity.x = -150;
 		bulletLeft.liveTicks = 1000;
@@ -411,9 +390,96 @@ class Alien6 extends Alien {
 	}
 	
 	collideCB() {
-		console.log('Making new Alien at:', this.x / 24, this.y / 24 - 1);
-		//var newAlien = new Alien1(this.x / 24, this.y / 24 - 1);
-		//newAlien.phaserObj.body.gravity.y = 100;
+	}
+}
+
+class Boss1 extends Alien {
+	constructor(x, y) {
+		super(x, y);
+		this.range = 1000;
+		
+		this.x = x * 24;
+		this.y = y * 24 - 40;
+		this.spritesheet = 'boss1';
+		
+		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
+		this.phaserObj.alienParent = this;
+		
+		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
+		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+		this.grounded = 250; // # of ticks to stay still for
+		this.shootTicks = 175 + Math.random() * 150; // # of ticks before we shoot
+		this.moveTicks = 0; // # of ticks to move for
+		this.range = 10000; // Our shooting range
+		
+		this.states = ['pokeballAttack', 'spiralAttack'];
+		this.state_idx = Math.floor(Math.random() * this.states.length);
+		this.state = this.states[this.state_idx];
+		console.log('lets start in state:', this.state);
+		
+		// For spiral attack
+		this.shots = 25;
+	}
+	
+	handle() {
+		super.handle();
+		
+		if(this.shootTicks <= 0) {			
+			switch(this.state) {
+				case 'pokeballAttack':
+					console.log('Gotta catch \'em all!');
+					this.pokeballAttack();
+					this.shootTicks = 200;
+					this.changeState();
+					break;
+				case 'spiralAttack':
+					this.shootTicks = 15;
+					var angle = -1 * Math.PI / 25 * this.shots;
+					--this.shots;
+					
+					var bullet = new Bullet(this.x + 30, this.y + 32, 'bullet', null, null);
+					bullet.cb = bullet.dmgPlayer;
+					bullet.dmg = 1;
+					bullet.bulletSprite.body.velocity.x = Math.cos(angle) * 400;
+					bullet.bulletSprite.body.velocity.y = Math.sin(angle) * 400;
+					bullet.liveTicks = 10000;
+					
+					if(this.shots <= 0) {
+						this.shots = 25;
+						this.shootTicks = 200;
+						this.changeState();
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	
+	changeState() {
+		var state_idx_delta = Math.floor(Math.random() * (this.states.length - 1)) + 1;
+		this.state_idx += state_idx_delta;
+		this.state_idx %= this.states.length;
+		this.state = this.states[this.state_idx];
+		console.log('Changing to:', this.state);
+	}
+	
+	pokeballAttack() {
+		var hit = function() {
+			player.hp -= 4
+		};
+	
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'red', hit, this.pokeballCollideCB);
+		bullet.liveTicks = 1000;
+	}
+	
+	pokeballCollideCB() {
+		if(this.alienSingleton == undefined || this.alienSingleton == null) {
+			//console.log('Making new Alien at:', this.x / 24, this.y / 24 - 1);
+			this.alienSingleton = new Alien1(this.x / 24, this.y / 24 - 1);
+			this.alienSingleton.phaserObj.body.gravity.y = 600;
+		}
 	}
 }
 

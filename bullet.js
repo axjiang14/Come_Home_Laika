@@ -21,6 +21,10 @@ class Bullet {
 		this.x = this.bulletSprite.x;
 		this.y = this.bulletSprite.y;
 	}
+	
+	dmgPlayer() {
+		player.hp -= this.dmg;
+	}
 }
 
 class PlayerBullet {

@@ -163,6 +163,7 @@ function everyPreload() {
 	game.load.image('bullet', 'assets/Beam-Pink.png');
     game.load.image('flame', 'assets/Beam-Fire.png');
     game.load.image('ice', 'assets/Beam-Ice.png');
+    game.load.image('red', 'assets/Beam-Red.png');
     
     game.load.image('infoSheet', 'assets/diamond.png');// need to be changed to InformationSheet.
 	game.load.image('healthKit', 'assets/firstaid.png');

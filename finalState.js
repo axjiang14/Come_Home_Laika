@@ -16,6 +16,9 @@ create: function() {
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
 	stateLoad('states/final1.json');
+	
+	var boss = new Boss1(50, 10);
+	boss.phaserObj.body.gravity.y = 100;
 },
 
 update: function()
