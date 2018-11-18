@@ -336,7 +336,7 @@ function everyUpdate() {
         game.state.start('solarSystem');
     }
     if(qKey.isDown){
-    	game.state.start('debugState');
+    	game.state.start('finalState');
     }
     
 	if (game.input.activePointer.isDown) {
