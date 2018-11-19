@@ -175,7 +175,7 @@ class Alien2 extends Alien {
 		}
 		
 		// If we're in range and have sight:
-		if(inRange && this.hasSight) {
+		if(this.inRange && this.hasSight) {
 			if(this.shootTicks <= 0) {
 				console.log('I would like to shoot the player.');
 				this.shoot();
@@ -188,15 +188,6 @@ class Alien2 extends Alien {
 				this.move();
 			}
 		}
-		
-		// Draw line-of-sight debug
-		/*var tint = 'red';
-		if(this.hasSight) {
-			tint = 'yellow';
-			if(inRange)
-				tint = 'lime';
-		}
-		game.debug.geom(this.sightLine, tint, this.hasSight);*/
 	}
 	
 	shoot() {
@@ -297,7 +288,7 @@ class Alien4 extends Alien {
 		this.spritesheet = 'alien4';
 		
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
-		this.phaserObj.alienParent = this;d
+		this.phaserObj.alienParent = this;
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -409,7 +400,7 @@ class Boss1 extends Alien {
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
 		
 		this.grounded = 250; // # of ticks to stay still for
-		this.shootTicks = 175 + Math.random() * 150; // # of ticks before we shoot
+		this.shootTicks = 50 + Math.random() * 25; // # of ticks before we shoot
 		this.moveTicks = 0; // # of ticks to move for
 		this.range = 10000; // Our shooting range
 		
@@ -434,7 +425,7 @@ class Boss1 extends Alien {
 					this.changeState();
 					break;
 				case 'spiralAttack':
-					this.shootTicks = 15;
+					this.shootTicks = 7;
 					var angle = -1 * Math.PI / 25 * this.shots;
 					--this.shots;
 					
