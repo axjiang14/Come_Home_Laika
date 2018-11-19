@@ -1,7 +1,7 @@
 var gameOverState = {
 	preload: function()
 	{
-		game.load.image('homeScreen', 'assets/GameOverScreen.png');
+		game.load.image('overScreen', 'assets/GameOverScreen.png');
 		game.load.image('ground', 'assets/platform.png');
 		game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
         game.load.image('restartButton', 'assets/buttonRestart.png');
@@ -14,7 +14,7 @@ var gameOverState = {
 		savedHP = 10;// when you die, make sure you come back healthy
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.add.sprite(0, 0, 'homeScreen');
+        game.add.sprite(-5, -5, 'overScreen');
 		platforms = game.add.group();
 		platforms.enableBody = true;
 		var ground = platforms.create(0, game.world.height - 10, 'ground');

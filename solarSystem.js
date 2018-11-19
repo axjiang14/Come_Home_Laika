@@ -165,7 +165,7 @@ var solarSystem = {
     
     changePluto: function() {
     	if(planetsUnlocked >= 0)
-    		game.state.start('plutoState');
+    		game.state.start('tutorialState');
     },
     
     changeNeptune: function() {

@@ -165,8 +165,8 @@ function everyPreload() {
     game.load.image('ice', 'assets/Beam-Ice.png');
     game.load.image('red', 'assets/Beam-Red.png');
     
-    game.load.image('infoSheet', 'assets/diamond.png');// need to be changed to InformationSheet.
-	game.load.image('healthKit', 'assets/firstaid.png');
+    game.load.image('infoSheet', 'assets/battery.png');// need to be changed to InformationSheet.
+	game.load.image('healthKit', 'assets/Health.png');
 	
 	game.load.image('white_tile', 'assets/white_rect.png');
 	game.load.image('spaceship', 'assets/Spaceship.PNG');
@@ -234,9 +234,10 @@ function everyCreate() {
 	scoreText = game.add.text(16, 4, 'Score: 0', style);
     scoreText.fixedToCamera = true;
     
-    infoIcon = game.add.sprite(490,4, 'infoSheet');
+    infoIcon = game.add.sprite(490,2, 'infoSheet');
+    infoIcon.scale.setTo(0.9,0.9);
     infoIcon.fixedToCamera = true;
-    infoText = game.add.text(530, 4, ': 0', style);
+    infoText = game.add.text(520, 4, ': 0', style);
     infoText.fixedToCamera = true;
     
     
