@@ -102,14 +102,14 @@ function collectAlien(player, alien){
     bigImpactBGM.play();
     game.camera.shake(0.02, 500);
 //    game.camera.flash(0xff0000, 500);
-    if (score >= 4){
+    if (score >= 4) {
         score -= 4;
     }
-    else{
-        score =0
+    else {
+        score = 0;
     }
     player.hp -= 4;
-    colorHPBar();
+    colorHPBar(player.hp / 10, player.hpBox);
     if (player.hp <= 0 ) {
         if(score >= 20){
             score -= 20
@@ -127,7 +127,6 @@ function collectAlien(player, alien){
 function killPlayer(player, alienBullet){
     impactBGM.play();
 	alienBullet.destroy();
-	onPlayerHit();
 	
 	if(alienBullet.bulletObj && alienBullet.bulletObj.cb)
 		alienBullet.bulletObj.cb();
@@ -136,6 +135,7 @@ function killPlayer(player, alienBullet){
         score = Math.max(0, score - 20);
 		game.state.start('gameOverState');
 	}
+	onPlayerHit();
 }
 
 function killaliens(bullet, alien){ // kill aliens with bullet
@@ -155,15 +155,15 @@ function killBullet(bullet, platform) {
 
 function healthRestore(player, heatlhKit) {
     player.hp = Math.min(10, player.hp + 2); // hp + 2
-    colorHPBar();
+    colorHPBar(player.hp / 10, player.hpBox);
     heatlhKit.kill();
 }
 
 function collectInfoSheets(player, infoSheets) {
     player.infoSheetNum += 1; //collect infoSheet
     infoSheets.kill();
-    collectBGM.play("",0,0.2,false,true);
-}    
+    collectBGM.play("", 0, 0.2, false, true);
+}
 
 function gameOver(){
     game.add.tween(player).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
@@ -172,7 +172,7 @@ function gameOver(){
         score -= 20;
     }
     else{
-        score =0
+        score = 0;
     }
     game.state.start('gameOverState');
 }

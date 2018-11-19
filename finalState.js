@@ -10,9 +10,9 @@ create: function() {
     background.fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
+	player.hp = 10;//savedHP; // starts with old HP +1 for the coloring
 	everyCreate();
-    player.hp = savedHP; // starts with old HP +1 for the coloring
-    onPlayerHit(); // to color
+    //onPlayerHit(); // to color
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
 	stateLoad('states/final1.json');

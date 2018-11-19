@@ -7,7 +7,7 @@ function handlePlayer() {
 	
 	if(--player.onFire >= 0) {
 		player.hp *= 0.999;
-		colorHPBar();
+		colorHPBar(player.hp / 10, player.hpBox);
 	}
 }
 
@@ -33,24 +33,24 @@ function handleAlienBullets() {
 	});
 }
 
-function colorHPBar() {
+function colorHPBar(hpPct, hpBar) {
 	// Calculate RGB values for hp bar
-	var red = Math.max(66, Math.min(226, /*386*/330 - 32 * player.hp));
-	var green = Math.max(20, Math.min(255, 20 + 47 * player.hp));
-	var blue = Math.max(20, Math.min(66, 20 + 5 * player.hp));
+	var red = Math.max(66, Math.min(226, 330 * hpPct));
+	var green = Math.max(20, Math.min(255, 20 + 470 * hpPct));
+	var blue = Math.max(20, Math.min(66, 20 + 50 * hpPct));
 	//console.log('red:', red, 'green:', green, 'blue:', blue);
 	
 	var tint = red << 16 | green << 8 | blue;
 	
-	player.hpBox.tint = tint;
-	player.hpBox.scale.setTo(player.hp, 1);
+	hpBar.tint = tint;
+	hpBar.scale.setTo(hpBar.maxScaleX * hpPct, hpBar.scale.y);
 }
 
 function onPlayerHit() {	
 	player.body.bounce.y = 1;
 	player.body.velocity.y -= 300;
 	
-	colorHPBar();
+	colorHPBar(player.hp / 10, player.hpBox);
 }
 
 function alienCallbackAux(alien, platform) {
@@ -216,15 +216,17 @@ function everyCreate() {
 	// User Interface
     
     var style = { font: "bold 24px Arial Rounded Mt", fill: "#ffffff", align: "left" };
-    uiBar = game.add.sprite(0,0,'uiBar');
+    uiBar = game.add.sprite(0, 0, 'uiBar');
     uiBar.fixedToCamera = true;
     
     player.infoSheetNum = 0; //collect to escape
-    player.hp = savedHP; //has to go through Pluto to declare hp = 10
+    player.hp = 10;//savedHP; //has to go through Pluto to declare hp = 10
 	player.hpBox = game.add.sprite(200, 5, 'white_tile');
-	player.hpBox.scale.setTo(10, 1);
+	player.hpBox.maxScaleX = 10;
+	player.hpBox.scale.setTo(player.hpBox.maxScaleX, 1);
 	player.hpBox.tint = 0x20ff00;
     player.hpBox.fixedToCamera = true;
+    colorHPBar(player.hp / 10, player.hpBox);
     
     playerHPtext = game.add.text(280, 4, 'HP: ', style)
     playerHPtext.fixedToCamera = true;

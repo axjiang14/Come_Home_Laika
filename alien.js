@@ -12,6 +12,8 @@ class Alien {
 		var py = player.body.y;
 		this.distance = Phaser.Math.distance(px, py, x, y);
 		this.sightLine = new Phaser.Line(0, 0, 0, 0);
+		
+		this.hp = 1;
 	}
 	
 	handle() {
@@ -84,7 +86,8 @@ class Alien {
 	}
 	
 	onHit() {
-		this.phaserObj.destroy();
+		if(--this.hp <= 0)
+			this.phaserObj.destroy();
 	}
 }
 
@@ -388,6 +391,7 @@ class Boss1 extends Alien {
 	constructor(x, y) {
 		super(x, y);
 		this.range = 1000;
+		this.hp = 50;
 		
 		this.x = x * 24;
 		this.y = y * 24 - 40;
@@ -398,6 +402,12 @@ class Boss1 extends Alien {
 		
 		this.phaserObj.animations.add('left', [0, 1, 2, 3], 10, true);
 		this.phaserObj.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+		this.hpBar = game.make.sprite(-10, -10, 'white_tile');
+		this.hpBar.maxScaleX = 3;
+		this.hpBar.scale.setTo(this.hpBar.maxScaleX, 0.5);
+		this.hpBar.tint = 0x00ff20;
+		this.phaserObj.addChild(this.hpBar);
 		
 		this.grounded = 250; // # of ticks to stay still for
 		this.shootTicks = 50 + Math.random() * 25; // # of ticks before we shoot
@@ -458,7 +468,7 @@ class Boss1 extends Alien {
 	
 	pokeballAttack() {
 		var hit = function() {
-			player.hp -= 4
+			player.hp -= 4;
 		};
 	
 		var bullet = new Bullet(this.x + 16, this.y + 16, 'red', hit, this.pokeballCollideCB);
@@ -471,6 +481,11 @@ class Boss1 extends Alien {
 			this.alienSingleton = new Alien1(this.x / 24, this.y / 24 - 1);
 			this.alienSingleton.phaserObj.body.gravity.y = 600;
 		}
+	}
+	
+	onHit() {
+		super.onHit();
+		colorHPBar(this.hp / 50, this.hpBar);
 	}
 }
 
