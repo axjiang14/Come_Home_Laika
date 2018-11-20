@@ -1,9 +1,6 @@
 var gameStartState = {
 	preload: function()
 	{
-		game.load.image('homeScreen', 'assets/HomeScreen.png');
-        game.load.image('startButton', 'assets/buttonStart.png');
-        game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
 	},
 	
 	create: function()

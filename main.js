@@ -134,64 +134,6 @@ function stateLoad(filename) {
     
 }
 
-function everyPreload() {
-	game.load.image('background', 'assets/BGPluto.png');
-	game.load.image('neptuneBackground', 'assets/NeptuneBackground_test.png');
-	game.load.image('uranusBackground', 'assets/BGUranus.png');
-	game.load.image('saturnBackground', 'assets/BGSaturn.png');
-    game.load.image('jupiterBackground', 'assets/BGJupiter.png');
-    game.load.image('marsBackground', 'assets/BGMars.png');
-    game.load.image('venusBackground', 'assets/BGVenus.png');
-    game.load.image('mercuryBackground', 'assets/BGMercury.png');
-    game.load.image('earthBackground', 'assets/BGEarth.png');
-    
-	game.load.image('ground', 'assets/platform.png');
-	game.load.image('platform_tile', 'assets/DPlatformS.png');
-	game.load.image('tile_light', 'assets/LPlatformS.PNG');
-    game.load.image('uiBar', 'assets/uiBar.png');
-    
-	game.load.spritesheet('alien1', 'assets/AlienBasic.png', 32, 40);
-	game.load.spritesheet('alien2', 'assets/AlienLong.png', 32, 48);
-    game.load.spritesheet('alien3', 'assets/AlienBouncy.png', 32, 48);
-    game.load.spritesheet('alien4', 'assets/AlienFlame.png', 32, 48);
-    game.load.spritesheet('alien5', 'assets/AlienSpaceship.png', 32, 32);
-    game.load.spritesheet('alien6', 'assets/AlienFlying.png', 48, 48);
-    game.load.spritesheet('boss1', 'assets/BossBasic.png', 60, 64);
-    game.load.spritesheet('alien4', 'assets/BossSquid.png', 51, 96);
-	game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
-    
-	game.load.image('bullet', 'assets/Beam-Pink.png');
-    game.load.image('flame', 'assets/Beam-Fire.png');
-    game.load.image('ice', 'assets/Beam-Ice.png');
-    game.load.image('red', 'assets/Beam-Red.png');
-    
-    game.load.image('infoSheet', 'assets/battery.png');// need to be changed to InformationSheet.
-	game.load.image('healthKit', 'assets/Health.png');
-	
-	game.load.image('white_tile', 'assets/white_rect.png');
-	game.load.image('spaceship', 'assets/Spaceship.PNG');
-	game.load.image('crosshair', 'assets/crosshair.png');
-    
-    
-    game.load.audio('gunBGM', 'assets/BackGroundMusic/gunBGM.mp3');
-    game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
-    game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
-    game.load.audio('successBGM', 'assets/BackGroundMusic/takeoffBGM.mp3');
-    game.load.audio('collectBGM', 'assets/BackGroundMusic/starBGM.wav');
-    game.load.audio('impactBGM', 'assets/BackGroundMusic/impactBGM.mp3');
-    game.load.audio('bigImpactBGM', 'assets/BackGroundMusic/bigImpactBGM.mp3');
-    game.load.audio('warningBGM', 'assets/BackGroundMusic/warningBGM.mp3');
-    game.load.audio('plutoBGM', 'assets/BackGroundMusic/plutoBGM.wav');
-    game.load.audio('neptuneBGM', 'assets/BackGroundMusic/neptuneBGM.mp3');
-    game.load.audio('uranusBGM', 'assets/BackGroundMusic/uranusBGM.mp3');
-    game.load.audio('saturnBGM', 'assets/BackGroundMusic/saturnBGM.wav');
-    game.load.audio('jupiterBGM', 'assets/BackGroundMusic/jupiterBGM.wav');
-    game.load.audio('marsBGM', 'assets/BackGroundMusic/marsBGM.wav');
-    game.load.audio('mercuryBGM', 'assets/BackGroundMusic/mercuryBGM.mp3');
-    game.load.audio('venusBGM', 'assets/BackGroundMusic/venusBGM.mp3');
-    game.load.audio('finalBossBGM', 'assets/BackGroundMusic/finalBossBGM.wav');
-    
-}
 
 function everyCreate() {
     game.world.setBounds(0 , 0, 2400, 600);

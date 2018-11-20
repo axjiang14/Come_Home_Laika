@@ -1,6 +1,5 @@
 var uranusState = {
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

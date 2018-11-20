@@ -1,28 +1,7 @@
 var solarSystem = {
     
     preload: function(){
-        game.load.image('spaceBackground', 'assets/SpaceTypeable.png');
-        game.load.image('sun', 'assets/planets/Sun.png');    
-        game.load.image('mercury', 'assets/planets/mercury.png')
-        game.load.image('venus', 'assets/planets/Venus.png')
-        game.load.image('earth', 'assets/planets/Earth.png')
-        game.load.image('mars', 'assets/planets/mars.png')
-        game.load.image('jupiter', 'assets/planets/Jupiter.png')
-        game.load.image('saturn', 'assets/planets/Saturn.png')
-        game.load.image('uranus', 'assets/planets/uranus.png')
-        game.load.image('neptune', 'assets/planets/neptune.png')
-        game.load.image('pluto', 'assets/planets/pluto.png')
-        game.load.image('spaceship', 'assets/Spaceship.PNG');
-             
-        game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
-        
-        game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
-        game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
-        
-        game.load.bitmapFont('gem', 'assets/gem.png', 'assets/gem.xml');
-        
-        qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
-        
+        qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);      
     },
     
     create: function(){

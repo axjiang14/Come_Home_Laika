@@ -1,7 +1,6 @@
 var marsState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

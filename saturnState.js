@@ -1,7 +1,6 @@
 var saturnState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

@@ -2,7 +2,6 @@ var startTicks;
 var neptuneState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

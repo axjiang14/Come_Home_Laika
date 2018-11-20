@@ -1,7 +1,6 @@
 var jupiterState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

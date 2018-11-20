@@ -3,9 +3,8 @@ var gameOverState = {
 	{
 		game.load.image('overScreen', 'assets/GameOverScreen.png');
 		game.load.image('ground', 'assets/platform.png');
-		game.load.spritesheet('laika', 'assets/laika.png', 32, 48);
         game.load.image('restartButton', 'assets/buttonRestart.png');
-        game.load.audio('buttonBGM', 'assets/backGroundMusic/buttonBGM.mp3');
+        
 	},
 	
 	create: function()

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src = "preloadState.js"></script>
     <script src = "solarSystem.js"></script>
     <script src = "gameStartState.js"></script>
     <script src = "gameOverState.js"></script>
@@ -81,7 +82,8 @@ var bulletSpeed = 1000;
 var nextFire = 0;
 var fireRate = 500;
 
-game.state.add('gameStartState', gameStartState);//starting state 
+game.state.add('gameStartState', gameStartState);//starting state
+game.state.add('preloadState', preloadState);
 game.state.add('solarSystem', solarSystem); 
 game.state.add('tutorialState', tutorialState); 
 game.state.add('plutoState', plutoState);
@@ -98,7 +100,7 @@ game.state.add('earthState', earthState);
 game.state.add('debugState', debugState);
 game.state.add('finalState', finalState);
 
-game.state.start('gameStartState'); 
+game.state.start('preloadState'); 
 
 function collectAlien(player, alien){
     bigImpactBGM.play();

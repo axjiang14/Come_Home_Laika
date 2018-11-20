@@ -1,7 +1,6 @@
 var earthState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

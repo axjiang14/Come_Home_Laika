@@ -1,7 +1,6 @@
 var venusState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

@@ -1,6 +1,5 @@
 var finalState = {
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

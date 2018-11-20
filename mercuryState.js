@@ -1,7 +1,6 @@
 var mercuryState = {
 
 preload: function() {
-	everyPreload();
 },
 
 create: function() {

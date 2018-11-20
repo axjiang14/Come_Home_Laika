@@ -1,14 +1,11 @@
 var tutorialState = {
 	preload: function()
 	{
-		game.load.image('background', 'assets/tutorial.png');
-        game.load.image('nextButton', 'assets/buttonNext.png');
-        game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
 	},
 	
 	create: function()
 	{
-        game.add.sprite(0, 0, 'background');
+        game.add.sprite(0, 0, 'tutBackground');
         
 		
 		

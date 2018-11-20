@@ -1,7 +1,4 @@
 var plutoState = {
-preload: function() {
-	everyPreload();
-},
 
 create: function() {
     //stops sound from previous state -- seems ratchet but idk
