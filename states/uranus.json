@@ -57,7 +57,7 @@
       "x": 32,
       "y": 2,
       "min_x": 31,
-      "max_x": 43
+      "max_x": 42
     },
     {
       "sprite": "alien1",
@@ -70,7 +70,7 @@
       "sprite": "alien1",
       "x": 34,
       "y": 12,
-      "min_x": 29,
+      "min_x": 28,
       "max_x": 62
     },
     {
@@ -78,7 +78,7 @@
       "x": 40,
       "y": 2,
       "min_x": 31,
-      "max_x": 43
+      "max_x": 42
     },
     {
       "sprite": "alien1",
@@ -92,13 +92,13 @@
       "x": 47,
       "y": 23,
       "min_x": 31,
-      "max_x": 98
+      "max_x": 70
     },
     {
       "sprite": "alien1",
       "x": 48,
       "y": 12,
-      "min_x": 29,
+      "min_x": 28,
       "max_x": 62
     },
     {
@@ -126,7 +126,7 @@
       "sprite": "alien1",
       "x": 72,
       "y": 23,
-      "min_x": 31,
+      "min_x": 72,
       "max_x": 98
     },
     {
@@ -161,8 +161,8 @@
       "sprite": "alien1",
       "x": 94,
       "y": 17,
-      "min_x": 91,
-      "max_x": 95
+      "min_x": 94,
+      "max_x": 98
     }
   ],
   "tiles": [
@@ -394,6 +394,11 @@
     {
       "sprite": "tile_light",
       "x": 5,
+      "y": 12
+    },
+    {
+      "sprite": "tile_light",
+      "x": 5,
       "y": 17
     },
     {
@@ -869,12 +874,22 @@
     {
       "sprite": "tile_light",
       "x": 23,
+      "y": 9
+    },
+    {
+      "sprite": "tile_light",
+      "x": 23,
+      "y": 10
+    },
+    {
+      "sprite": "tile_light",
+      "x": 23,
       "y": 11
     },
     {
       "sprite": "tile_light",
       "x": 23,
-      "y": 14
+      "y": 15
     },
     {
       "sprite": "tile_light",
@@ -899,7 +914,7 @@
     {
       "sprite": "tile_light",
       "x": 24,
-      "y": 14
+      "y": 15
     },
     {
       "sprite": "tile_light",
@@ -924,7 +939,7 @@
     {
       "sprite": "tile_light",
       "x": 25,
-      "y": 14
+      "y": 15
     },
     {
       "sprite": "tile_light",
@@ -945,11 +960,6 @@
       "sprite": "tile_light",
       "x": 26,
       "y": 3
-    },
-    {
-      "sprite": "tile_light",
-      "x": 26,
-      "y": 10
     },
     {
       "sprite": "platform_tile",
@@ -1022,6 +1032,11 @@
       "y": 9
     },
     {
+      "sprite": "tile_light",
+      "x": 28,
+      "y": 13
+    },
+    {
       "sprite": "platform_tile",
       "x": 28,
       "y": 24
@@ -1065,6 +1080,31 @@
       "sprite": "tile_light",
       "x": 30,
       "y": 13
+    },
+    {
+      "sprite": "tile_light",
+      "x": 30,
+      "y": 14
+    },
+    {
+      "sprite": "tile_light",
+      "x": 30,
+      "y": 15
+    },
+    {
+      "sprite": "tile_light",
+      "x": 30,
+      "y": 16
+    },
+    {
+      "sprite": "tile_light",
+      "x": 30,
+      "y": 17
+    },
+    {
+      "sprite": "tile_light",
+      "x": 30,
+      "y": 18
     },
     {
       "sprite": "tile_light",
@@ -1134,7 +1174,7 @@
     {
       "sprite": "tile_light",
       "x": 31,
-      "y": 19
+      "y": 21
     },
     {
       "sprite": "platform_tile",
@@ -1504,11 +1544,6 @@
     {
       "sprite": "tile_light",
       "x": 43,
-      "y": 3
-    },
-    {
-      "sprite": "tile_light",
-      "x": 43,
       "y": 6
     },
     {
@@ -1854,7 +1889,7 @@
     {
       "sprite": "tile_light",
       "x": 58,
-      "y": 4
+      "y": 5
     },
     {
       "sprite": "tile_light",
@@ -1879,7 +1914,7 @@
     {
       "sprite": "tile_light",
       "x": 59,
-      "y": 4
+      "y": 5
     },
     {
       "sprite": "tile_light",
@@ -1985,11 +2020,6 @@
       "sprite": "platform_tile",
       "x": 65,
       "y": 0
-    },
-    {
-      "sprite": "tile_light",
-      "x": 65,
-      "y": 10
     },
     {
       "sprite": "tile_light",
@@ -2030,6 +2060,11 @@
       "sprite": "platform_tile",
       "x": 67,
       "y": 0
+    },
+    {
+      "sprite": "tile_light",
+      "x": 67,
+      "y": 10
     },
     {
       "sprite": "tile_light",
@@ -2124,7 +2159,7 @@
     {
       "sprite": "tile_light",
       "x": 70,
-      "y": 16
+      "y": 17
     },
     {
       "sprite": "platform_tile",
@@ -2135,11 +2170,6 @@
       "sprite": "platform_tile",
       "x": 71,
       "y": 0
-    },
-    {
-      "sprite": "tile_light",
-      "x": 71,
-      "y": 5
     },
     {
       "sprite": "tile_light",
@@ -2187,6 +2217,16 @@
       "y": 21
     },
     {
+      "sprite": "tile_light",
+      "x": 71,
+      "y": 22
+    },
+    {
+      "sprite": "tile_light",
+      "x": 71,
+      "y": 23
+    },
+    {
       "sprite": "platform_tile",
       "x": 71,
       "y": 24
@@ -2262,11 +2302,6 @@
       "y": 9
     },
     {
-      "sprite": "tile_light",
-      "x": 75,
-      "y": 17
-    },
-    {
       "sprite": "platform_tile",
       "x": 75,
       "y": 24
@@ -2309,45 +2344,50 @@
     {
       "sprite": "tile_light",
       "x": 78,
-      "y": 11
-    },
-    {
-      "sprite": "tile_light",
-      "x": 78,
-      "y": 17
-    },
-    {
-      "sprite": "platform_tile",
-      "x": 78,
-      "y": 24
-    },
-    {
-      "sprite": "platform_tile",
-      "x": 79,
-      "y": 0
-    },
-    {
-      "sprite": "tile_light",
-      "x": 79,
-      "y": 11
-    },
-    {
-      "sprite": "platform_tile",
-      "x": 79,
-      "y": 24
-    },
-    {
-      "sprite": "platform_tile",
-      "x": 80,
-      "y": 0
-    },
-    {
-      "sprite": "tile_light",
-      "x": 80,
       "y": 4
     },
     {
       "sprite": "tile_light",
+      "x": 78,
+      "y": 11
+    },
+    {
+      "sprite": "tile_light",
+      "x": 78,
+      "y": 17
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 78,
+      "y": 24
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 79,
+      "y": 0
+    },
+    {
+      "sprite": "tile_light",
+      "x": 79,
+      "y": 4
+    },
+    {
+      "sprite": "tile_light",
+      "x": 79,
+      "y": 11
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 79,
+      "y": 24
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 80,
+      "y": 0
+    },
+    {
+      "sprite": "tile_light",
       "x": 80,
       "y": 14
     },
@@ -2367,11 +2407,6 @@
       "y": 0
     },
     {
-      "sprite": "tile_light",
-      "x": 81,
-      "y": 17
-    },
-    {
       "sprite": "platform_tile",
       "x": 81,
       "y": 24
@@ -2384,7 +2419,7 @@
     {
       "sprite": "tile_light",
       "x": 82,
-      "y": 9
+      "y": 5
     },
     {
       "sprite": "platform_tile",
@@ -2404,11 +2439,6 @@
     {
       "sprite": "tile_light",
       "x": 83,
-      "y": 13
-    },
-    {
-      "sprite": "tile_light",
-      "x": 83,
       "y": 20
     },
     {
@@ -2420,6 +2450,11 @@
       "sprite": "platform_tile",
       "x": 84,
       "y": 0
+    },
+    {
+      "sprite": "tile_light",
+      "x": 84,
+      "y": 12
     },
     {
       "sprite": "tile_light",
@@ -2437,6 +2472,16 @@
       "y": 0
     },
     {
+      "sprite": "tile_light",
+      "x": 85,
+      "y": 7
+    },
+    {
+      "sprite": "tile_light",
+      "x": 85,
+      "y": 12
+    },
+    {
       "sprite": "platform_tile",
       "x": 85,
       "y": 24
@@ -2472,11 +2517,6 @@
       "y": 16
     },
     {
-      "sprite": "tile_light",
-      "x": 87,
-      "y": 20
-    },
-    {
       "sprite": "platform_tile",
       "x": 87,
       "y": 24
@@ -2497,27 +2537,27 @@
       "y": 16
     },
     {
-      "sprite": "tile_light",
+      "sprite": "platform_tile",
       "x": 88,
+      "y": 24
+    },
+    {
+      "sprite": "platform_tile",
+      "x": 89,
+      "y": 0
+    },
+    {
+      "sprite": "tile_light",
+      "x": 89,
+      "y": 7
+    },
+    {
+      "sprite": "tile_light",
+      "x": 89,
       "y": 20
     },
     {
       "sprite": "platform_tile",
-      "x": 88,
-      "y": 24
-    },
-    {
-      "sprite": "platform_tile",
-      "x": 89,
-      "y": 0
-    },
-    {
-      "sprite": "tile_light",
-      "x": 89,
-      "y": 7
-    },
-    {
-      "sprite": "platform_tile",
       "x": 89,
       "y": 24
     },
@@ -2530,6 +2570,11 @@
       "sprite": "tile_light",
       "x": 90,
       "y": 7
+    },
+    {
+      "sprite": "tile_light",
+      "x": 90,
+      "y": 20
     },
     {
       "sprite": "platform_tile",
@@ -2552,6 +2597,16 @@
       "y": 18
     },
     {
+      "sprite": "tile_light",
+      "x": 91,
+      "y": 19
+    },
+    {
+      "sprite": "tile_light",
+      "x": 91,
+      "y": 20
+    },
+    {
       "sprite": "platform_tile",
       "x": 91,
       "y": 24
@@ -2567,11 +2622,6 @@
       "y": 7
     },
     {
-      "sprite": "tile_light",
-      "x": 92,
-      "y": 18
-    },
-    {
       "sprite": "platform_tile",
       "x": 92,
       "y": 24
@@ -2585,11 +2635,6 @@
       "sprite": "tile_light",
       "x": 93,
       "y": 7
-    },
-    {
-      "sprite": "tile_light",
-      "x": 93,
-      "y": 18
     },
     {
       "sprite": "platform_tile",
@@ -2645,6 +2690,11 @@
       "sprite": "tile_light",
       "x": 96,
       "y": 12
+    },
+    {
+      "sprite": "tile_light",
+      "x": 96,
+      "y": 18
     },
     {
       "sprite": "platform_tile",
@@ -2659,7 +2709,17 @@
     {
       "sprite": "tile_light",
       "x": 97,
+      "y": 9
+    },
+    {
+      "sprite": "tile_light",
+      "x": 97,
       "y": 12
+    },
+    {
+      "sprite": "tile_light",
+      "x": 97,
+      "y": 18
     },
     {
       "sprite": "platform_tile",
@@ -2674,7 +2734,17 @@
     {
       "sprite": "tile_light",
       "x": 98,
+      "y": 9
+    },
+    {
+      "sprite": "tile_light",
+      "x": 98,
       "y": 12
+    },
+    {
+      "sprite": "tile_light",
+      "x": 98,
+      "y": 18
     },
     {
       "sprite": "platform_tile",
@@ -2811,17 +2881,17 @@
     {
       "sprite": "healthKit",
       "x": 11,
-      "y": 14
+      "y": 16
     },
     {
       "sprite": "healthKit",
       "x": 16,
-      "y": 1
+      "y": 2
     },
     {
       "sprite": "healthKit",
       "x": 18,
-      "y": 6
+      "y": 8
     },
     {
       "sprite": "healthKit",
@@ -2837,16 +2907,6 @@
       "sprite": "healthKit",
       "x": 37,
       "y": 5
-    },
-    {
-      "sprite": "healthKit",
-      "x": 75,
-      "y": 8
-    },
-    {
-      "sprite": "healthKit",
-      "x": 80,
-      "y": 3
     },
     {
       "sprite": "healthKit",
@@ -2867,18 +2927,18 @@
     },
     {
       "sprite": "infoSheet",
-      "x": 31,
+      "x": 69,
       "y": 23
     },
     {
       "sprite": "infoSheet",
       "x": 70,
-      "y": 15
+      "y": 16
     },
     {
       "sprite": "infoSheet",
-      "x": 97,
-      "y": 11
+      "x": 79,
+      "y": 3
     }
   ]
 }
