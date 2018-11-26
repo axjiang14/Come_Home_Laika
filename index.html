@@ -133,7 +133,7 @@ function killPlayer(player, alienBullet){
 	alienBullet.destroy();
 	
 	if(alienBullet.bulletObj && alienBullet.bulletObj.cb)
-		alienBullet.bulletObj.cb();
+		alienBullet.bulletObj.cb(); // this is the line with an issue
 	
 	if (player.hp <= 0 ){
         score = Math.max(0, score - 20);

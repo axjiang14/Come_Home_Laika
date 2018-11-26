@@ -53,13 +53,13 @@ class Alien {
 		this.hasSight = !intersectsAny;
 		
 		// Draw line-of-sight debug
-		var tint = 'red';
-		if(this.hasSight) {
-			tint = 'yellow';
-			if(this.inRange)
-				tint = 'lime';
-		}
-		game.debug.geom(this.sightLine, tint, this.hasSight);
+//		var tint = 'red';
+//		if(this.hasSight) {
+//			tint = 'yellow';
+//			if(this.inRange)
+//				tint = 'lime';
+//		}
+//		game.debug.geom(this.sightLine, tint, this.hasSight);
 	}
 	
 	move() {

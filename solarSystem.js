@@ -60,7 +60,7 @@ var solarSystem = {
         
         
         var bmpText;
-        var plutoText = "Control Tower: Hello Laika. This is control tower from Earth. We are glad that you made it to space safely! We're about to crash land on Pluto! Here's some information about the planet: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
+        var plutoText = "Control Tower: Hello Laika. This is control tower from Earth. We are glad that you made it to space safely! We're about to crash land on Pluto! Click the planet with spaceship to enter: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
         var neptuneText = "Great job! We've escaped from Pluto. It looks like we're headed for Neptune next. This is Neptune: \nGravity: 1.14x compared to Earth \nSize: 58x compared to Earth";
         var uranusText = "Wow that was tough! Next stop is Uranus! \nGravity: 0.886x compared to Earth \nSize: 63x compared to Earth \nControl Tower: This Planet is the coldest planet of solar system. Get to the spaceship fast! Or You will freeze to death!";
         var saturnText = "Watch out for the dust! \nGravity: 1.065x compared to Earth \nSize: 764x compared to Earth ";
