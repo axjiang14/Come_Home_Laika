@@ -4,7 +4,7 @@ preload: function() {
 
 create: function() {
 	game.sound.stopAll();
-    game.add.sprite(0, 0, 'uranusBackground').fixedToCamera = true;
+    //game.add.sprite(0, 0, 'uranusBackground').fixedToCamera = true;
 	player = game.add.sprite(0, 0, 'laika');
 	
 	everyCreate();

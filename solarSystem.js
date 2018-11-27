@@ -6,7 +6,7 @@ var solarSystem = {
     
     create: function(){
         game.add.sprite(0, 0, 'spaceBackground');
-        game.add.sprite(-35, -35, 'sun'); // background
+        game.add.sprite(-35, -35, 'sun'); 
         
         var p1 = game.add.button(150, 80, 'mercury');
         p1.scale.setTo(0.6,0.6);
@@ -59,7 +59,8 @@ var solarSystem = {
         p9.onInputUp.add(this.unTint, p9);
         
         
-        var bmpText;
+        //var bmpText;
+        var typewriter = new Typewriter();
         var plutoText = "Control Tower: Hello Laika. This is control tower from Earth. We are glad that you made it to space safely! We're about to crash land on Pluto! Click the planet with spaceship to enter: \nGravity compared to Earth: 0.06 \nVolume compared to Earth: 0.006 ";
         var neptuneText = "Great job! We've escaped from Pluto. It looks like we're headed for Neptune next. This is Neptune: \nGravity: 1.14x compared to Earth \nSize: 58x compared to Earth";
         var uranusText = "Wow that was tough! Next stop is Uranus! \nGravity: 0.886x compared to Earth \nSize: 63x compared to Earth \nControl Tower: This Planet is the coldest planet of solar system. Get to the spaceship fast! Or You will freeze to death!";
@@ -71,58 +72,58 @@ var solarSystem = {
         var earthText = "Hello Laika. We're almost home. Set your GPS for Earth!";
 
 
-               
+            
         
         if(planetsUnlocked == 0){
             game.add.sprite(720, 306, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", plutoText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: plutoText });
+            typewriter.start();}
+            
+            /*bmpText = game.add.bitmapText(160, 480, "gem", plutoText, 18); 
+            bmpText.maxWidth = 620;}*/
         
         if(planetsUnlocked == 1){
             game.add.sprite(680, 50, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", neptuneText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: neptuneText });
+            typewriter.start();}
         
         if(planetsUnlocked == 2){
             game.add.sprite(550, 245, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", uranusText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: uranusText });
+            typewriter.start();}
         
         if(planetsUnlocked == 3){
             game.add.sprite(500, 25, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", saturnText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: saturnText });
+            typewriter.start();}
         
         if(planetsUnlocked == 4){
             game.add.sprite(340, 245, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", jupiterText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: jupiterText });
+            typewriter.start();}
         
         if(planetsUnlocked == 5){
             game.add.sprite(310, 95, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", marsText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: marsText });
+            typewriter.start();}
         
         if(planetsUnlocked == 6){
             game.add.sprite(143, 25, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", venusText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: mercuryText });
+            typewriter.start();}
         
         if(planetsUnlocked == 7){
             game.add.sprite(25, 125, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", mercuryText, 18); 
-            bmpText.maxWidth = 620;}
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: venusText });
+            typewriter.start();}
         
         if(planetsUnlocked >= 8){
             game.add.sprite(175, 175, 'spaceship');
-            bmpText = game.add.bitmapText(160, 480, "gem", earthText, 18); 
-            bmpText.maxWidth = 620;}
-        
-        
+            typewriter.init(game, { x: 160, y: 480, fontSize: 18,fontFamily: "gem", maxWidth: 620, text: earthText });
+            typewriter.start();}
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         console.log(planetsUnlocked);
-        
         
         spaceBGM = game.add.audio('spaceBGM'); //has to be last for some reason
         //spaceBGM.addMarker('spaceBGM', 0, 151);
@@ -204,4 +205,3 @@ var solarSystem = {
     }
     
 };// solarSystem State
-5

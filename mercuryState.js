@@ -5,7 +5,7 @@ preload: function() {
 
 create: function() {
     game.sound.stopAll();
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var background = game.add.sprite(0, 0, 'mercuryBackground');
     background.fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
