@@ -205,7 +205,7 @@ class Alien2 extends Alien {
 	iceBulletCB() {
 		playerSpeed *= 0.1;
 		--player.hp;
-		colorHPBar();
+		colorHPBar(player.hp / 10, player.hpBox);
 	}
 }
 

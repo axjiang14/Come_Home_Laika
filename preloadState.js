@@ -18,7 +18,7 @@ var preloadState= {
         game.load.image('tutBackground', 'assets/tutorial.png');
         game.load.image('nextButton', 'assets/buttonNext.png');
         
-        game.load.video('demo','assets/demo.mp4');
+        //game.load.video('demo','assets/demo.mp4');
         
         //solar system assets
         game.load.image('spaceBackground', 'assets/SpaceTypeable.png');

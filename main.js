@@ -35,12 +35,12 @@ function handleAlienBullets() {
 
 function colorHPBar(hpPct, hpBar) {
 	// Calculate RGB values for hp bar
-	var red = Math.max(66, Math.min(226, 330 * hpPct));
-	var green = Math.max(20, Math.min(255, 20 + 470 * hpPct));
-	var blue = Math.max(20, Math.min(66, 20 + 50 * hpPct));
-	//console.log('red:', red, 'green:', green, 'blue:', blue);
+	var red = Math.max(20, Math.min(200, 200 * hpPct));
+	var green = Math.max(66, Math.min(300, 20 + 500 * hpPct));
+	var blue = Math.max(20, Math.min(90, 20 + 100 * hpPct));
+	console.log('red:', red, 'green:', green, 'blue:', blue);
 	
-	var tint = red << 16 | green << 8 | blue;
+	var tint = red << 8 | green << 16 | blue;
 	
 	hpBar.tint = tint;
 	hpBar.scale.setTo(hpBar.maxScaleX * hpPct, hpBar.scale.y);
@@ -218,6 +218,7 @@ function everyCreate() {
 	alienBullets.setAll('outOfBoundsKill', true);
     
     //audio
+    
     gunBGM = game.add.audio('gunBGM');
     successBGM = game.add.audio('successBGM');
     collectBGM = game.add.audio('collectBGM');
