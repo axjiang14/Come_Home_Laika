@@ -34,6 +34,13 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
+    if(ticks - startTicks == 5700){
+        warningBGM.play();
+    }
+    if(ticks - startTicks > 6000){
+        console.log('ran out of time');
+        game.state.start('gameOverState');
+    }
 //    if (ticks % 20){
 //        tiles1.body.velocity.y = 600;
 //    }

@@ -222,6 +222,8 @@ function everyCreate() {
     gunBGM = game.add.audio('gunBGM');
     successBGM = game.add.audio('successBGM');
     collectBGM = game.add.audio('collectBGM');
+    healthBGM = game.add.audio('healthBGM');
+    sadTromboneBGM = game.add.audio('sadTromboneBGM');
     impactBGM = game.add.audio('impactBGM');
     bigImpactBGM = game.add.audio('bigImpactBGM');
     warningBGM = game.add.audio('warningBGM');

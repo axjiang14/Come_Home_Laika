@@ -124,7 +124,7 @@ function collectAlien(player, alien){
         }
         
 
-		game.state.start('gameOverState');
+		gameOver();
     }
 	alien.destroy();
 }
@@ -138,14 +138,14 @@ function killPlayer(player, alienBullet){
 	
 	if (player.hp <= 0 ){
         score = Math.max(0, score - 20);
-		game.state.start('gameOverState');
+		gameOver();
 	}
 	onPlayerHit();
 }
 
 function killaliens(bullet, alien){ // kill aliens with bullet
     score += 2;
-    
+    impactBGM.play();
 	//alien.destroy();
 	alien.alienParent.onHit();
 	
@@ -159,6 +159,7 @@ function killBullet(bullet, platform) {
 }
 
 function healthRestore(player, heatlhKit) {
+    healthBGM.play();
     player.hp = Math.min(10, player.hp + 2); // hp + 2
     colorHPBar(player.hp / 10, player.hpBox);
     heatlhKit.kill();

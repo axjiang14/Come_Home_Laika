@@ -18,6 +18,11 @@ var preloadState= {
         game.load.image('tutBackground', 'assets/tutorial.png');
         game.load.image('nextButton', 'assets/buttonNext.png');
         
+        //game over state assets
+        game.load.image('overScreen', 'assets/GameOverScreen.png');
+		game.load.image('ground', 'assets/platform.png');
+        game.load.image('restartButton', 'assets/buttonRestart.png');
+        
         //game.load.video('demo','assets/demo.mp4');
         
         //solar system assets
@@ -70,6 +75,8 @@ var preloadState= {
         game.load.audio('buttonBGM', 'assets/BackGroundMusic/buttonBGM.mp3');
         game.load.audio('successBGM', 'assets/BackGroundMusic/takeoffBGM.mp3');
         game.load.audio('collectBGM', 'assets/BackGroundMusic/starBGM.wav');
+        game.load.audio('healthBGM', 'assets/BackGroundMusic/healthBGM.mp3');
+        game.load.audio('sadTromboneBGM', 'assets/BackGroundMusic/sadTromboneBGM.mp3');
         game.load.audio('impactBGM', 'assets/BackGroundMusic/impactBGM.mp3');
         game.load.audio('bigImpactBGM', 'assets/BackGroundMusic/bigImpactBGM.mp3');
         game.load.audio('warningBGM', 'assets/BackGroundMusic/warningBGM.mp3');

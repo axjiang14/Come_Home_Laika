@@ -63,15 +63,15 @@ var solarSystem = {
         bmpText = game.add.bitmapText(115, 453, "gem", "Control Tower", 20);
         
         var typewriter = new Typewriter();
-        var plutoText = "Hello Laika. This is control tower from Earth. We are glad that you made it to space safely! We're about to crash land on Pluto. Be careful when you jump. Pluto's gravity is only 0.06 compared to Earth's. \nClick the planet with the spaceship to begin the level." 
-        var neptuneText = "Great job! We've escaped from Pluto. We need to stop at Neptune to restock on fuel. Here is some information about Neptune: \nGravity: 1.14x compared to Earth";
-        var uranusText = "Wow that was tough! Next stop is Uranus. \nGravity: 0.886x compared to Earth \n This Planet is the coldest planet of solar system. Get to the spaceship fast! Or You will freeze to death!";
-        var saturnText = "Watch out for the dust! \nGravity: 1.065x compared to Earth";
-        var jupiterText = "This is Jupiter: \n Gravity: 2.528x compared to Earth \nControl Tower: This Planet is very difficult to move, make sure you take careful steps.";
-        var marsText = "This is Mars:  \nGravity: 0.376x compared to Earth \nThis Planet is very similar to Earth, we might have to conquer this planet in the future. Special Mission: Kill all the aliens.";
-        var mercuryText = "Hello Laika. This is Mercury: \nGravity: 0.38x compared to Earth \nThis Planet is your last planet. And your resources are running out.\nSpecial Mission: Kill all the aliens. You have 150 seconds.";
-        var venusText = "Hello Laika. This is Venus: \nGravity: 0.904x compared to Earth \nThis Planet has special aliens. \nSpecial Mission: Kill all the aliens.";
-        var earthText = "Hello Laika. We're almost home. Set your GPS for Earth!";
+        var plutoText = "Hurry Laika! You’re about to run out of fuel. According to your coordinates, the closest planet is Pluto. Land there and find more fuel. Be careful when you jump. Pluto's gravity is only 0.06 compared to Earth's. \nClick the planet with the spaceship to begin the level." 
+        var neptuneText = "Great job! We've escaped from Pluto. Our fuel won’t last long. Let’s head to Neptune next. Your spacesuit isn’t designed to handle Neptune’s extreme temperatures. Complete the level quickly or else you’ll freeze to death. Here is some information about Neptune: \nGravity: 1.14x compared to Earth";
+        var uranusText = "Wow that was tough! It looks like Uranus is nearby; let’s stop there next.  Here is some information about Uranus: \nGravity: 0.886x compared to Earth";
+        var saturnText = "Welcome to Saturn, Laika. Saturn has a lot of rings, so make sure you explore every layer of the planet carefully. Here is some information about Saturn. \nGravity: 1.065x compared to Earth";
+        var jupiterText = "Laika, you’ve made it to Jupiter. You're already halfway home. From what we know, Jupiter is densely populated. Watch out for alien legions. Here is some information about Jupiter: \n Gravity: 2.528x compared to Earth \nDang that’s high!";
+        var marsText = "Finally, we made it to Mars. Wow we can almost see Earth from here! We’ve sent many rovers here. Maybe you’ll see something that reminds you of home. Here is some information about Mars: \nGravity: 0.376x compared to Earth";
+        var mercuryText = "Wooah! What happened? It looks like our coordinates were off. You ended up on Mercury instead of Earth. Let’s clear this quickly. Here is some information about Mercury: \nGravity: 0.38x compared to Earth";
+        var venusText = "Last stop: Venus! It looks like your spacesuit has suffered some damage. You won’t be able to withstand Venus’ toxic atmosphere for long. Gather your fuel quickly and let’s head home. Here is some information about Venus: \nGravity: 0.904x compared to Earth";
+        var earthText = "Laika. We're almost home. Set your coordinates for Earth!";
 
 
             
