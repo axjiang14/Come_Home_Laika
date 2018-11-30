@@ -9,7 +9,7 @@ var preloadState= {
         game.load.image('venusBackground', 'assets/BGVenus.png');
         game.load.image('mercuryBackground', 'assets/BGMercury.png');
         game.load.image('earthBackground', 'assets/BGEarth.png');
-        game.load.image('space', 'assets/space.png');
+        game.load.image('space', 'assets/Space.png');
         
         //start state assets
         game.load.image('homeScreen', 'assets/HomeScreen.png');
