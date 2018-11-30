@@ -9,7 +9,7 @@ var gameStartState = {
         
 		
 		
-        var startButton = game.add.button(game.world.centerX + 50, game.world.centerY + 125, 'startButton', function(){game.state.start('solarSystem')});// go to solarSystem
+        var startButton = game.add.button(game.world.centerX + 50, game.world.centerY + 125, 'startButton', function(){game.state.start('introState')});// go to solarSystem
         startButton.onInputDown.add(this.tint, startButton);
         startButton.onInputUp.add(this.unTint, startButton);   
         
