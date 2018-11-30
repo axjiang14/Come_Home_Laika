@@ -30,7 +30,7 @@ update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
 
-    if(ticks - startTicks == 5700){
+    if(ticks - startTicks == 5500){
         warningBGM.play();
     }
     if(ticks - startTicks > 6000){

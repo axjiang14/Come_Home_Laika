@@ -1,3 +1,4 @@
+var startTicks;
 var venusState = {
 
 preload: function() {
@@ -11,6 +12,7 @@ create: function() {
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
 	everyCreate();
+    startTicks = ticks;
     player.hp = savedHP; // starts with old HP +1 for the coloring
     onPlayerHit(); // to color
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
@@ -34,10 +36,11 @@ create: function() {
 update: function() {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
-    if(ticks - startTicks == 5700){
+    console.log(ticks - startTicks)
+    if(ticks - startTicks == 7500){
         warningBGM.play();
     }
-    if(ticks - startTicks > 6000){
+    if(ticks - startTicks > 8000){
         console.log('ran out of time');
         game.state.start('gameOverState');
     }
