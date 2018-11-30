@@ -4,7 +4,7 @@
 	<meta charset="UTF-8" />
 	<title>No Pain, No Game</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src = "preloadState.js"></script>
     <script src = "introState.js"></script>
@@ -107,7 +107,8 @@ game.state.start('preloadState');
 
 function collectAlien(player, alien){
     bigImpactBGM.play();
-    game.camera.shake(0.02, 500);
+    
+    game.camera.shake(0.02, 500); 
 //    game.camera.flash(0xff0000, 500);
     if (score >= 4) {
         score -= 4;

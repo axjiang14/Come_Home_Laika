@@ -9,12 +9,13 @@ var gameOverState = {
 	
 	create: function()
 	{
+        game.camera.shake(0.02, 500);
         game.sound.stopAll();
         sadTromboneBGM.play();
 		savedHP = 10;// when you die, make sure you come back healthy
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.add.sprite(-5, -5, 'overScreen');
+        game.add.sprite(0, 0, 'overScreen');
 		platforms = game.add.group();
 		platforms.enableBody = true;
 		var ground = platforms.create(0, game.world.height - 10, 'ground');
