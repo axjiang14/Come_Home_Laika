@@ -97,6 +97,10 @@ var preloadState= {
     },
     
     create: function() {
+        var typewriter = new Typewriter();
+        var text = "Loading...";
+        typewriter.init(game, { x: 200, y: 300, fontSize: 50,fontFamily: "gem", maxWidth: 600, text: text });
+                typewriter.start();
         game.state.start('gameStartState');
     }
 	
