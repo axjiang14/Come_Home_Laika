@@ -10,8 +10,8 @@ var preloadState= {
         game.load.image('mercuryBackground', 'assets/BGMercury.png');
         game.load.image('earthBackground', 'assets/BGEarth.png');
         game.load.image('space', 'assets/Spacee.png');
-        game.load.image('endBG', 'assets/endBG.png');
-        game.load.image('introBG', 'assets/introBG.png');
+        game.load.image('endBG', 'assets/enddBG.png');
+        game.load.image('introBG', 'assets/introoBG.png');
         
         //start state assets
         game.load.image('homeScreen', 'assets/HomeScreen.png');
@@ -40,7 +40,7 @@ var preloadState= {
         game.load.image('uranus', 'assets/planets/uranus.png')
         game.load.image('neptune', 'assets/planets/neptune.png')
         game.load.image('pluto', 'assets/planets/pluto.png')            
-        game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmet.png');
+        game.load.image('LaikaNoHelmet', 'assets/LaikaNoHelmett.png');
         game.load.audio('spaceBGM', 'assets/BackGroundMusic/SpaceBGM.mp3');
         game.load.bitmapFont('gem', 'assets/gem.png', 'assets/gem.xml');
         
