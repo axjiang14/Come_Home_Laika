@@ -89,6 +89,7 @@ var preloadState= {
         game.load.audio('marsBGM', 'assets/BackGroundMusic/marsBGM.wav');
         game.load.audio('mercuryBGM', 'assets/BackGroundMusic/mercuryBGM.mp3');
         game.load.audio('venusBGM', 'assets/BackGroundMusic/venusBGM.mp3');
+        game.load.audio('earthBGM', 'assets/BackGroundMusic/earthBGM.mp3');
         game.load.audio('finalBossBGM', 'assets/BackGroundMusic/finalBossBGM.wav');
 	
     },

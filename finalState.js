@@ -14,6 +14,8 @@ create: function() {
     //onPlayerHit(); // to color
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
+    game.sound.stopAll();
+    finalBossBGM.play("",0,1,true);
 	stateLoad('states/final1.json');
 	
 	var boss = new Boss1(50, 10);

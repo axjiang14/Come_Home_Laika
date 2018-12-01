@@ -235,6 +235,7 @@ function everyCreate() {
     marsBGM = game.add.audio('marsBGM');
     mercuryBGM = game.add.audio('mercuryBGM');
     venusBGM = game.add.audio('venusBGM');
+    earthBGM = game.add.audio('earthBGM');
     finalBossBGM = game.add.audio('finalBossBGM');
 }
 

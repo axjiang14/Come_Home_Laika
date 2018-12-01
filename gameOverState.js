@@ -60,7 +60,12 @@ var gameOverState = {
         scoreText = game.add.text(16, 16, 'Score: ' + score, {fontSize: '32px', fill: '#ffffff'});
 		
         
-        var restartButton = game.add.button(275, 300, 'restartButton', function(){game.state.start('solarSystem')});// go back to solarSystem.
+        var restartButton = game.add.button(275, 300, 'restartButton', function(){
+            if (planetsUnlocked == 9)
+                game.state.start('finalState')
+            else
+            game.state.start('solarSystem')
+        });// go back to solarSystem.
         restartButton.onInputDown.add(this.tint, restartButton);
         restartButton.onInputUp.add(this.unTint, restartButton);
         
