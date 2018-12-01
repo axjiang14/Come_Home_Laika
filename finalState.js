@@ -11,12 +11,14 @@ create: function() {
 	
 	player.hp = 10;//savedHP; // starts with old HP +1 for the coloring
 	everyCreate();
-    //onPlayerHit(); // to color
+    game.world.setBounds(0 , 0, 816, 600);
 	player.body.gravity.y = 1800; // 3 TILES JUMP 1800 = 4 TILES JUMP
     
+    game.sound.stopAll();
+    finalBossBGM.play("",0,1,true);
 	stateLoad('states/final1.json');
 	
-	var boss = new Boss1(50, 10);
+	var boss = new Boss1(25, 10);
 	boss.phaserObj.body.gravity.y = 100;
 },
 
@@ -24,6 +26,9 @@ update: function()
 {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
+    if (Boss1.hp == 1){
+        game.state.start('solarSystem')
+    }
 },
 
 spaceshipLeave: function() {

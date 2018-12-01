@@ -15,6 +15,8 @@ create: function() {
     
 	player.body.gravity.y = 1800;
 	
+    game.sound.stopAll();
+    earthBGM.play("",0,1,true);
 	stateLoad('states/earth.json');
 },
 
@@ -27,9 +29,9 @@ spaceshipLeave: function() {
     if (player.infoSheetNum >= 5) {
         game.sound.stopAll();
         console.log('Got to spaceship!');
-        planetsUnlocked = Math.max(planetsUnlocked, 8);
+        planetsUnlocked = Math.max(planetsUnlocked, 9);
         console.log('planetsUnlocked=', planetsUnlocked);
-        game.state.start('solarSystem');// ENDING!!!
+        game.state.start('introStateBoss');// ENDING!!!
         savedHP = player.hp;
         player.infoSheetNum = 0;
         successBGM.play();

@@ -127,6 +127,7 @@ var solarSystem = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         console.log(planetsUnlocked);
         
+        game.sound.stopAll();
         spaceBGM = game.add.audio('spaceBGM'); //has to be last for some reason
         //spaceBGM.addMarker('spaceBGM', 0, 151);
                
