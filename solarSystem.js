@@ -196,7 +196,7 @@ var solarSystem = {
     changeEarth: function() {
     	console.log('trying to change to saturn w/ planetsUnlocked=', planetsUnlocked);
     	if(planetsUnlocked >= 8)
-    		game.state.start('earthState');
+    		game.state.start('introStateBoss');
     },
     
     update: function(){

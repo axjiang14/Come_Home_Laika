@@ -1,4 +1,9 @@
 {
+  "spaceship": {
+    "sprite": "spaceship",
+    "x": 30,
+    "y": 23
+  },
   "laika": {
     "sprite": 0,
     "x": 2,

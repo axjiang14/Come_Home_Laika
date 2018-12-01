@@ -4,8 +4,8 @@ preload: function() {
 
 create: function() {
     game.sound.stopAll();
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-	var background = game.add.sprite(0, 0, 'venusBackground');
+    //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+	var background = game.add.sprite(0, 0, 'earthBackground');
     background.fixedToCamera = true;
 	player = game.add.sprite(20, game.world.height - 70, 'laika');
 	
@@ -20,18 +20,21 @@ create: function() {
 	
 	var boss = new Boss1(25, 10);
 	boss.phaserObj.body.gravity.y = 100;
+    console.log(boss.hp);
+    
+   // spaceship = game.add.sprite(750, 520, 'spaceship');
 },
 
 update: function()
 {
 	everyUpdate();
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
-    if (Boss1.hp == 1){
-        game.state.start('solarSystem')
-    }
+    
+    
 },
 
 spaceshipLeave: function() {
+    game.state.start('endingState')
 }
 
 }

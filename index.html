@@ -7,7 +7,10 @@
 	<script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src = "preloadState.js"></script>
-    <script src = "introState.js"></script>
+    <script src = "introState1.js"></script>
+    <script src = "introState2.js"></script>
+    <script src = "endingState.js"></script>
+    <script src = "credits.js"></script>
     <script src = "introStateBoss.js"></script>
     <script src = "solarSystem.js"></script>
     <script src = "gameStartState.js"></script>
@@ -87,7 +90,10 @@ var fireRate = 500;
 
 game.state.add('gameStartState', gameStartState);//starting state
 game.state.add('preloadState', preloadState);
-game.state.add('introState', introState);
+game.state.add('introState1', introState1);
+game.state.add('introState2', introState2);
+game.state.add('endingState', endingState);
+game.state.add('credits', credits);
 game.state.add('introStateBoss', introStateBoss);
 game.state.add('solarSystem', solarSystem); 
 game.state.add('tutorialState', tutorialState); 

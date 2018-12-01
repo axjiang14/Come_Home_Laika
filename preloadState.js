@@ -10,6 +10,8 @@ var preloadState= {
         game.load.image('mercuryBackground', 'assets/BGMercury.png');
         game.load.image('earthBackground', 'assets/BGEarth.png');
         game.load.image('space', 'assets/Spacee.png');
+        game.load.image('endBG', 'assets/endBG.png');
+        game.load.image('introBG', 'assets/introBG.png');
         
         //start state assets
         game.load.image('homeScreen', 'assets/HomeScreen.png');
