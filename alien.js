@@ -156,7 +156,7 @@ class Alien2 extends Alien {
 		this.x = x * 24;
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien2';
-		
+
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
 		
@@ -245,6 +245,14 @@ class Alien3 extends Alien {
 		
 		//game.debug.geom(this.leftFoot);
 		//game.debug.geom(this.rightFoot);
+        
+        // If we're in range and have sight:
+		if(this.inRange && this.hasSight) {
+			if(this.shootTicks <= 0) {
+				console.log('I would like to shoot the player.');
+				this.shoot();
+			}
+		}
 		
 		if(tooLeft) {
 			//console.log('Im too far left!');
@@ -277,7 +285,20 @@ class Alien3 extends Alien {
 		else
 			this.phaserObj.body.velocity.x = 0;
 	}
+    
+	shoot() {
+		var bullet = new Bullet(this.x + 16, this.y + 16, 'purple', this.bulletCB);
+		bullet.liveTicks = 30;
+		
+		// Alien reload timer
+		this.shootTicks = 100 + Math.random() * 50;
+		// Alien won't move
+		this.grounded = 150;
+	}
 	
+	bulletCB() {
+		--player.hp;
+	}
 	onCollide(platform) {
 		//console.log('I hit:', platform);
 	}
@@ -289,7 +310,7 @@ class Alien4 extends Alien {
 		this.x = x * 24;
 		this.y = y * 24 - 24;
 		this.spritesheet = 'alien4';
-		
+
 		this.phaserObj = aliens.create(this.x, this.y, this.spritesheet);
 		this.phaserObj.alienParent = this;
 		
@@ -309,12 +330,34 @@ class Alien4 extends Alien {
 			this.phaserObj.body.velocity.x = Math.min(0, this.phaserObj.body.velocity.x);
 			this.phaserObj.animations.stop();
 		}
-		
+		// If we're in range and have sight:
+		if(this.inRange && this.hasSight) {
+			if(this.shootTicks <= 0) {
+				console.log('I would like to shoot the player.');
+				this.shoot();
+			}
+		}
+        
 		if(this.grounded <= 0) {
 			console.log('I would like to move.');
 			this.move();
 		}
+        
 	}
+    
+    shoot() {
+		var bullet1 = new Bullet(this.x + 16, this.y + 16, 'orange', this.bulletCB);
+		bullet1.liveTicks = 30;
+		
+		// Alien reload timer
+		this.shootTicks = 75 + Math.random() * 50;
+		// Alien won't move
+		this.grounded = 150;
+	}
+	
+	bulletCB() {
+		--player.hp;
+    }
 }
 
 class Alien6 extends Alien {
@@ -392,6 +435,7 @@ class Boss1 extends Alien {
 		super(x, y);
 		this.range = 1000;
 		this.hp = 50;
+
 		
 		this.x = x * 24;
 		this.y = y * 24 - 40;

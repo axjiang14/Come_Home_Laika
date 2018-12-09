@@ -34,13 +34,17 @@ function handleAlienBullets() {
 }
 
 function colorHPBar(hpPct, hpBar) {
+    //hpPct % of hp left
 	// Calculate RGB values for hp bar
-	var red = Math.max(20, Math.min(200, 200 * hpPct));
-	var green = Math.max(66, Math.min(300, 20 + 500 * hpPct));
-	var blue = Math.max(20, Math.min(90, 20 + 100 * hpPct));
+    hpPct10 = hpPct*10;
+	var red = Math.max(66, Math.min(226, /*386*/330 - 32 * hpPct10));
+	var green = Math.max(20, Math.min(255, 20 + 47 * hpPct10));
+	var blue = Math.max(20, Math.min(66, 20 + 5 * hpPct10));
+
 	console.log('red:', red, 'green:', green, 'blue:', blue);
 	
-	var tint = red << 8 | green << 16 | blue;
+	var tint = red << 16 | green << 8 | blue;
+
 	
 	hpBar.tint = tint;
 	hpBar.scale.setTo(hpBar.maxScaleX * hpPct, hpBar.scale.y);
@@ -140,6 +144,8 @@ function everyCreate() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.sound.stopAll(); // fresh start
     
+    ticks = 0;
+    
 	platforms = game.add.group();
 	platforms.enableBody = true;
 
@@ -183,7 +189,7 @@ function everyCreate() {
     infoText.fixedToCamera = true;
     
     
-    timeText = game.add.text(650, 4, 'Time: ', style);
+    timeText = game.add.text(650, 4, 'Time: 0', style);
     timeText.fixedToCamera = true;
     
     

@@ -13,21 +13,21 @@
       "max_x": 16
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 15,
       "y": 20,
       "min_x": 5,
       "max_x": 28
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 22,
       "y": 5,
       "min_x": 21,
       "max_x": 28
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 29,
       "y": 10,
       "min_x": 26,
@@ -48,28 +48,28 @@
       "max_x": 41
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 46,
       "y": 15,
       "min_x": 44,
       "max_x": 50
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 48,
       "y": 23,
       "min_x": 1,
       "max_x": 98
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 51,
       "y": 10,
       "min_x": 43,
       "max_x": 58
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 52,
       "y": 5,
       "min_x": 51,
@@ -90,14 +90,14 @@
       "max_x": 98
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 60,
       "y": 5,
       "min_x": 59,
       "max_x": 62
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 62,
       "y": 10,
       "min_x": 60,
@@ -111,35 +111,35 @@
       "max_x": 63
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 64,
       "y": 20,
       "min_x": 60,
       "max_x": 73
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 68,
       "y": 10,
       "min_x": 60,
       "max_x": 72
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 68,
       "y": 20,
       "min_x": 60,
       "max_x": 73
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 71,
       "y": 23,
       "min_x": 1,
       "max_x": 98
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 73,
       "y": 5,
       "min_x": 73,
@@ -153,28 +153,28 @@
       "max_x": 77
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 77,
       "y": 20,
       "min_x": 75,
       "max_x": 88
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 79,
       "y": 10,
       "min_x": 74,
       "max_x": 87
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 82,
       "y": 5,
       "min_x": 81,
       "max_x": 83
     },
     {
-      "sprite": "alien1",
+      "sprite": "alien2",
       "x": 87,
       "y": 20,
       "min_x": 75,

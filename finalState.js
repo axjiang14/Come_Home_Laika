@@ -22,12 +22,13 @@ create: function() {
 	boss.phaserObj.body.gravity.y = 100;
     console.log(boss.hp);
     
-   // spaceship = game.add.sprite(750, 520, 'spaceship');
 },
 
 update: function()
 {
 	everyUpdate();
+    
+
 	game.physics.arcade.overlap(player, spaceship, this.spaceshipLeave, null, this);
     
     

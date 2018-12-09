@@ -6,7 +6,8 @@ var gameStartState = {
 	create: function()
 	{
         game.add.sprite(0, 0, 'homeScreen');
-        
+        spaceBGM = game.add.audio('spaceBGM');
+        spaceBGM.play();
 		
 		
         var startButton = game.add.button(game.world.centerX + 50, game.world.centerY + 125, 'startButton', function(){game.state.start('introState1')});// go to solarSystem

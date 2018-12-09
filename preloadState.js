@@ -20,6 +20,7 @@ var preloadState= {
         //tutorial state assets
         game.load.image('tutBackground', 'assets/tutorial.png');
         game.load.image('nextButton', 'assets/buttonNext.png');
+        game.load.image('bonusButton', 'assets/buttonBonus.png');
         
         //game over state assets
         game.load.image('overScreen', 'assets/GameOverScreen.png');
@@ -64,6 +65,8 @@ var preloadState= {
         game.load.image('flame', 'assets/Beam-Fire.png');
         game.load.image('ice', 'assets/Beam-Ice.png');
         game.load.image('red', 'assets/Beam-Red.png');
+        game.load.image('purple', 'assets/Beam-Purple.png');
+        game.load.image('orange', 'assets/Beam-Orange.png');
 
         game.load.image('infoSheet', 'assets/battery.png');// need to be changed to InformationSheet.
         game.load.image('healthKit', 'assets/Health.png');
@@ -97,10 +100,6 @@ var preloadState= {
     },
     
     create: function() {
-        var typewriter = new Typewriter();
-        var text = "Loading...";
-        typewriter.init(game, { x: 200, y: 300, fontSize: 50,fontFamily: "gem", maxWidth: 600, text: text });
-                typewriter.start();
         game.state.start('gameStartState');
     }
 	

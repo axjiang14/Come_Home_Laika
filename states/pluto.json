@@ -11,42 +11,42 @@
   },
   "aliens": [
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 2,
       "y": 7,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 2,
       "y": 13,
       "min_x": 1,
       "max_x": 4
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 2,
       "y": 16,
       "min_x": 1,
       "max_x": 8
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 4,
       "y": 19,
       "min_x": 1,
       "max_x": 18
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 7,
       "y": 19,
       "min_x": 1,
       "max_x": 18
     },
     {
-      "sprite": "alien3",
+      "sprite": "alien1",
       "x": 10,
       "y": 7,
       "min_x": 8,
