@@ -205,7 +205,7 @@ function everyCreate() {
 	upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
 	qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
-	escKey = game.input.keyBoard.addKey(Phaser.Keyboard.ESC);
+	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
     
     
 	//aliens = []
