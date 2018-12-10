@@ -205,7 +205,7 @@ function everyCreate() {
 	upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
 	qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
-	escKey = game.input.addKey(Phaser.Keyboard.ESC);
+	escKey = game.input.keyBoard.addKey(Phaser.Keyboard.ESC);
     
     
 	//aliens = []
@@ -249,6 +249,7 @@ function everyCreate() {
 function everyUpdate() {
 
 	// Pause lol
+	console.log(escKey.isDown);
 	if(escKey.isDown) {
 		return;
 	}
