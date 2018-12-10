@@ -251,7 +251,7 @@ function everyUpdate() {
 	// Pause lol
 	console.log(escKey.isDown);
 	if(escKey.isDown) {
-		game.physics.isPaused = !game.physics.isPaused;
+		game.physics.arcade.isPaused = !game.physics.arcade.isPaused;
 	}
 
 	++ticks;
