@@ -249,7 +249,7 @@ function everyCreate() {
 function everyUpdate() {
 
 	// Pause lol
-	console.log(escKey.isDown);
+	console.log('paused:', game.physics.arcade.isPaused);
 	if(escKey.isDown) {
 		game.physics.arcade.isPaused = !game.physics.arcade.isPaused;
 	}
