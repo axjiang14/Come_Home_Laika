@@ -205,6 +205,7 @@ function everyCreate() {
 	upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
 	qKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
     
     
 	//aliens = []
@@ -246,6 +247,13 @@ function everyCreate() {
 }
 
 function everyUpdate() {
+
+	// Pause lol
+	console.log('paused:', game.physics.arcade.isPaused);
+	if(escKey.isDown) {
+		game.physics.arcade.isPaused = !game.physics.arcade.isPaused;
+	}
+
 	++ticks;
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms, alienCallbackAux);
