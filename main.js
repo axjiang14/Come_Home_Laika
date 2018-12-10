@@ -248,11 +248,11 @@ function everyCreate() {
 
 function everyUpdate() {
 
-	// Pause lol
+	/*// Pause lol
 	console.log('paused:', game.physics.arcade.isPaused);
 	if(escKey.isDown) {
 		game.physics.arcade.isPaused = !game.physics.arcade.isPaused;
-	}
+	}*/
 
 	++ticks;
 	game.physics.arcade.collide(player, platforms);
