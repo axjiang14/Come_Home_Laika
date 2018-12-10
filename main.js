@@ -247,14 +247,6 @@ function everyCreate() {
 }
 
 function everyUpdate() {
-
-	// Pause lol
-	console.log(escKey.isDown);
-	if(escKey.isDown) {
-		return;
-	}
-
-	++ticks;
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(aliens, platforms, alienCallbackAux);
 	game.physics.arcade.collide(healthKits, platforms);
@@ -270,6 +262,14 @@ function everyUpdate() {
 	
     game.physics.arcade.overlap(bullets, aliens, killaliens, null, this); // kill alien when hit by bullet
 	
+	// Pause lol
+	console.log(escKey.isDown);
+	if(escKey.isDown) {
+		return;
+	}
+
+	++ticks;
+
 	player.body.velocity.x = 0;
 	handlePlayer();
 	crosshair.x = game.input.x - 2 + game.camera.x;
